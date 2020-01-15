@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-public class SaveSceneAndProjectShortcut : MonoBehaviour
+namespace UnityEssentials
 {
-    [MenuItem("File/Save Scene And Project %#&s")]
-    static void FunctionForceSaveSceneAndProyect()
+    public class SaveSceneAndProjectShortcut : MonoBehaviour
     {
-        EditorApplication.ExecuteMenuItem("File/Save");
-        EditorApplication.ExecuteMenuItem("File/Save Project");
-        Debug.Log("Saved scene and project");
+        [MenuItem("File/Save Scene And Project %#&s")]
+        static void FunctionForceSaveSceneAndProyect()
+        {
+            EditorApplication.ExecuteMenuItem("File/Save");
+            EditorApplication.ExecuteMenuItem("File/Save Project");
+            Debug.Log("Saved scene and project");
+        }
     }
 }

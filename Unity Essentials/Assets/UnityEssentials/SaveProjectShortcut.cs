@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-public class SaveProjectShortcut : MonoBehaviour
+namespace UnityEssentials
 {
-    [MenuItem("File/Save project %&s")]
-    static void FunctionForceSaveProyect()
+    public class SaveProjectShortcut : MonoBehaviour
     {
-        EditorApplication.ExecuteMenuItem("File/Save Project");
-        Debug.Log("Saved project");
+        [MenuItem("File/Save project %&s")]
+        static void FunctionForceSaveProyect()
+        {
+            EditorApplication.ExecuteMenuItem("File/Save Project");
+            Debug.Log("Saved project");
+        }
     }
 }

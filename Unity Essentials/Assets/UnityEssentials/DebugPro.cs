@@ -18,8 +18,6 @@ namespace UnityEngine
             else Debug.Log(str);
         }
         
-        
-        
     }
 
 }

@@ -28,34 +28,25 @@ namespace UnityEngine
             this.instantiationRotation = instantiationRotation;
         }
 
-        /*public GameObject Spawn(Transform transform)
-        {
-            if (referencedObjects[index] == null)
-                Instantiate(index);
-
-            referencedObjects[index].transform.SetTransformProperties(transform);
-            
-            return referencedObjects[index];
-        }*/
-        
         public GameObject Spawn(Vector3 position, Quaternion rotation)
         {
             if (referencedObjects[index] == null)
                 Instantiate(index);
 
             referencedObjects[index].transform.SetTransformProperties(position, rotation);
-            referencedObjects[index].SetActive(false);
-            index++;
+            referencedObjects[index].SetActive(true);
+            GameObject returnObject = referencedObjects[index];
             
-            return referencedObjects[index];
+            index = index+1<referencedObjects.Length? index+1 : 0;
+
+            return returnObject;
         }
 
-        private GameObject Instantiate(int referencePosition)
+        private void Instantiate(int referencePosition)
         {
             GameObject go = Object.Instantiate(baseObject, instantiationPosition, instantiationRotation);
             go.SetActive(false);
             referencedObjects[referencePosition] = go;
-            return go;
         }
     }
 }

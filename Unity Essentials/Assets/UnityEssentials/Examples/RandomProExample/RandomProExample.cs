@@ -37,7 +37,10 @@ public class RandomProExample : MonoBehaviour
         // Pseudo random example (and testing)
         if (Input.GetKey(keyPseudoRandom))
         {
-            bool result = random.GetPseudoRandomBool(tryNumber, 0.1f);
+            // You can use this code to better understand what is the result of each "RandomBool" method  
+            bool result = random.GetPseudoRandomBool(tryNumber, 0.2f);
+            //bool result = random.GetPseudoRandomBool(tryNumber, 15);
+            //bool result = random.GetRandomBool(0.2f);
             
             randomResults.Add(result);
         
@@ -49,12 +52,18 @@ public class RandomProExample : MonoBehaviour
             } else {
                 tryNumber++;
             }
+
+            int[] stats = new int[maxTryNumber];
+            foreach (int regTry in workingTryNumbers)
+                stats[regTry-1]++;
             
+
             int contador = 0;
             foreach (var r in randomResults)
                 if (r) contador++;
         
             Debug.Log("Percentage of positive values: " + (float)contador/(float)randomResults.Count + ". Try with the maximum value: " + maxTryNumber + ". Average needed quantity of tries:" + (workingTryNumbers.Count > 0 ? workingTryNumbers.Average() : 0.0));
+            DebugPro.Log("STATS: ", stats);
         }
 
     }

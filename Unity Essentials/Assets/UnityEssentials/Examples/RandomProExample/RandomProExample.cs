@@ -63,7 +63,7 @@ public class RandomProExample : MonoBehaviour
                 if (r) contador++;
         
             Debug.Log("Percentage of positive values: " + (float)contador/(float)randomResults.Count + ". Try with the maximum value: " + maxTryNumber + ". Average needed quantity of tries:" + (workingTryNumbers.Count > 0 ? workingTryNumbers.Average() : 0.0));
-            DebugPro.Log("STATS: ", stats);
+            DebugPro.Log(stats, "STATS: ");
         }
 
     }

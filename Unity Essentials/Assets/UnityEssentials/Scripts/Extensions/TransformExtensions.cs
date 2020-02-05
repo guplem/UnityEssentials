@@ -12,9 +12,9 @@ public static class TransformExtensions
         trans.SetTransformProperties(Vector3.zero, Quaternion.identity, Vector3.one);
     }
 
-    public static void SetTransformProperties(this Transform trans, Transform properties)
+    public static void SetTransformProperties(this Transform trans, Transform transformToCopy)
     {
-        trans.SetTransformProperties(properties.position, properties.rotation, properties.localScale);
+        trans.SetTransformProperties(transformToCopy.position, transformToCopy.rotation, transformToCopy.localScale);
     }
 
     public static void SetTransformProperties(this Transform trans, Vector3 position, Quaternion rotation, Vector3 scale)

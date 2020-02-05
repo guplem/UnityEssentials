@@ -59,7 +59,7 @@ public class RandomProExample : MonoBehaviour
             
 
             int contador = 0;
-            foreach (var r in randomResults)
+            foreach (bool r in randomResults)
                 if (r) contador++;
         
             Debug.Log("Percentage of positive values: " + (float)contador/(float)randomResults.Count + ". Try with the maximum value: " + maxTryNumber + ". Average needed quantity of tries:" + (workingTryNumbers.Count > 0 ? workingTryNumbers.Average() : 0.0));

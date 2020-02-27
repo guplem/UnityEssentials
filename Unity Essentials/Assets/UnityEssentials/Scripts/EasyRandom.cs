@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomPro : System.Random
+public class EasyRandom : System.Random
 {
-    public RandomPro() { }
+    public EasyRandom() { }
 
-    public RandomPro(int seed) : base(seed) { }
-
+    public EasyRandom(int seed) : base(seed) { }
+    
     
     
     
@@ -32,18 +32,18 @@ public class RandomPro : System.Random
     
     public bool GetRandomBool(float probability = 0.5f) // probability = [0, 1]
     {
-        return Sample() < probability;
+        return NextDouble() >= 1-probability;
+        //return Sample() < probability;
     }
 
     // Be aware that the resulting probability using this method won't be exactly the same as the given as parameter (but it will be approximated)
-    public bool GetPseudoRandomBool(int tryNumber, float probability) // tryNumber > 0 // addedProbabilityPerTry = [0, 1]
+    public bool GetPseudoRandomBool(int tryNumber, float probability) // tryNumber > 0 // probability = [0, 1]
     {
         return GetRandomBool(Mathf.Pow(probability, 1.72689f) * tryNumber);
         
         /* The formula to calculate each try probability is: "C * tryNumber"
         // In this method's implementation, "C" is calculated using the formula: "probability^1.72689"
         // However, the accuracy of the results could be improved by using this table:
-        
             Probability    Associated "C"	                           
             5%	           0.003801658303553139101756466
             10%	           0.014745844781072675877050816
@@ -64,7 +64,6 @@ public class RandomPro : System.Random
             85%	           0.823529411764705882352941177
             90%	           0.888888888888888888888888889
             95%	           0.947368421052631578947368421
-            
          */
     }
     

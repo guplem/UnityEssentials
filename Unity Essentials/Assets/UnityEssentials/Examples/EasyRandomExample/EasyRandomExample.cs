@@ -4,41 +4,48 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RandomProExample : MonoBehaviour
+public class EasyRandomExample : MonoBehaviour
 {
     [SerializeField] private KeyCode keyPseudoRandom;
     [SerializeField] private KeyCode keyRandomBool;
     [SerializeField] private KeyCode keyRandomFloat;
 
-    private RandomPro random;
+    private EasyRandom easyRandom;
     
     // Pseudo random testing
     private List<bool> randomResults = new List<bool>();
     private List<int> workingTryNumbers = new List<int>();
     private int maxTryNumber = 0;
     private int tryNumber = 0;
-
+    int trueBooleans = 0;
+    int falseBooleans = 0;
+    
     private void Start()
     {
-        random = new RandomPro();
+        easyRandom = new EasyRandom();
     }
 
     void Update()
     {
         // Random bool
         if (Input.GetKey(keyRandomBool))
-            Debug.Log("The gotten value is " + random.GetRandomBool(0.5f));
+        {
+            bool obtainedBool = easyRandom.GetRandomBool(0.5f);
+            if (obtainedBool) trueBooleans++; else falseBooleans++;
+            Debug.Log("The gotten value is " + obtainedBool + ". Average = " + (trueBooleans*100f/(trueBooleans+falseBooleans))  + "%");
+        }
+            
         
         // Random float
         if (Input.GetKey(keyRandomFloat))
-            Debug.Log("The gotten value is " + random.GetRandomFloat(3.5f, 5.0f));
+            Debug.Log("The gotten value is " + easyRandom.GetRandomFloat(3.5f, 5.0f));
         
         
         // Pseudo random example (and testing)
         if (Input.GetKey(keyPseudoRandom))
         {
             // You can use this code to better understand what is the result of each "RandomBool" method  
-            bool result = random.GetPseudoRandomBool(tryNumber, 0.2f);
+            bool result = easyRandom.GetPseudoRandomBool(tryNumber, 0.2f);
             //bool result = random.GetPseudoRandomBool(tryNumber, 15);
             //bool result = random.GetRandomBool(0.2f);
             

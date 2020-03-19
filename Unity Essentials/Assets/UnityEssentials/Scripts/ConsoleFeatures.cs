@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace UnityEssentials
 {
+#if UNITY_EDITOR
     public class ConsoleFeatures : MonoBehaviour
     {
         [MenuItem ("Unity Essentials/Console/Clear Console  %SPACE")] // Ctrl + Shift + Alt + C
@@ -16,4 +17,5 @@ namespace UnityEssentials
             method.Invoke(new object(), null);
         }
     }
+#endif
 }

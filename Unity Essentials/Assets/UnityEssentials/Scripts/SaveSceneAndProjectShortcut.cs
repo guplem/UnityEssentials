@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UnityEssentials
 {
+#if UNITY_EDITOR
     public class SaveSceneAndProjectShortcut : MonoBehaviour
     {
         [MenuItem("File/Save Scene And Project %#&s")]
@@ -13,4 +14,5 @@ namespace UnityEssentials
             Debug.Log("Saved scene and project");
         }
     }
+#endif
 }

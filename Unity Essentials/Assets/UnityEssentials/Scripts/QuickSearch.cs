@@ -1,9 +1,12 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace UnityEssentials
 {
+
     public class QuickSearch : MonoBehaviour
     {
         [MenuItem("Unity Essentials/Quick Search/Install")]
@@ -20,4 +23,7 @@ namespace UnityEssentials
             Debug.Log("Uninstalling Quick Search...");
         }
     }
+
 }
+
+#endif

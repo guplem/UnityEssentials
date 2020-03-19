@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UnityEssentials
 {
+#if UNITY_EDITOR
     public class SuppressionOfWarningCS0649 : MonoBehaviour
     {
         [MenuItem("Unity Essentials/Warning CS0649/Disable")]
@@ -26,4 +27,5 @@ namespace UnityEssentials
             Debug.Log("Warning CS0649 enabled.");
         }
     }
+#endif
 }

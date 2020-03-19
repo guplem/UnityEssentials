@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace UnityEssentials
 {
+    #if UNITY_EDITOR
     public class DefaultConfiguration : MonoBehaviour
     {
         [MenuItem("Unity Essentials/Settings/Apply recommended configuration")]
@@ -29,4 +29,5 @@ namespace UnityEssentials
             SuppressionOfWarningCS0649.EnableWarning();
         }
     }
+    #endif
 }

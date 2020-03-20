@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EasyRandomExample : MonoBehaviour
 {
@@ -70,8 +71,9 @@ public class EasyRandomExample : MonoBehaviour
                 if (r) contador++;
         
             Debug.Log("Percentage of positive values: " + (float)contador/(float)randomResults.Count + ". Try with the maximum value: " + maxTryNumber + ". Average needed quantity of tries:" + (workingTryNumbers.Count > 0 ? workingTryNumbers.Average() : 0.0));
-            DebugPro.Log(stats, "STATS: ");
+            DebugPro.LogEnumerable(stats, "STATS: ");
         }
 
     }
+
 }

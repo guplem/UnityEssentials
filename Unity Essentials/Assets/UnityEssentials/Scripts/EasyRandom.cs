@@ -27,13 +27,15 @@ public class EasyRandom : System.Random
         return Next(inclusiveMinimum, exclusiveMaximum);
     }
 
-    
+    public int GetRandomSign(float negativeProbability = 0.5f) // negativeProbability = [0, 1]
+    {
+        return GetRandomBool(negativeProbability) ? -1 : 1;
+    }
     
     
     public bool GetRandomBool(float probability = 0.5f) // probability = [0, 1]
     {
         return NextDouble() >= 1-probability;
-        //return Sample() < probability;
     }
 
     // Be aware that the resulting probability using this method won't be exactly the same as the given as parameter (but it will be approximated)

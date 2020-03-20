@@ -33,7 +33,7 @@ namespace UnityEngine
             if (referencedObjects[index] == null)
                 Instantiate(index);
 
-            referencedObjects[index].transform.SetTransformProperties(position, rotation);
+            referencedObjects[index].transform.SetProperties(position, rotation);
             referencedObjects[index].SetActive(true);
             GameObject returnObject = referencedObjects[index];
             

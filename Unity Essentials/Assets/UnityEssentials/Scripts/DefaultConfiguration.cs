@@ -9,7 +9,7 @@ namespace UnityEssentials
         [MenuItem("Unity Essentials/Settings/Apply recommended configuration")]
         public static void ApplyRecommendedConfiguration()
         {
-            ConsoleFeatures.Clear();
+            EditorConsole.Clear();
             Debug.Log("Applying recommended configuration...");
             
             // Actions performed when the button "Apply recommended configuration" is clicked
@@ -21,7 +21,7 @@ namespace UnityEssentials
         [MenuItem("Unity Essentials/Settings/Apply Unity's default configuration")]
         public static void RestoreDefaultConfiguration()
         {
-            ConsoleFeatures.Clear();
+            EditorConsole.Clear();
             Debug.Log("Applying Unity's default configuration...");
             
             // Actions performed when the button "Apply Unity's default configuration" is clicked

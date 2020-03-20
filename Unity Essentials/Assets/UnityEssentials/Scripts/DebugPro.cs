@@ -4,30 +4,10 @@ namespace UnityEngine
 {
     public class DebugPro : Debug
     {
-        public static void Log<T>(IEnumerable<T> listToDebug, string message, Object context = null)
+        public static void LogEnumerable<T>(IEnumerable<T> enumerableToDebug, string separator = ", ", string message = "", Object context = null)
         {
-            string str = message;
-            if (listToDebug != null)
-                str = str + string.Join(", ", new List<T>(listToDebug).ConvertAll(i => i.ToString()).ToArray());
-            
-            if (context != null) 
-                Debug.Log(str, context);
-            
-            else Debug.Log(str);
+            enumerableToDebug.DebugLog(separator, message, context);
         }
-        
-        public static void Log<T>(T[] arrayToDebug, string message = "", Object context = null)
-        {
-            string str = message;
-            if (arrayToDebug != null)
-                str = str + string.Join(", ", new List<T>(arrayToDebug).ConvertAll(i => i.ToString()).ToArray());
-            
-            if (context != null) 
-                Debug.Log(str, context);
-            
-            else Debug.Log(str);
-        }
-
     }
 
 }

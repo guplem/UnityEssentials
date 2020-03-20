@@ -42,7 +42,7 @@ namespace UnityEngine
             
             if (elapsedTime >= duration)
             {
-                transformToAnimate.SetTransformProperties(destinationTransform);
+                transformToAnimate.SetProperties(destinationTransform);
                 return true;
             }
             else return false;

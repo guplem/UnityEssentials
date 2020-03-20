@@ -4,69 +4,70 @@ using UnityEngine;
 
 public static class RectTransformExtensions
 {
-    // Setters
-    
-    public static void SetLeft(this RectTransform rt, float left)
+    /// <summary>
+    /// Sets the distance from the anchor at the left of the rect transform left edge.
+    /// </summary>
+    /// <param name="distance">The distance between the RectTransform and the anchor at the left.</param>
+    public static void SetLeft(this RectTransform rt, float distance)
     {
-        rt.offsetMin = new Vector2(left, rt.offsetMin.y);
+        rt.offsetMin = new Vector2(distance, rt.offsetMin.y);
     }
- 
-    public static void SetRight(this RectTransform rt, float right)
+    /// <summary>
+    /// Sets the distance from the anchor at the right of the rect transform right edge.
+    /// </summary>
+    /// <param name="distance">The distance between the RectTransform and the anchor at the right.</param>
+    public static void SetRight(this RectTransform rt, float distance)
     {
-        rt.offsetMax = new Vector2(-right, rt.offsetMax.y);
+        rt.offsetMax = new Vector2(-distance, rt.offsetMax.y);
     }
- 
-    public static void SetTop(this RectTransform rt, float top)
+    /// <summary>
+    /// Sets the distance from the anchor at the top of the rect transform top edge.
+    /// </summary>
+    /// <param name="distance">The distance between the RectTransform and the anchor at the top.</param>
+    public static void SetTop(this RectTransform rt, float distance)
     {
-        rt.offsetMax = new Vector2(rt.offsetMax.x, -top);
+        rt.offsetMax = new Vector2(rt.offsetMax.x, -distance);
     }
- 
-    public static void SetBottom(this RectTransform rt, float bottom)
+    /// <summary>
+    /// Sets the distance from the anchor at the bottom of the rect transform bottom edge.
+    /// </summary>
+    /// <param name="distance">The distance between the RectTransform and the anchor at the bottom.</param>
+    public static void SetBottom(this RectTransform rt, float distance)
     {
-        rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
-    }
-    
-    // Getters
-
-    public static float GetHeightAnchors(this RectTransform rt)
-    {
-        return rt.sizeDelta.y;
-    }
-    
-    public static float GetWidthAnchors(this RectTransform rt)
-    {
-        return rt.sizeDelta.x;
-    }
-    
-    public static float GetHeightTransform(this RectTransform rt)
-    {
-        return rt.rect.y;
+        rt.offsetMin = new Vector2(rt.offsetMin.x, distance);
     }
     
-    public static float GetWidthTransform(this RectTransform rt)
-    {
-        return rt.rect.x;
-    }
-    
-    // Top/Bottom/Right/Left
+    /// <summary>
+    /// Gets the distance from the anchor at the left of the rect transform left edge.
+    /// </summary>
+    /// <returns>The distance from the anchor at the left of the rect transform left edge.</returns>
     public static float GetLeft(this RectTransform rt)
     {
-        return rt.offsetMin.x; //return rt.rect.xMin;
+        return rt.offsetMin.x;
     }
- 
+    /// <summary>
+    /// Gets the distance from the anchor at the right of the rect transform right edge.
+    /// </summary>
+    /// <returns>The distance from the anchor at the right of the rect transform right edge.</returns>
     public static float GetRight(this RectTransform rt)
     {
-        return -rt.offsetMax.x; //return rt.rect.xMax;
+        return -rt.offsetMax.x;
     }
- 
+    /// <summary>
+    /// Gets the distance from the anchor at the top of the rect transform top edge.
+    /// </summary>
+    /// <returns>The distance from the anchor at the top of the rect transform top edge.</returns>
     public static float GetTop(this RectTransform rt)
     {
-        return -rt.offsetMax.y; //return rt.rect.yMin;
+        return -rt.offsetMax.y;
     }
- 
+    /// <summary>
+    /// Gets the distance from the anchor at the bottom of the rect transform bottom edge.
+    /// </summary>
+    /// <returns>The distance from the anchor at the bottom of the rect transform bottom edge.</returns>
     public static float GetBottom(this RectTransform rt)
     {
-        return rt.offsetMin.y; //return rt.rect.yMax;
+        return rt.offsetMin.y;
     }
-
+    
 }

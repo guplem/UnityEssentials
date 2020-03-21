@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(SimpleAnimationsManager))]
 public class SimpleAnimationsManagerInspector : Editor
 {
@@ -33,10 +34,20 @@ public class SimpleAnimationsManagerInspector : Editor
         selectedImplementationIndex = EditorGUILayout.Popup(new GUIContent("Implementation"),
             selectedImplementationIndex, implementations.Select(impl => impl.FullName).ToArray());
 
+        ISimpleAnimation newAnimation = null;
         if (GUILayout.Button("Create animation"))
         {
-            //Create and add a new animation of the selected type
-            simpleAnimationsManager.animations.Add((ISimpleAnimation) Activator.CreateInstance(implementations[selectedImplementationIndex]));
+            //Create a new animation of the selected type
+            newAnimation = (ISimpleAnimation) Activator.CreateInstance(implementations[selectedImplementationIndex]);
+        }
+
+        //If a new animation has been created...
+        if (newAnimation != null)
+        {
+            //record the gameObject state to enable undo and prevent from exiting the scene without saving
+            Undo.RegisterCompleteObjectUndo(target, "Added new animation");
+            //add the new animation to the animation's list
+            simpleAnimationsManager.animations.Add(newAnimation);
         }
 
         // Draw horizontal line

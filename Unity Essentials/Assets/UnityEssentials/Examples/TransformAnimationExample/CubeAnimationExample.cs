@@ -5,28 +5,29 @@ using UnityEngine;
 public class CubeAnimationExample : MonoBehaviour
 {
 
-    [SerializeField] private WorldAnimationsManager animationsManager;
+    [SerializeField] private SimpleAnimationsManager simpleAnimationsManager;
+    [Space]
+    [SerializeField] private Transform origin;
     [SerializeField] private Transform destination;
+    
     
     void Start()
     {
         Debug.Log("Press G to play the animation inserted by code");
-        GameObject kkk = new GameObject();
         Debug.Log("Press H to play the animation inserted trough the inspector");
-        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Debug.Log("Playing animation inserted by code");
-            animationsManager.Play(new TransformAnimation(this.transform, destination, 1f, Curve.Linear, true, true, true));
+            Debug.Log("Creating and playing a new animation trough code.");
+            simpleAnimationsManager.Play(new TransformAnimation(this.transform, destination, origin, 1f, Curve.Linear, true, true, true));
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Debug.LogWarning("TODO animation by code");
+            Debug.Log("Playing the animation configured tough the inspector.");
+            simpleAnimationsManager.Play(0);
         }
     }
 }

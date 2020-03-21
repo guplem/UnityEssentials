@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace UnityEngine
 {
-    public abstract class WorldAnimation
+    
+    public abstract class SimpleAnimation : ISimpleAnimation
     {
         public float elapsedTime { get; protected set; }
 
@@ -23,6 +24,11 @@ namespace UnityEngine
         }
 
         public abstract bool Step(float deltaTime);
+
+        public void Reset()
+        {
+            elapsedTime = 0f;
+        }
     }
     
     public enum Curve

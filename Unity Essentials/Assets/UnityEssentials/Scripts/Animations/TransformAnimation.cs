@@ -1,51 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityEngine
 {
-    public class TransformAnimation : WorldAnimation
+    [Serializable]
+    public class TransformAnimation : SimpleAnimation
     {
-        private DummyTransform originalTransform;
-        private Transform transformToAnimate;
-        private Transform destinationTransform;
-        private readonly bool move;
-        private readonly bool scale;
-        private readonly bool rotate;
-        private readonly float duration;
-        private readonly Curve curve;
+        [SerializeField] private Transform transformToAnimate;
+        [SerializeField] private Transform originTransform;
+        [SerializeField] private Transform destinationTransform;
+        [SerializeField] private bool move;
+        [SerializeField] private bool rotate;
+        [SerializeField] private bool scale;
+        [SerializeField] private float duration;
+        [SerializeField] private AnimationCurve curve;
 
-        public TransformAnimation(Transform transformToAnimate, Transform destination, float duration = 1f, Curve curve = Curve.Linear, bool rotate = true, bool scale = true, bool move = true)
+        public TransformAnimation() : this(null, null, null) { }
+        public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f,
+            Curve curve = Curve.EaseInOut, bool move = true, bool rotate = true, bool scale = true)
         {
-            originalTransform = new DummyTransform(transformToAnimate);
-            
             this.transformToAnimate = transformToAnimate;
             this.destinationTransform = destination;
-            
-            this.move = move;
-            this.scale = scale;
-            this.rotate = rotate;
-            
-            this.duration = duration;
-            this.curve = curve;
-        }
+            this.originTransform = origin;
 
+            this.move = move;
+            this.rotate = rotate;
+            this.scale = scale;
+
+            this.duration = duration;
+            this.curve = SimpleAnimation.GetCurve(curve);
+        }
 
         public override bool Step(float deltaTime)
         {
-            // TODO --> Actual animation
-            
-            
             elapsedTime += deltaTime;
-            Debug.Log(elapsedTime);
-
             
             if (elapsedTime >= duration)
             {
                 transformToAnimate.SetProperties(destinationTransform);
                 return true;
             }
-            else return false;
+            else
+            {
+                transformToAnimate.SetLerp(originTransform.transform, destinationTransform, curve.Evaluate(elapsedTime/duration), move, rotate, scale);
+                return false;
+            }
         }
     }
 }

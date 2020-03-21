@@ -121,4 +121,13 @@ public static class TransformExtensions
     {
         return GetLookAwayRotation(self, target.position);
     }
+    
+    /// <summary>
+    /// Linearly interpolates between two transform.
+    /// <para>When t = 0 returns a. When t = 1 returns b. When t = 0.5 returns the point midway between a and b.</para>
+    /// </summary>
+    public static void SetLerp(this Transform self, Transform a, Transform b, float t, bool lerpPosition = true, bool lerpRotation = true, bool lerpScale = true)
+    {
+        self.SetProperties(Vector3.Lerp(a.position, b.position, lerpPosition?t:0), Quaternion.Lerp(a.rotation, b.rotation, lerpRotation?t:0), Vector3.Lerp(a.localScale, b.localScale, lerpScale?t:0));
+    }
 }

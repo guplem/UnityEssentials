@@ -238,10 +238,10 @@ Transform:
   m_GameObject: {fileID: 847240054}
   m_LocalRotation: {x: -0, y: 0.8747102, z: -0, w: 0.4846464}
   m_LocalPosition: {x: 0.05, y: 0, z: -6.96}
-  m_LocalScale: {x: 1, y: 1, z: 0.30991}
+  m_LocalScale: {x: 1, y: 1, z: 0.30991003}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1095899238}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 122.021, z: 0}
 --- !u!1 &1061098595
 GameObject:
@@ -326,6 +326,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1061533334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061533335}
+  m_Layer: 0
+  m_Name: Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061533335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061533334}
+  m_LocalRotation: {x: -0, y: 0.57543033, z: -0, w: 0.8178508}
+  m_LocalPosition: {x: 9.32, y: -0.67, z: 4.13}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1095899238}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 70.26, z: 0}
+--- !u!1 &1095899237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095899238}
+  m_Layer: 0
+  m_Name: Animation Key Frames
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095899238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095899237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1061533335}
+  - {fileID: 847240055}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1340663740
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +403,7 @@ GameObject:
   - component: {fileID: 1340663746}
   - component: {fileID: 1340663745}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube to animate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +481,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340663745
 MonoBehaviour:
@@ -433,6 +495,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d8d36295b507141a4b64d8ebf2c605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animations:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: TransformAnimation, ns: UnityEngine, asm: UnityEssentials}
+      data:
+        transformToAnimate: {fileID: 1340663744}
+        originTransform: {fileID: 1061533335}
+        destinationTransform: {fileID: 847240055}
+        move: 1
+        rotate: 1
+        scale: 1
+        duration: 1
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!114 &1340663746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,5 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dad6b8a0ce19048a34769a3ae26c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationsManager: {fileID: 1340663745}
+  simpleAnimationsManager: {fileID: 1340663745}
+  origin: {fileID: 1061533335}
   destination: {fileID: 847240055}

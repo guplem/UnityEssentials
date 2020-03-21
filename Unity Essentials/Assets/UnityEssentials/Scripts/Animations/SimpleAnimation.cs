@@ -13,6 +13,38 @@ namespace UnityEngine
         [SerializeField] protected float duration;
         [SerializeField] protected AnimationCurve curve;
 
+        /// <summary>
+        /// Go forward or backwards in the animation.
+        /// </summary>
+        /// <param name="deltaTime">The elapsed time between the last step and the current one.</param>
+        /// <returns>True if the animation should have ended. False if the animation should still in progress.</returns>
+        public virtual bool Step(float deltaTime)
+        {
+            if (!mirror)
+                timeStamp += deltaTime;
+            else
+                timeStamp -= deltaTime;
+
+            return ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror);
+        }
+
+        /// <summary>
+        /// Sets the time stamps of the animation to the beginning (the behaviour changes depending on if the animation is set as mirror or not).
+        /// </summary>
+        public void Reset()
+        {
+            timeStamp = !mirror? 0f : duration;
+        }
+        
+        
+        
+        
+
+        /// <summary>
+        /// Obtains the desired type of animation curve with a duration of 1 (starting on 0), the start value being 0 and the end value being 1
+        /// </summary>
+        /// <param name="curve">THe desired type of curve.</param>
+        /// <returns>The desired type of animation curve with a duration of 1 (starting on 0), the start value being 0 and the end value being 1</returns>
         public static AnimationCurve GetCurve(Curve curve)
         {
             switch (curve)
@@ -25,34 +57,10 @@ namespace UnityEngine
                     throw new ArgumentOutOfRangeException(nameof(curve), curve, null);
             }
         }
-
-        /// <summary>
-        /// Go forward or backwards in the animation.
-        /// </summary>
-        /// <param name="exclusiveMaximum">The exclusive maximum value than can be obtained.</param>
-        /// <param name="inclusiveMinimum">The minimum value that can be obtained.</param>
-        /// <param name="variancePerStep">The value added to the int every time that the method is called.</param>
-        /// <returns>Returns a the result of adding the 'variancePerStep' (default to 1f) to the original integer. The value is always between the minimum (inclusive, default to 0f) and the maximum (exclusive).</returns>
-        public virtual bool Step(float deltaTime)
-        {
-            if (!mirror)
-                timeStamp += deltaTime;
-            else
-                timeStamp -= deltaTime;
-
-            return ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror);
-        }
-
-        public void Reset()
-        {
-            timeStamp = !mirror? 0f : duration;
-        }
     }
-    
     public enum Curve
     {
         Linear,
         EaseInOut
     }
-    
 }

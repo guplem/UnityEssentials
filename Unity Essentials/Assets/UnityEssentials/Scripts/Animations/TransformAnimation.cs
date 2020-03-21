@@ -15,9 +15,10 @@ namespace UnityEngine
         [SerializeField] private bool rotate;
         [SerializeField] private bool scale;
 
-        public TransformAnimation() : this(null, null, null) { }
-        public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f,
-            Curve curve = Curve.EaseInOut, bool move = true, bool rotate = true, bool scale = true)
+        // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
+        public TransformAnimation() : this(null, null, null) { } 
+        
+        public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f, Curve curve = Curve.EaseInOut, bool move = true, bool rotate = true, bool scale = true)
         {
             this.transformToAnimate = transformToAnimate;
             this.originTransform = origin;

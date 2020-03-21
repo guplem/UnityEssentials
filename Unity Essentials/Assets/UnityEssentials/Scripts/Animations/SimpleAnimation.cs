@@ -8,7 +8,10 @@ namespace UnityEngine
     
     public abstract class SimpleAnimation : ISimpleAnimation
     {
-        public float elapsedTime { get; protected set; }
+        public float timeStamp { get; protected set; }
+        [SerializeField] public bool mirror;
+        [SerializeField] protected float duration;
+        [SerializeField] protected AnimationCurve curve;
 
         public static AnimationCurve GetCurve(Curve curve)
         {
@@ -23,11 +26,26 @@ namespace UnityEngine
             }
         }
 
-        public abstract bool Step(float deltaTime);
+        /// <summary>
+        /// Go forward or backwards in the animation.
+        /// </summary>
+        /// <param name="exclusiveMaximum">The exclusive maximum value than can be obtained.</param>
+        /// <param name="inclusiveMinimum">The minimum value that can be obtained.</param>
+        /// <param name="variancePerStep">The value added to the int every time that the method is called.</param>
+        /// <returns>Returns a the result of adding the 'variancePerStep' (default to 1f) to the original integer. The value is always between the minimum (inclusive, default to 0f) and the maximum (exclusive).</returns>
+        public virtual bool Step(float deltaTime)
+        {
+            if (!mirror)
+                timeStamp += deltaTime;
+            else
+                timeStamp -= deltaTime;
+
+            return ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror);
+        }
 
         public void Reset()
         {
-            elapsedTime = 0f;
+            timeStamp = !mirror? 0f : duration;
         }
     }
     
@@ -36,4 +54,5 @@ namespace UnityEngine
         Linear,
         EaseInOut
     }
+    
 }

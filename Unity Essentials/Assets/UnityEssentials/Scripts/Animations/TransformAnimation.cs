@@ -14,16 +14,14 @@ namespace UnityEngine
         [SerializeField] private bool move;
         [SerializeField] private bool rotate;
         [SerializeField] private bool scale;
-        [SerializeField] private float duration;
-        [SerializeField] private AnimationCurve curve;
 
         public TransformAnimation() : this(null, null, null) { }
         public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f,
             Curve curve = Curve.EaseInOut, bool move = true, bool rotate = true, bool scale = true)
         {
             this.transformToAnimate = transformToAnimate;
-            this.destinationTransform = destination;
             this.originTransform = origin;
+            this.destinationTransform = destination;
 
             this.move = move;
             this.rotate = rotate;
@@ -35,18 +33,11 @@ namespace UnityEngine
 
         public override bool Step(float deltaTime)
         {
-            elapsedTime += deltaTime;
+            bool endOfAnimation = base.Step(deltaTime);
             
-            if (elapsedTime >= duration)
-            {
-                transformToAnimate.SetProperties(destinationTransform);
-                return true;
-            }
-            else
-            {
-                transformToAnimate.SetLerp(originTransform.transform, destinationTransform, curve.Evaluate(elapsedTime/duration), move, rotate, scale);
-                return false;
-            }
+            transformToAnimate.SetLerp(originTransform.transform, destinationTransform, curve.Evaluate(timeStamp / duration), move, rotate, scale);
+
+            return endOfAnimation;
         }
     }
 }

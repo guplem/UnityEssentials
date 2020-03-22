@@ -162,8 +162,32 @@ namespace UnityEngine
             return Convert.ToSingle(NextDouble() * (exclusiveMaximum - inclusiveMinimum)) + inclusiveMinimum;
         }
 
+       
+        
+        /// <summary>
+        /// Returns a random Vector3 with each parameter within a specified range.
+        /// </summary>
+        /// <param name="inclusiveMinimum">The inclusive lower bound of each parameter.</param>
+        /// <param name="exclusiveMaximum">The exclusive upper bound of each parameter. It must be greater than or equal to inclusiveMinimum.</param>
+        /// <returns>Random Vector3 with each parameter in range [inclusiveMinimum, exclusiveMaximum)</returns>
+        public Vector3 GetRandomVector3(float inclusiveMinimum, float exclusiveMaximum)
+        {
+            return new Vector3(GetRandomFloat(inclusiveMinimum, exclusiveMaximum), GetRandomFloat(inclusiveMinimum, exclusiveMaximum), GetRandomFloat(inclusiveMinimum, exclusiveMaximum));
+        }
 
+        /// <summary>
+        /// Returns a random Vector2 with each parameter within a specified range.
+        /// </summary>
+        /// <param name="inclusiveMinimum">The inclusive lower bound of each parameter.</param>
+        /// <param name="exclusiveMaximum">The exclusive upper bound of each parameter. It must be greater than or equal to inclusiveMinimum.</param>
+        /// <returns>Random Vector2 with each parameter in range [inclusiveMinimum, exclusiveMaximum)</returns>
+        public Vector2 GetRandomVector2(float inclusiveMinimum, float exclusiveMaximum)
+        {
+            return new Vector2(GetRandomFloat(inclusiveMinimum, exclusiveMaximum), GetRandomFloat(inclusiveMinimum, exclusiveMaximum));
+        }
+        
 
+        
         /// <summary>
         /// Fills the elements of a specified array of bytes with random numbers.
         /// </summary>

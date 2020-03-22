@@ -24,6 +24,14 @@ public class EasyRandomExample : MonoBehaviour
     private void Start()
     {
         easyRandom = new EasyRandom();
+        easyRandom.GetRandomBool(0.75f);
+        easyRandom.GetRandomInt(3,10);
+        easyRandom.GetRandomFloat(0.5f, 0.1f);
+        easyRandom.GetRandomVector3(0.5f, 0.1f);
+        easyRandom.GetRandomVector2(0.5f, 0.1f);
+        easyRandom.GetRandomSign(0.4f);
+        easyRandom.GetRandomBoolTrueEnsured(3, 10);
+        easyRandom.GetPseudoRandomDistributedBool(5, 0.25f);
     }
 
     void Update()
@@ -75,5 +83,6 @@ public class EasyRandomExample : MonoBehaviour
         }
 
     }
+    
 
 }

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 #if UNITY_EDITOR
-namespace UnityEssentials
+namespace Essentials
 {
 
     public class SuppressionOfWarningCS0649 : MonoBehaviour
@@ -10,7 +10,7 @@ namespace UnityEssentials
         /// <summary>
         /// Disables the warning CS0649.
         /// </summary>
-        [MenuItem("Unity Essentials/Warning CS0649/Disable")]
+        [MenuItem("Essentials/Warning CS0649/Disable")]
         public static void DisableWarning()
         {
             File.WriteAllText("Assets/csc.rsp", "#\"This file disables the warning 'CS0649: Field 'var' is never assigned to, and will always have its default value null.'\"\n-nowarn:0649");
@@ -22,7 +22,7 @@ namespace UnityEssentials
         /// <summary>
         /// Enables the warning CS0649.
         /// </summary>
-        [MenuItem("Unity Essentials/Warning CS0649/Enable")]
+        [MenuItem("Essentials/Warning CS0649/Enable")]
         public static void EnableWarning()
         {
             File.Delete("Assets/csc.rsp.meta");

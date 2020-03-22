@@ -1,16 +1,16 @@
 ﻿using UnityEditor;
 using UnityEngine;
 #if UNITY_EDITOR
-namespace UnityEssentials
+namespace Essentials
 {
 
-    public class SavesShortcuts : MonoBehaviour
+    public class SaveShortcuts : MonoBehaviour
     {
         /// <summary>
         /// Saves the project.
         /// </summary>
-        [MenuItem("File/Save project %&s")]
-        static void ForceSaveProject()
+        [MenuItem("File/Save Project %&s")]
+        static void SaveProject()
         {
             EditorApplication.ExecuteMenuItem("File/Save Project");
             Debug.Log("Saved project");
@@ -19,8 +19,8 @@ namespace UnityEssentials
         /// <summary>
         /// Saves the scene and the project.
         /// </summary>
-        [MenuItem("File/Save Scene And Project %#&s")]
-        static void FunctionForceSaveSceneAndProyect()
+        [MenuItem("File/Save Scene and Project %#&s")]
+        static void SaveSceneAndProject()
         {
             EditorApplication.ExecuteMenuItem("File/Save");
             EditorApplication.ExecuteMenuItem("File/Save Project");

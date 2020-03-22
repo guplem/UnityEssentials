@@ -103,4 +103,5 @@ public static class VectorExtensions
 
         return origin + direction * dotP;
     }
+
 }

@@ -17,7 +17,7 @@ public class EasyRandomExample : MonoBehaviour
     private List<bool> randomResults = new List<bool>();
     private List<int> workingTryNumbers = new List<int>();
     private int maxTryNumber = 0;
-    private int tryNumber = 0;
+    private int tryNumberSinceLastPositive = 0;
     int trueBooleans = 0;
     int falseBooleans = 0;
     
@@ -42,36 +42,36 @@ public class EasyRandomExample : MonoBehaviour
             Debug.Log("The gotten value is " + easyRandom.GetRandomFloat(3.5f, 5.0f));
         
         
-        // Pseudo random example (and testing)
+        // Pseudo-random distribution example (and testing)
+        // An image of how the results should distribute (in blue): https://gamepedia.cursecdn.com/dota2_gamepedia/8/8b/AttacksUntilNextProc25.jpg?version=459537150af02c929fd939495fa78033
         if (Input.GetKey(keyPseudoRandom))
         {
             // You can use this code to better understand what is the result of each "RandomBool" method  
-            bool result = easyRandom.GetPseudoRandomBool(tryNumber, 0.2f);
+            bool result = easyRandom.GetPseudoRandomDistributedBool(tryNumberSinceLastPositive, 0.25f);
             //bool result = random.GetPseudoRandomBool(tryNumber, 15);
             //bool result = random.GetRandomBool(0.2f);
             
             randomResults.Add(result);
         
             if (result) {
-                workingTryNumbers.Add(tryNumber);
-                if (tryNumber > maxTryNumber)
-                    maxTryNumber = tryNumber;
-                tryNumber = 0;
+                workingTryNumbers.Add(tryNumberSinceLastPositive);
+                if (tryNumberSinceLastPositive > maxTryNumber)
+                    maxTryNumber = tryNumberSinceLastPositive;
+                tryNumberSinceLastPositive = 0;
             } else {
-                tryNumber++;
+                tryNumberSinceLastPositive++;
             }
 
             int[] stats = new int[maxTryNumber];
             foreach (int regTry in workingTryNumbers)
                 stats[regTry-1]++;
-            
 
             int contador = 0;
             foreach (bool r in randomResults)
                 if (r) contador++;
         
             Debug.Log("Percentage of positive values: " + (float)contador/(float)randomResults.Count + ". Try with the maximum value: " + maxTryNumber + ". Average needed quantity of tries:" + (workingTryNumbers.Count > 0 ? workingTryNumbers.Average() : 0.0));
-            DebugPro.LogEnumerable(stats, "STATS: ");
+            DebugPro.LogEnumerable(stats, ", ", "STATS: ");
         }
 
     }

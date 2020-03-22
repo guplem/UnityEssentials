@@ -19,6 +19,6 @@ public class PoolExample : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(keyToSpawn))
-            pool.Spawn(Vector3.one, Quaternion.identity);
+            pool.Spawn(Vector3.one, Quaternion.identity, Vector3.one);
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 namespace UnityEssentials
 {
-#if UNITY_EDITOR
+
     public class SuppressionOfWarningCS0649 : MonoBehaviour
     {
+        /// <summary>
+        /// Disables the warning CS0649.
+        /// </summary>
         [MenuItem("Unity Essentials/Warning CS0649/Disable")]
         public static void DisableWarning()
         {
@@ -16,7 +19,9 @@ namespace UnityEssentials
             Debug.Log("Warning CS0649 disabled.");
         }
 
-    
+        /// <summary>
+        /// Enables the warning CS0649.
+        /// </summary>
         [MenuItem("Unity Essentials/Warning CS0649/Enable")]
         public static void EnableWarning()
         {
@@ -27,5 +32,6 @@ namespace UnityEssentials
             Debug.Log("Warning CS0649 enabled.");
         }
     }
-#endif
+
 }
+#endif

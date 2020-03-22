@@ -9,29 +9,20 @@ using Random = System.Random;
 static class IEnumerableExtensions
 {
     /// <summary>
-    /// Creates a new List with all the elements cloned in it.
+    /// Creates a new enumerable with all the elements of the original one cloned in it.
     /// </summary>
-    /// <returns>A new list with all elements of the original enumerable cloned in it.</returns>
-    public static List<T> CloneAllToNewList<T>(this IEnumerable<T> enumerable) where T: ICloneable
+    /// <returns>A new IEnumerable with all elements of the original enumerable cloned in it.</returns>
+    public static IEnumerable<T> CloneAll<T>(this IEnumerable<T> enumerable) where T: ICloneable
     {
-        return enumerable.Select(item => (T)item.Clone()).ToList();
-    }
-    
-    /// <summary>
-    /// Creates a new Array with all the elements cloned in it.
-    /// </summary>
-    /// <returns>A new array with all elements of the original enumerable cloned in it.</returns>
-    public static T[] CloneAllToNewArray<T>(this IEnumerable<T> enumerable) where T: ICloneable
-    {
-        return enumerable.Select(item => (T)item.Clone()).ToArray();
+        return enumerable.Select(item => (T) item.Clone());
     }
 
     /// <summary>
     /// Creates a 'Debug.Log' message with all the contents in the enumerable.
     /// </summary>
-    /// <param name="message">The message that will be displayed at the beginning.</param>
-    /// <param name="context"></param>
-    /// <returns>Void</returns>
+    /// <param name="separator">The string that will be in-between each string of each element (the default is ', ').</param>
+    /// <param name="message">The message that will be displayed at the beginning of the 'Debug.Log' message.</param>
+    /// <param name="context">Object to which the message applies.</param>
     public static void DebugLog<T>(this IEnumerable<T> enumerable, string separator = ", ", string message = "", Object context = null)
     {
         Debug.Log(message + enumerable.ToStringAllElements(separator), context);
@@ -40,8 +31,8 @@ static class IEnumerableExtensions
     /// <summary>
     /// Get an string of all elements.
     /// </summary>
-    /// <param name="separator">The string that will be in-between each string of each element.</param>
-    /// <returns>The result of all elements .ToString() concatenated separated by a separator (the default is ', ').</returns>
+    /// <param name="separator">The string that will be in-between each string of each element (the default is ', ').</param>
+    /// <returns>The result of all elements .ToString() concatenated separated by a separator string.</returns>
     public static string ToStringAllElements<T>(this IEnumerable<T> enumerable, string separator = ", ")
     {
         return string.Join(separator, new List<T>(enumerable));

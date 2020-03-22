@@ -1,11 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace UnityEssentials
 {
-    #if UNITY_EDITOR
     public class DefaultConfiguration : MonoBehaviour
     {
+        /// <summary>
+        /// Modifies the editor and project configuration to improve usability, easy of use, ...
+        /// </summary>
         [MenuItem("Unity Essentials/Settings/Apply recommended configuration")]
         public static void ApplyRecommendedConfiguration()
         {
@@ -17,7 +20,9 @@ namespace UnityEssentials
             SuppressionOfWarningCS0649.DisableWarning();
         }
         
-        
+        /// <summary>
+        /// Restores the configuration given by default by Unity on those aspects modified by the 'Apply recommended configuration' action.
+        /// </summary>
         [MenuItem("Unity Essentials/Settings/Apply Unity's default configuration")]
         public static void RestoreDefaultConfiguration()
         {
@@ -29,5 +34,5 @@ namespace UnityEssentials
             SuppressionOfWarningCS0649.EnableWarning();
         }
     }
-    #endif
 }
+#endif

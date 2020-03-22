@@ -9,7 +9,7 @@ namespace Essentials
         /// <summary>
         /// Saves the project.
         /// </summary>
-        [MenuItem("File/Save Project %&s")]
+        [MenuItem("File/Save project %&s")]
         static void SaveProject()
         {
             EditorApplication.ExecuteMenuItem("File/Save Project");

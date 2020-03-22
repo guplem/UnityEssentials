@@ -1,8 +1,9 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-#if UNITY_EDITOR
+
 namespace Essentials
 {
 

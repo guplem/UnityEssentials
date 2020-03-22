@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,3 +65,4 @@ public class SimpleAnimationsManagerInspector : Editor
         return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
     }
 }
+#endif

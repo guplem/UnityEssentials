@@ -155,7 +155,7 @@ public static class TransformExtensions
     {
         Transform[] exceptionsArray = exceptions != null ? exceptions.ToArray() : new Transform[0];
         
-        while ((exceptions == null && self.childCount > 0) || (exceptions != null && self.childCount > exceptionsArray.Length))
+        //while ((exceptions == null && self.childCount > 0) || (exceptions != null && self.childCount > exceptionsArray.Length))
             foreach (Transform child in self)
                 if (exceptions == null || !exceptionsArray.Contains(child))
                     Object.Destroy(child.gameObject);

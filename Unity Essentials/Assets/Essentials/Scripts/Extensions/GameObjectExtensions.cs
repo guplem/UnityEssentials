@@ -18,4 +18,23 @@ public static class GameObjectExtensions
         return component;
     }
     
+    /// <summary>
+    /// Destroys immediately the children of a transform.
+    /// <para>This method is not recommended to use. Instead use 'DestroyAllChildren'."</para>
+    /// </summary>
+    /// <param name="exceptions">Transforms that must not be destroyed.</param>
+    public static void DestroyImmediateAllChildren(this GameObject self, IEnumerable<Transform> exceptions = null)
+    {
+        self.transform.DestroyImmediateAllChildren(exceptions);
+    }
+    
+    /// <summary>
+    /// Destroys immediately the children of a transform.
+    /// </summary>
+    /// <param name="exceptions">Transforms that must not be destroyed.</param>
+    public static void DestroyAllChildren(this GameObject self, IEnumerable<Transform> exceptions = null)
+    {
+        self.transform.DestroyAllChildren(exceptions);
+    }
+    
 }

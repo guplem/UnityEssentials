@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -129,5 +130,34 @@ public static class TransformExtensions
     public static void SetLerp(this Transform self, Transform a, Transform b, float t, bool lerpPosition = true, bool lerpRotation = true, bool lerpScale = true)
     {
         self.SetProperties(Vector3.Lerp(a.position, b.position, lerpPosition?t:0), Quaternion.Lerp(a.rotation, b.rotation, lerpRotation?t:0), Vector3.Lerp(a.localScale, b.localScale, lerpScale?t:0));
+    }
+    
+    /// <summary>
+    /// Destroys immediately the children of a transform.
+    /// <para>This method is not recommended to use. Instead use 'DestroyAllChildren'."</para>
+    /// </summary>
+    /// <param name="exceptions">Transforms that must not be destroyed.</param>
+    public static void DestroyImmediateAllChildren(this Transform self, IEnumerable<Transform> exceptions = null)
+    {
+        Transform[] exceptionsArray = exceptions != null ? exceptions.ToArray() : new Transform[0];
+        
+        while ((exceptions == null && self.childCount > 0) || (exceptions != null && self.childCount > exceptionsArray.Length))
+            foreach (Transform child in self)
+                if (exceptions == null || !exceptionsArray.Contains(child))
+                    Object.DestroyImmediate(child.gameObject);
+    }
+    
+    /// <summary>
+    /// Destroys immediately the children of a transform.
+    /// </summary>
+    /// <param name="exceptions">Transforms that must not be destroyed.</param>
+    public static void DestroyAllChildren(this Transform self, IEnumerable<Transform> exceptions = null)
+    {
+        Transform[] exceptionsArray = exceptions != null ? exceptions.ToArray() : new Transform[0];
+        
+        while ((exceptions == null && self.childCount > 0) || (exceptions != null && self.childCount > exceptionsArray.Length))
+            foreach (Transform child in self)
+                if (exceptions == null || !exceptionsArray.Contains(child))
+                    Object.Destroy(child.gameObject);
     }
 }

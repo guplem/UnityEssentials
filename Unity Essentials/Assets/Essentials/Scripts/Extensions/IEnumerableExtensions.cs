@@ -83,5 +83,15 @@ static class IEnumerableExtensions
         int index = rnd.Next(0, enumerable.Count());
         return enumerable.ElementAt(index);
     }
+    
+    /// <summary>
+    /// Copies the elements to a new HashSet.
+    /// </summary>
+    /// <param name="comparer">The IEqualityComparer<T> implementation to use when comparing values in the set, or null to use the default EqualityComparer<T> implementation for the set type.</param>
+    /// <returns>A new HashSet with all the elements in the collection.</returns>
+    public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source, IEqualityComparer<T> comparer = null)
+    {
+        return new HashSet<T>(source, comparer);
+    }
 
 }

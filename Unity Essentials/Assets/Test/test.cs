@@ -9,6 +9,6 @@ public class test : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            gameObject.DestroyAllChildren();
+            transform.DestroyAllChildren();
     }
 }

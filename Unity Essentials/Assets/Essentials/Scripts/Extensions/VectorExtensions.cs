@@ -30,7 +30,34 @@ public static class VectorExtensions
     }
     
     /// <summary>
-    /// Creates a new Vector3 keeping the values from the 'x' and 'y' parameters of the original Vector2.
+    /// Creates a new Vector3 keeping the values from the 'x' and 'y' parameters of the original Vector2 in that order.
+    /// </summary>
+    /// <param name="x">The desired value for the 'x' component on the new Vector 3.</param>
+    /// <returns>A new Vector3 with the 'x' and 'y' values equal to the original Vector2.</returns>
+    public static Vector3 ToVector3NewX(this Vector2 v, float x = 0f) {
+        return new Vector3(x, v.x, v.y);
+    }
+    
+    /// <summary>
+    /// Creates a new Vector3 keeping the values from the 'x' and 'y' parameters of the original Vector2 in that order.
+    /// </summary>
+    /// <param name="y">The desired value for the 'y' component on the new Vector 3.</param>
+    /// <returns>A new Vector3 with the 'x' and 'y' values equal to the original Vector2.</returns>
+    public static Vector3 ToVector3NewY(this Vector2 v, float y = 0f) {
+        return new Vector3(v.x, y, v.y);
+    }
+    
+    /// <summary>
+    /// Creates a new Vector3 keeping the values from the 'x' and 'y' parameters of the original Vector2 in that order.
+    /// </summary>
+    /// <param name="z">The desired value for the 'z' component on the new Vector 3.</param>
+    /// <returns>A new Vector3 with the 'x' and 'y' values equal to the original Vector2.</returns>
+    public static Vector3 ToVector3NewZ(this Vector2 v, float z = 0f) {
+        return new Vector3(v.x, v.y, z);
+    }
+    
+    /// <summary>
+    /// Creates a new Vector3 keeping the values from the 'x' and 'y' parameters of the original Vector2 in that order.
     /// </summary>
     /// <param name="z">The desired value for the 'z' component on the new Vector 3.</param>
     /// <returns>A new Vector3 with the 'x' and 'y' values equal to the original Vector2.</returns>
@@ -47,10 +74,26 @@ public static class VectorExtensions
     }
     
     /// <summary>
+    /// Creates a new Vector2 keeping the values from the 'y' and 'z' parameters of the original Vector3.
+    /// </summary>
+    /// <returns>A new Vector2 with the 'y' and 'z' values equal to the original Vector3.</returns>
+    public static Vector2 ToVector2WithoutX(this Vector3 v) {
+        return new Vector2(v.y, v.z);
+    }
+    
+    /// <summary>
+    /// Creates a new Vector2 keeping the values from the 'x' and 'z' parameters of the original Vector3.
+    /// </summary>
+    /// <returns>A new Vector2 with the 'x' and 'z' values equal to the original Vector3.</returns>
+    public static Vector2 ToVector2WithoutY(this Vector3 v) {
+        return new Vector2(v.x, v.z);
+    }
+    
+    /// <summary>
     /// Creates a new Vector2 keeping the values from the 'x' and 'y' parameters of the original Vector3.
     /// </summary>
     /// <returns>A new Vector2 with the 'x' and 'y' values equal to the original Vector3.</returns>
-    public static Vector2 ToVector2(this Vector3 v) {
+    public static Vector2 ToVector2WithoutZ(this Vector3 v) {
         return new Vector2(v.x, v.y);
     }
     
@@ -102,6 +145,27 @@ public static class VectorExtensions
         }
 
         return origin + direction * dotP;
+    }
+    
+    /// <summary>
+    /// Creates a new Vector3Int with the values in the original vector.
+    /// </summary>
+    /// <param name="round">If the values should be rounded to the nearest integer.</param>
+    /// <returns>A new Vector3Int with the values in the original vector.</returns>
+    public static Vector3Int ToVectorInt(this Vector3 v, bool round = false) {
+        if (round) 
+            return new Vector3Int( Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z) );
+        return new Vector3Int( (int)v.x, (int)v.y, (int)v.z );
+    }
+    /// <summary>
+    /// Creates a new Vector2Int with the values in the original vector.
+    /// </summary>
+    /// <param name="round">If the values should be rounded to the nearest integer.</param>
+    /// <returns>A new Vector3Int with the values in the original vector.</returns>
+    public static Vector2Int ToVectorInt(this Vector2 v, bool round = false) {
+        if (round) 
+            return new Vector2Int( Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y) );
+        return new Vector2Int( (int)v.x, (int)v.y );
     }
 
 }

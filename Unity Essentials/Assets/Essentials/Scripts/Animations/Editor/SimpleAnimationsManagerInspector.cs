@@ -48,6 +48,8 @@ public class SimpleAnimationsManagerInspector : Editor
             //record the gameObject state to enable undo and prevent from exiting the scene without saving
             Undo.RegisterCompleteObjectUndo(target, "Added new animation");
             //add the new animation to the animation's list
+            if (simpleAnimationsManager.animations == null)
+                simpleAnimationsManager.animations = new List<ISimpleAnimation>();
             simpleAnimationsManager.animations.Add(newAnimation);
         }
 

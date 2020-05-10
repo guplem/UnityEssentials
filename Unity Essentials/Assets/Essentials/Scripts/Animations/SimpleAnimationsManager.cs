@@ -15,6 +15,14 @@ namespace UnityEngine
         /// <para>This animations can be played/stopped using the methods that require an index instead of a SimpleAnimation object.</para>
         /// </summary>
         [SerializeReference] public List<ISimpleAnimation> animations;
+        /// <summary>
+        /// Obtain an animation configured trough the inspector and stored in the SimpleAnimationsManager's memory.
+        /// <para>Index of the animation in the inspector if the SimpleAnimationsManager component.</para>
+        /// </summary>
+        public SimpleAnimation GetAnimation(int index)
+        {
+            return (SimpleAnimation) animations[index];
+        }
         
         private HashSet<SimpleAnimation> playingAnimations;
 

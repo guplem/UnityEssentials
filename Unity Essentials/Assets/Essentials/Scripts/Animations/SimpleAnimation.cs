@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityEngine
 {
@@ -10,8 +11,9 @@ namespace UnityEngine
     {
         public float timeStamp { get; protected set; }
         [SerializeField] public bool mirror;
-        [SerializeField] protected float duration;
-        [SerializeField] protected AnimationCurve curve;
+        [SerializeField] public float duration;
+        [SerializeField] public AnimationCurve curve;
+        [SerializeField] public UnityEvent OnFinish;
 
         /// <summary>
         /// Go forward or backwards in the animation.

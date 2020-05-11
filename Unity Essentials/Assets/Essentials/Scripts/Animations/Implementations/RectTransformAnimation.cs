@@ -36,6 +36,7 @@ namespace UnityEngine
         {
             bool endOfAnimation = base.Step(deltaTime);
             
+            //TODO: animate RectTransforms
             rectTransformToAnimate.SetLerp(originRectTransform.transform, destinationRectTransform, curve.Evaluate(timeStamp / duration), move, rotate, scale);
 
             return endOfAnimation;

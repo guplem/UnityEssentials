@@ -15,7 +15,7 @@ public class CubeAnimationExample : MonoBehaviour
     
     void Start()
     {
-        codeAnimation = new TransformAnimation(this.transform, destination, origin, 1f, Curve.Linear, true, true, true);
+        codeAnimation = new TransformAnimation(this.transform, destination, origin, 1f, Curve.Linear);
         
         Debug.Log("Press G to play and T to stop the animation inserted by code");
         Debug.Log("Press H to play and Y to stop the animation inserted trough the inspector");

@@ -1,4 +1,32 @@
-﻿using System.Collections;
+﻿/*
+The MIT License (MIT)
+
+Copyright (c) 2015 Christian 'ketura' McCarty
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+// Thanks Christian 'ketura' McCarty for your code, which I found extremely useful and a must-have.
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -720,6 +748,58 @@ public static class RectTransformExtensions
         rootCanvas = rootCanvas.transform.parent.GetComponentInParent<Canvas>();
 
       return rootCanvas;
+    }
+
+    /// <summary>
+    /// Sets the RectTransform position, rotation and scale to the same values in the given RectTransform.
+    /// </summary>
+    /// <param name="properties">The RectTransform from which the position, rotation and scale will be copied.</param>
+    public static void SetProperties(this RectTransform trans, RectTransform properties)
+    {
+      trans.SetProperties(properties.anchoredPosition, properties.anchoredPosition3D, properties.anchorMax,
+        properties.anchorMin, properties.offsetMax, properties.offsetMin, properties.pivot, properties.sizeDelta);
+    }
+    
+    /// <summary>
+    /// Sets the transform properties to the given values.
+    /// </summary>
+    /// <param name="anchoredPosition">The anchoredPosition to be set in the RectTransform.</param>
+    /// <param name="anchoredPosition3D">The anchoredPosition3D to be set in the RectTransform.</param>
+    /// <param name="anchorMax">The anchorMax to be set in the RectTransform.</param>
+    /// <param name="anchorMin">The anchorMin to be set in the RectTransform.</param>
+    /// <param name="offsetMax">The offsetMax to be set in the RectTransform.</param>
+    /// <param name="offsetMin">The offsetMin to be set in the RectTransform.</param>
+    /// <param name="pivot">The pivot to be set in the RectTransform.</param>
+    /// <param name="sizeDelta">The sizeDelta to be set in the RectTransform.</param>
+    public static void SetProperties(this RectTransform trans, Vector2 anchoredPosition, Vector3 anchoredPosition3D,
+      Vector2 anchorMax, Vector2 anchorMin, Vector2 offsetMax, Vector2 offsetMin, Vector2 pivot, Vector2 sizeDelta)
+    {
+      trans.anchoredPosition = anchoredPosition;
+      trans.anchoredPosition3D = anchoredPosition3D;
+      trans.anchorMax = anchorMax;
+      trans.anchorMin = anchorMin;
+      trans.offsetMax = offsetMax;
+      trans.offsetMin = offsetMin;
+      trans.pivot = pivot;
+      trans.sizeDelta = sizeDelta;
+    }
+
+    /// <summary>
+    /// Linearly interpolates between two RectTransforms.
+    /// <para>When t = 0 returns a. When t = 1 returns b. When t = 0.5 returns the point midway between a and b.</para>
+    /// </summary>
+    public static void SetLerp(this RectTransform self, RectTransform a, RectTransform b, float t)
+    {
+      self.SetProperties(
+        Vector2.Lerp(a.anchoredPosition, b.anchoredPosition, t),
+        Vector3.Lerp(a.anchoredPosition3D, b.anchoredPosition3D, t),
+        Vector2.Lerp(a.anchorMax, b.anchorMax, t),
+        Vector2.Lerp(a.anchorMin, b.anchorMin, t),
+        Vector2.Lerp(a.offsetMax, b.offsetMax, t),
+        Vector2.Lerp(a.offsetMin, b.offsetMin, t),
+        Vector2.Lerp(a.pivot, b.pivot, t),
+        Vector2.Lerp(a.sizeDelta, b.sizeDelta, t)
+      );
     }
 
 }

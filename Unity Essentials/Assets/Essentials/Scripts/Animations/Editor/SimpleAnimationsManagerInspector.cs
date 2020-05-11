@@ -54,9 +54,33 @@ public class SimpleAnimationsManagerInspector : Editor
         }
 
         // Draw horizontal line
-        EditorGUILayout.Space(); EditorGUILayout.LabelField("", GUI.skin.horizontalSlider); EditorGUILayout.Space(); 
+        EditorGUILayout.Space(); EditorGUILayout.LabelField("", GUI.skin.horizontalSlider); EditorGUILayout.Space();
+
+        if (simpleAnimationsManager.animations != null)
+        {
+            for (int a = 0; a < simpleAnimationsManager.animations.Count; a++)
+            {
+                if (simpleAnimationsManager.animations[a] == null)
+                    EditorGUILayout.HelpBox("The animation with index " + a + " is null.", MessageType.Warning);
+                
+                if (simpleAnimationsManager.animations.Count() != simpleAnimationsManager.animations.Distinct().Count())
+                {
+                    for (int d = a+1; d < simpleAnimationsManager.animations.Count; d++)
+                    {
+                        if (simpleAnimationsManager.animations[a] == simpleAnimationsManager.animations[d])
+                            EditorGUILayout.HelpBox("The animations with index " + a + " and " + d + " are the same object.", MessageType.Warning);
+                    }
+                }
+            }
+        }
         
-        base.OnInspectorGUI();
+        EditorGUI.indentLevel = 1;
+        EditorGUILayout.Space(); 
+        GUILayout.Label("Animations Configuration", EditorStyles.boldLabel);
+        using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+        {
+            base.OnInspectorGUI();
+        }
     }
     
     private static Type[] GetImplementations<T>()
@@ -67,4 +91,5 @@ public class SimpleAnimationsManagerInspector : Editor
         return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
     }
 }
+
 #endif

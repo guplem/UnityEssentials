@@ -30,7 +30,7 @@ namespace UnityEngine
         {
             bool endOfAnimation = base.Step(deltaTime);
             
-            rectTransformToAnimate.SetLerp(originRectTransform.transform, destinationRectTransform, curve.Evaluate(timeStamp / duration));
+            rectTransformToAnimate.SetLerp(originRectTransform, destinationRectTransform, curve.Evaluate(timeStamp / duration));
 
             return endOfAnimation;
         }

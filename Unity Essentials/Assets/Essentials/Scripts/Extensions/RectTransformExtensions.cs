@@ -754,12 +754,12 @@ public static class RectTransformExtensions
     /// Sets the RectTransform position, rotation and scale to the same values in the given RectTransform.
     /// </summary>
     /// <param name="properties">The RectTransform from which the position, rotation and scale will be copied.</param>
-    public static void SetProperties(this RectTransform trans, RectTransform properties)
+    public static void SetProperties(this RectTransform rectTrans, RectTransform properties)
     {
-      trans.SetProperties(properties.anchoredPosition, properties.anchoredPosition3D, properties.anchorMax,
-        properties.anchorMin, properties.offsetMax, properties.offsetMin, properties.pivot, properties.sizeDelta);
+      rectTrans.SetProperties(properties.anchoredPosition, properties.anchoredPosition3D, properties.anchorMax,
+        properties.anchorMin, properties.offsetMax, properties.offsetMin, properties.pivot, properties.sizeDelta, properties.transform);
     }
-    
+
     /// <summary>
     /// Sets the transform properties to the given values.
     /// </summary>
@@ -771,17 +771,19 @@ public static class RectTransformExtensions
     /// <param name="offsetMin">The offsetMin to be set in the RectTransform.</param>
     /// <param name="pivot">The pivot to be set in the RectTransform.</param>
     /// <param name="sizeDelta">The sizeDelta to be set in the RectTransform.</param>
-    public static void SetProperties(this RectTransform trans, Vector2 anchoredPosition, Vector3 anchoredPosition3D,
-      Vector2 anchorMax, Vector2 anchorMin, Vector2 offsetMax, Vector2 offsetMin, Vector2 pivot, Vector2 sizeDelta)
+    /// <param name="trans">The transform to copy the scale and rotation from (and the position).</param>
+    public static void SetProperties(this RectTransform rectTrans, Vector2 anchoredPosition, Vector3 anchoredPosition3D,
+      Vector2 anchorMax, Vector2 anchorMin, Vector2 offsetMax, Vector2 offsetMin, Vector2 pivot, Vector2 sizeDelta, Transform trans = null)
     {
-      trans.anchoredPosition = anchoredPosition;
-      trans.anchoredPosition3D = anchoredPosition3D;
-      trans.anchorMax = anchorMax;
-      trans.anchorMin = anchorMin;
-      trans.offsetMax = offsetMax;
-      trans.offsetMin = offsetMin;
-      trans.pivot = pivot;
-      trans.sizeDelta = sizeDelta;
+      rectTrans.anchoredPosition = anchoredPosition;
+      rectTrans.anchoredPosition3D = anchoredPosition3D;
+      rectTrans.anchorMax = anchorMax;
+      rectTrans.anchorMin = anchorMin;
+      rectTrans.offsetMax = offsetMax;
+      rectTrans.offsetMin = offsetMin;
+      rectTrans.pivot = pivot;
+      rectTrans.sizeDelta = sizeDelta;
+      if (trans) rectTrans.transform.SetProperties(trans);
     }
 
     /// <summary>
@@ -800,6 +802,7 @@ public static class RectTransformExtensions
         Vector2.Lerp(a.pivot, b.pivot, t),
         Vector2.Lerp(a.sizeDelta, b.sizeDelta, t)
       );
+      self.transform.SetLerp(a.transform, b.transform, t);
     }
 
 }

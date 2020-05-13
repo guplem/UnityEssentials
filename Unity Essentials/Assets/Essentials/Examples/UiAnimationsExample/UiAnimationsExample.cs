@@ -46,4 +46,15 @@ public class UiAnimationsExample : MonoBehaviour
             simpleAnimationsManager.Stop(0);
         }
     }
+
+    public void InvertAndPlayAgain()
+    {
+        SimpleAnimation anim = simpleAnimationsManager.GetAnimation(0);
+        
+        anim.mirror = !anim.mirror;
+        simpleAnimationsManager.Play(anim);
+        
+        // Same result using: 
+        // simpleAnimationsManager.Play(0);
+    }
 }

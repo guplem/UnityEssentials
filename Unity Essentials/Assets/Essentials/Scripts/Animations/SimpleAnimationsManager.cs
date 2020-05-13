@@ -24,7 +24,11 @@ namespace UnityEngine
             return (SimpleAnimation) animations[index];
         }
         
-        private HashSet<SimpleAnimation> playingAnimations;
+        // List of all the animations that should stopped so they will be removed from the "playingAnimations" list at the next frame.
+        private HashSet<SimpleAnimation> animationsToStop = new HashSet<SimpleAnimation>();
+        
+        // List of all the animations that are being played.
+        private HashSet<SimpleAnimation> playingAnimations = new HashSet<SimpleAnimation>();
 
         /// <summary>
         /// Starts playing the animation.
@@ -33,12 +37,12 @@ namespace UnityEngine
         /// <param name="resume">If the animation should continue where it was left (true) or restart (false, default).</param>
         public void Play(SimpleAnimation animation, bool resume = false)
         {
-            if (playingAnimations == null)
-                playingAnimations = new HashSet<SimpleAnimation>();
+            playingAnimations.Add(animation);
 
-            if (playingAnimations.Add(animation))
-                if (!resume)
-                    animation.Reset();
+            if (!resume)
+                animation.Reset();
+            
+            animationsToStop.Remove(animation);
         }
         
         /// <summary>
@@ -60,8 +64,8 @@ namespace UnityEngine
         /// <param name="animation">The animation that is wanted to be stopped.</param>
         public void Stop(SimpleAnimation animation)
         {
-            if (playingAnimations != null)
-                playingAnimations.Remove(animation);
+            playingAnimations.Remove(animation);
+            animationsToStop.Remove(animation);
         }
         
         /// <summary>
@@ -78,21 +82,23 @@ namespace UnityEngine
 
         private void Update()
         {
-            if (playingAnimations != null)
+            if (animationsToStop.Count > 0)
             {
-                List<SimpleAnimation> animationsToRemove = new List<SimpleAnimation>();
-                foreach (SimpleAnimation animation in playingAnimations)
+                List<SimpleAnimation> tempAnimToStop = new List<SimpleAnimation>(animationsToStop);
+                foreach (SimpleAnimation animation in tempAnimToStop)
                 {
-                    if (animation.Step(Time.deltaTime))
-                        animationsToRemove.Add(animation);
-                }
-
-                foreach (SimpleAnimation animation in animationsToRemove)
-                {
-                    playingAnimations.Remove(animation);
+                    Stop(animation);
                 }
             }
-
+            
+            
+            foreach (SimpleAnimation animation in playingAnimations)
+            {
+                if (animation.Step(Time.deltaTime))
+                {
+                    animationsToStop.Add(animation);
+                }
+            }
         }
     }
     

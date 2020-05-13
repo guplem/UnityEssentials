@@ -67,7 +67,7 @@ public class SimpleAnimationsManagerInspector : Editor
                 {
                     for (int d = a+1; d < simpleAnimationsManager.animations.Count; d++)
                     {
-                        if (simpleAnimationsManager.animations[a] == simpleAnimationsManager.animations[d])
+                        if (simpleAnimationsManager.animations[a] != null && (simpleAnimationsManager.animations[a] == simpleAnimationsManager.animations[d]) )
                             EditorGUILayout.HelpBox("The animations with index " + a + " and " + d + " are the same object.", MessageType.Warning);
                     }
                 }

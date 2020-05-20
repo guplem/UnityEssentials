@@ -8,9 +8,9 @@ namespace UnityEngine
     [Serializable]
     public class RectTransformAnimation : SimpleAnimation
     {
-        [SerializeField] private RectTransform rectTransformToAnimate;
-        [SerializeField] private RectTransform originRectTransform;
-        [SerializeField] private RectTransform destinationRectTransform;
+        [SerializeField] public RectTransform rectTransformToAnimate;
+        [SerializeField] public RectTransform originRectTransform;
+        [SerializeField] public RectTransform destinationRectTransform;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
         public RectTransformAnimation() : this(null, null, null) { } 

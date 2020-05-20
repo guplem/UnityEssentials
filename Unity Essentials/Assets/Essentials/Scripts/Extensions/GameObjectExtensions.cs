@@ -17,5 +17,23 @@ public static class GameObjectExtensions
 
         return component;
     }
-    
+
+    public static void SetLayerRecursively(this GameObject self, int newLayer)
+    {
+        if (null == self)
+        {
+            return;
+        }
+
+        self.layer = newLayer;
+
+        foreach (Transform child in self.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
 }

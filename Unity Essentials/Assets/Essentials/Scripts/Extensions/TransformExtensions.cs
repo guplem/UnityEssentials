@@ -148,7 +148,7 @@ public static class TransformExtensions
     }
     
     /// <summary>
-    /// Destroys immediately the children of a transform.
+    /// Destroys the children of a transform.
     /// </summary>
     /// <param name="exceptions">Transforms that must not be destroyed.</param>
     public static void DestroyAllChildren(this Transform self, IEnumerable<Transform> exceptions = null)

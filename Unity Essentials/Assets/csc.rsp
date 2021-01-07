@@ -1,2 +1,0 @@
-#"This file disables the warning CS0649: Field 'var' is never assigned to, and will always have its default value null."
--nowarn:0649

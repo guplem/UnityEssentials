@@ -15,7 +15,7 @@ namespace UnityEngine
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
         [SerializeField] public AnimationCurve curve;
-        [SerializeField] public UnityEvent OnFinish;
+        [SerializeField] public UnityEvent onFinish;
 
         /// <summary>
         /// Go forward or backwards in the animation.
@@ -31,7 +31,7 @@ namespace UnityEngine
 
             if ( ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror) )
             {
-                OnFinish?.Invoke();
+                onFinish?.Invoke();
                 return ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror); // Double evaluation to avoid bugs with modifications on the event invoked.
             }
             

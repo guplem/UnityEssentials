@@ -23,6 +23,8 @@ public class CubeAnimationExample : MonoBehaviour
     
     void Update()
     {
+        
+        // PLAY
         if (Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("Playing an animation configured trough code.");
@@ -34,8 +36,7 @@ public class CubeAnimationExample : MonoBehaviour
             simpleAnimationsManager.Play(0);
         }
         
-        
-        
+        // STOP
         if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Stopping an animation configured trough code.");
@@ -46,5 +47,7 @@ public class CubeAnimationExample : MonoBehaviour
             Debug.Log("Stopping an animation configured trough the inspector.");
             simpleAnimationsManager.Stop(0);
         }
+        
+        
     }
 }

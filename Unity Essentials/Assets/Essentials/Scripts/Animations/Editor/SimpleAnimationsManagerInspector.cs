@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Essentials;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class SimpleAnimationsManagerInspector : Editor
         if (implementations == null || GUILayout.Button("Search implementations"))
         {
             //find all implementations of ISimpleAnimation using System.Reflection.Module
-            implementations = GetImplementations<ISimpleAnimation>().Where(impl=>!impl.IsSubclassOf(typeof(UnityEngine.Object))).ToArray();
+            implementations = Utils.GetTypeImplementationsNotUnityObject<ISimpleAnimation>();
         }
         EditorGUILayout.EndHorizontal();
         
@@ -82,14 +83,7 @@ public class SimpleAnimationsManagerInspector : Editor
             base.OnInspectorGUI();
         }
     }
-    
-    private static Type[] GetImplementations<T>()
-    {
-        var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes());
 
-        var interfaceType = typeof(T);
-        return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
-    }
 }
 
 #endif

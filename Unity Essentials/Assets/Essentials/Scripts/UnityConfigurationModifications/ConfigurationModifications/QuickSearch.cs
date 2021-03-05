@@ -7,13 +7,12 @@ using UnityEngine;
 namespace Essentials
 {
 
-    public class QuickSearch : MonoBehaviour
+    public class QuickSearch : ConfigurationMofification
     {
         /// <summary>
         /// Installs the Quick Search package (adds a dependency in the project).
         /// </summary>
-        [MenuItem("Essentials/Quick Search/Install")]
-        public static void Install()
+        public override void Apply()
         {
             Client.Add("com.unity.quicksearch");
             Debug.Log("Installing Quick Search...");
@@ -22,12 +21,12 @@ namespace Essentials
         /// <summary>
         /// Uninstalls the Quick Search package.
         /// </summary>
-        [MenuItem("Essentials/Quick Search/Uninstall")]
-        public static void Uninstall()
+        public override void Revert()
         {
             Client.Remove("com.unity.quicksearch");
             Debug.Log("Uninstalling Quick Search...");
         }
+        
     }
 
 }

@@ -9,6 +9,10 @@ namespace Essentials
 
     public class QuickSearch : ConfigurationMofification
     {
+        public override string title { get => "Install Quick Search"; }
+        public override string applyButtonText { get => "Apply"; }
+        public override string revertButtonText { get => "Revert"; }
+
         /// <summary>
         /// Installs the Quick Search package (adds a dependency in the project).
         /// </summary>

@@ -6,21 +6,28 @@ using UnityEngine;
 
 namespace Essentials.EssentialsSettings
 {
+    [ExecuteInEditMode]
     public class SettingsWindow : EditorWindow
     {
     
-    
         private Type[] implementations;
-        
+
+
         // Add menu named "My Window" to the Window menu
         [MenuItem("Essentials/Settings")]
-        static void Init()
+        static void OpenWindow()
         {
             // Get existing open window or if none, make a new one:
-            SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Modifications");
+            SettingsWindow window = CreateWindow<SettingsWindow>();
+            //SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Modifications");
+            var windowSize = new Vector2(600f, 420f);
+            window.minSize = window.maxSize = windowSize;
+            window.position = Utils.GetWindowCenteredPosition(windowSize);
+            window.titleContent = new GUIContent("Essentials' Settings and Modifications");
             window.Show();
+            window.Focus();
         }
-
+        
         void OnGUI()
         {
             if (implementations == null || implementations.Length == 0)

@@ -1,39 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public static class GameObjectExtensions
+namespace UnityEngine
 {
-    /// <summary>
-    /// Get a component. Log an error if it is not found.
-    /// </summary>
-    /// <typeparam name="T">The type of component to get.</typeparam>
-    /// <returns>The component, if found.</returns>
-    public static T GetComponentRequired<T>(this GameObject self) where T : Component
+    public static class GameObjectExtensions
     {
-        T component = self.GetComponent<T>();
-
-        if (component == null) Debug.LogError("Could not find " + typeof(T) + " on " + self.name);
-
-        return component;
-    }
-
-    public static void SetLayerRecursively(this GameObject self, int newLayer)
-    {
-        if (null == self)
+        /// <summary>
+        /// Get a component. Log an error if it is not found.
+        /// </summary>
+        /// <typeparam name="T">The type of component to get.</typeparam>
+        /// <returns>The component, if found.</returns>
+        public static T GetComponentRequired<T>(this GameObject self) where T : Component
         {
-            return;
+            T component = self.GetComponent<T>();
+
+            if (component == null) Debug.LogError("Could not find " + typeof(T) + " on " + self.name);
+
+            return component;
         }
 
-        self.layer = newLayer;
-
-        foreach (Transform child in self.transform)
+        public static void SetLayerRecursively(this GameObject self, int newLayer)
         {
-            if (null == child)
+            if (null == self)
             {
-                continue;
+                return;
             }
-            SetLayerRecursively(child.gameObject, newLayer);
+
+            self.layer = newLayer;
+
+            foreach (Transform child in self.transform)
+            {
+                if (null == child)
+                {
+                    continue;
+                }
+                SetLayerRecursively(child.gameObject, newLayer);
+            }
         }
     }
 }

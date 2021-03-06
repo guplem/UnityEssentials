@@ -1,13 +1,15 @@
 ﻿#if UNITY_EDITOR
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
 
-namespace Essentials.QuickSetup
+namespace Essentials.EssentialsSettings
 {
     public class SettingsWindow : EditorWindow
     {
+    
+    
         private Type[] implementations;
         
         // Add menu named "My Window" to the Window menu
@@ -101,7 +103,7 @@ namespace Essentials.QuickSetup
         /// </summary>
         private void SearchConfigurationModifiers()
         {
-            implementations = Utils.GetTypeImplementationsNotUnityObject<IConfigurationModifier>();
+            implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<IConfigurationModifier>();
         }
     }
 }

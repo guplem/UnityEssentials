@@ -26,12 +26,12 @@ THE SOFTWARE.
 // Thanks Christian 'ketura' McCarty for your code, which I found extremely useful and a must-have.
 
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class RectTransformExtensions
+namespace UnityEngine
 {
+  public static class RectTransformExtensions
+  {
     /// <summary>
     /// Get the corners of the RectTransform in world space.
     /// <para>This method could behave weirdly in some cases.</para>
@@ -805,4 +805,5 @@ public static class RectTransformExtensions
       self.transform.SetLerp(a.transform, b.transform, t);
     }
 
+  }
 }

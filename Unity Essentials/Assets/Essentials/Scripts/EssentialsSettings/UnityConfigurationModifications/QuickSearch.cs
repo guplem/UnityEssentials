@@ -1,10 +1,8 @@
 ﻿#if UNITY_EDITOR
-using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-
-namespace Essentials
+namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
     public class QuickSearch : ConfigurationMofification

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 #if UNITY_EDITOR
-namespace Essentials
+namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
     public class SuppressionOfWarningCS0649 : ConfigurationMofification

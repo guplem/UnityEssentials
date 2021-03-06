@@ -1,1 +1,4 @@
-﻿public interface ISimpleAnimation { }
+﻿namespace UnityEngine
+{
+    public interface ISimpleAnimation { }
+}

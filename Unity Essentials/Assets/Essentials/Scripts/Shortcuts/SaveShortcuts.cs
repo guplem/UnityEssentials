@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
+
 #if UNITY_EDITOR
-namespace Essentials
+namespace Essentials.Shortcuts
 {
 
     public class SaveShortcuts : MonoBehaviour

@@ -16,7 +16,7 @@ namespace Essentials
             
             // Actions performed when the button "Apply recommended configuration" is clicked
             new QuickSearch().Apply();
-            SuppressionOfWarningCS0649.DisableWarning();
+            new SuppressionOfWarningCS0649().Apply();
         }
         
         /// <summary>
@@ -29,7 +29,7 @@ namespace Essentials
             
             // Actions performed when the button "Apply Unity's default configuration" is clicked
             new QuickSearch().Revert();
-            SuppressionOfWarningCS0649.EnableWarning();
+            new SuppressionOfWarningCS0649().Revert();
         }
     }
 }

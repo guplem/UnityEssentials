@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
@@ -38,20 +39,37 @@ namespace Essentials.QuickSetup
 
             if (implementations != null && implementations.Length != 0)
             {
+                
                 GUILayout.Label("Apply configuration modifications:");
+                
+                EditorGUILayout.BeginHorizontal();
+                
+                EditorGUILayout.BeginVertical();
+                foreach (var modificationType in implementations)
+                {
+                    IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
+                    
+                    GUILayout.Label(configurationModifier.title);
+                }
+                EditorGUILayout.EndVertical();
+                
+                EditorGUILayout.BeginVertical();
                 foreach (var modificationType in implementations)
                 {
                     IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
                     
                     EditorGUILayout.BeginHorizontal();
-                        GUILayout.Label(configurationModifier.title);
-                        if (GUILayout.Button(configurationModifier.applyButtonText))
-                            configurationModifier.Apply();
-                        if (GUILayout.Button(configurationModifier.revertButtonText))
-                            configurationModifier.Revert();
+                    if (GUILayout.Button(configurationModifier.applyButtonText))
+                        configurationModifier.Apply();
+                    if (GUILayout.Button(configurationModifier.revertButtonText))
+                        configurationModifier.Revert();
                     EditorGUILayout.EndHorizontal();
-                    
                 }
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.EndHorizontal();
+                
+                
                 GUILayout.Label("");
             }
 
@@ -79,3 +97,5 @@ namespace Essentials.QuickSetup
         }
     }
 }
+
+#endif

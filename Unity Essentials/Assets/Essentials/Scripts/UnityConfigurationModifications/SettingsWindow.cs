@@ -8,11 +8,6 @@ namespace Essentials.QuickSetup
 {
     public class SettingsWindow : EditorWindow
     {
-        /*string myString = "Hello World";
-        bool groupEnabled;
-        bool myBool = true;
-        float myFloat = 1.23f;*/
-
         private Type[] implementations;
         
         // Add menu named "My Window" to the Window menu
@@ -20,27 +15,22 @@ namespace Essentials.QuickSetup
         static void Init()
         {
             // Get existing open window or if none, make a new one:
-            SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow));
+            SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Modifications");
             window.Show();
         }
 
         void OnGUI()
         {
-            /*GUILayout.Label("Base Settings", EditorStyles.boldLabel);
-            myString = EditorGUILayout.TextField("Text Field", myString);
+            if (implementations == null || implementations.Length == 0)
+                SearchConfigurationModifiers();
 
-            groupEnabled = EditorGUILayout.BeginToggleGroup("Optional Settings", groupEnabled);
-            myBool = EditorGUILayout.Toggle("Toggle", myBool);
-            myFloat = EditorGUILayout.Slider("Slider", myFloat, -3, 3);
-            EditorGUILayout.EndToggleGroup();*/
-            
             GUILayout.Label("Essentials Settings", EditorStyles.boldLabel);
             GUILayout.Label("");
 
             if (implementations != null && implementations.Length != 0)
             {
                 
-                GUILayout.Label("Apply configuration modifications:");
+                GUILayout.Label("Available configuration modifications:");
                 
                 EditorGUILayout.BeginHorizontal();
                 
@@ -95,28 +85,23 @@ namespace Essentials.QuickSetup
                 GUILayout.Label("");
                 
             }
-
-
-
-
-
-
-
-
-
-
-
-
+            
+            GUILayout.Label("");
             EditorGUILayout.BeginHorizontal();
-            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} configuration modifier");
+            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} configuration modifiers", EditorStyles.helpBox);
             if (implementations == null) EditorGUILayout.LabelField($"NO IMPLEMENTATIONS FOUND");
             if (GUILayout.Button("Search for configuration modifiers") && implementations == null)
-            {
-                //find all implementations of IConfigurationModifier using System.Reflection.Module
-                implementations = Utils.GetTypeImplementationsNotUnityObject<IConfigurationModifier>();
-            }
+                SearchConfigurationModifiers();
             EditorGUILayout.EndHorizontal();
             
+        }
+
+        /// <summary>
+        /// Find all implementations of IConfigurationModifier using System.Reflection.Module
+        /// </summary>
+        private void SearchConfigurationModifiers()
+        {
+            implementations = Utils.GetTypeImplementationsNotUnityObject<IConfigurationModifier>();
         }
     }
 }

@@ -71,6 +71,29 @@ namespace Essentials.QuickSetup
                 
                 
                 GUILayout.Label("");
+
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Apply all"))
+                {
+                    foreach (var modificationType in implementations)
+                    {
+                        IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
+                        configurationModifier.Apply();
+                    }
+                }
+
+                if (GUILayout.Button("Revert all"))
+                {
+                    foreach (var modificationType in implementations)
+                    {
+                        IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
+                        configurationModifier.Revert();
+                    }
+                }
+                EditorGUILayout.EndHorizontal();
+                
+                GUILayout.Label("");
+                
             }
 
 

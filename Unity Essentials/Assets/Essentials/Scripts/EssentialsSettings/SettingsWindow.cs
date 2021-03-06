@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace Essentials.EssentialsSettings
@@ -9,12 +10,27 @@ namespace Essentials.EssentialsSettings
     [ExecuteInEditMode]
     public class SettingsWindow : EditorWindow
     {
-    
-        private Type[] implementations;
+        
+        [InitializeOnLoadMethod]
+        private static void OpenWindowAtFirstUse()
+        {
+            //Check if is running tests
+            if (!InternalEditorUtility.isHumanControllingUs || InternalEditorUtility.inBatchMode)
+                return;
 
+            if (!EssentialsSettings.settingsShown)
+            {
+                EditorApplication.delayCall += () =>
+                {
+                    OpenWindow();
+                    EssentialsSettings.settingsShown = true;
+                };
+            }
+
+        }
 
         // Add menu named "My Window" to the Window menu
-        [MenuItem("Essentials/Settings")]
+        [MenuItem("Window/Essentials/Settings")]
         static void OpenWindow()
         {
             // Get existing open window or if none, make a new one:
@@ -28,6 +44,7 @@ namespace Essentials.EssentialsSettings
             window.Focus();
         }
         
+        private Type[] implementations;
         void OnGUI()
         {
             if (implementations == null || implementations.Length == 0)

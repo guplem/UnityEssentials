@@ -5,14 +5,14 @@ using UnityEngine;
 namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
-    public class QuickSearch : ConfigurationMofification
+    public class QuickSearch : Modification
     {
         public override string title { get => "Install Quick Search"; }
         public override string applyButtonText { get => "Apply"; }
         public override string revertButtonText { get => "Revert"; }
 
         /// <summary>
-        /// Installs the Quick Search package (adds a dependency in the project).
+        /// Install the Quick Search package adding a dependency in the project.
         /// </summary>
         public override void Apply()
         {
@@ -21,13 +21,17 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
         }
         
         /// <summary>
-        /// Uninstalls the Quick Search package.
+        /// Uninstall the Quick Search package by removing a dependency in the project.
         /// </summary>
         public override void Revert()
         {
             Client.Remove("com.unity.quicksearch");
             Debug.Log("Uninstalling Quick Search...");
         }
+        
+        public override string applyModificationShortEplanation { get => "Install the Quick Search package adding a dependency in the project."; }
+        public override string revertModificationShortEplanation { get => "Uninstall the Quick Search package by removing a dependency in the project."; }
+
         
     }
 

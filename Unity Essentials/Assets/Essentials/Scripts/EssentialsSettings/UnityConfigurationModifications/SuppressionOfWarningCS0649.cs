@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
-    public class SuppressionOfWarningCS0649 : ConfigurationMofification
+    public class SuppressionOfWarningCS0649 : Modification
     {
         /// <summary>
-        /// Disables the warning CS0649.
+        /// Disable the warning CS069 creating a file named csc.rsp in the project folder.
         /// </summary>
         public override void Apply()
         {
@@ -19,7 +19,7 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
         }
 
         /// <summary>
-        /// Enables the warning CS0649.
+        /// Enables the warning CS069 by removing a file named csc.rsp in the project folder.
         /// </summary>
         public override void Revert()
         {
@@ -33,7 +33,11 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
         public override string title { get => "Disable warning CS0649"; }
         public override string revertButtonText { get => "Revert"; }
         public override string applyButtonText { get => "Apply"; }
-    }
+
+        public override string applyModificationShortEplanation { get => "Disable the warning CS069 creating a file named csc.rsp in the project folder."; }
+        public override string revertModificationShortEplanation { get => "Enable the warning CS069 by removing a file named csc.rsp in the project folder."; }
+        
+        }
 
 }
 #endif

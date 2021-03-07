@@ -56,45 +56,44 @@ namespace Essentials.EssentialsSettings
             if (implementations != null && implementations.Length != 0)
             {
                 
-                GUILayout.Label("Available configuration modifications:");
+                GUILayout.Label("Available modifications:");
                 
                 EditorGUILayout.BeginHorizontal();
                 
                 EditorGUILayout.BeginVertical();
                 foreach (var modificationType in implementations)
                 {
-                    IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
-                    
-                    GUILayout.Label(configurationModifier.title);
+                    IModification modification = (IModification) Activator.CreateInstance(modificationType);
+                    GUILayout.Label(modification.title);
                 }
                 EditorGUILayout.EndVertical();
                 
                 EditorGUILayout.BeginVertical();
                 foreach (var modificationType in implementations)
                 {
-                    IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
+                    IModification modification = (IModification) Activator.CreateInstance(modificationType);
                     
                     EditorGUILayout.BeginHorizontal();
-                    if (GUILayout.Button(configurationModifier.applyButtonText))
-                        configurationModifier.Apply();
-                    if (GUILayout.Button(configurationModifier.revertButtonText))
-                        configurationModifier.Revert();
+                    if (GUILayout.Button(new GUIContent(modification.applyButtonText, modification.applyModificationShortEplanation)))
+                        modification.Apply();
+                    if (GUILayout.Button(new GUIContent(modification.revertButtonText, modification.revertModificationShortEplanation)))
+                        modification.Revert();
                     EditorGUILayout.EndHorizontal();
                 }
                 EditorGUILayout.EndVertical();
 
                 EditorGUILayout.EndHorizontal();
                 
-                
                 GUILayout.Label("");
+
 
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Apply all"))
                 {
                     foreach (var modificationType in implementations)
                     {
-                        IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
-                        configurationModifier.Apply();
+                        IModification modification = (IModification) Activator.CreateInstance(modificationType);
+                        modification.Apply();
                     }
                 }
 
@@ -102,8 +101,8 @@ namespace Essentials.EssentialsSettings
                 {
                     foreach (var modificationType in implementations)
                     {
-                        IConfigurationModifier configurationModifier = (IConfigurationModifier) Activator.CreateInstance(modificationType);
-                        configurationModifier.Revert();
+                        IModification modification = (IModification) Activator.CreateInstance(modificationType);
+                        modification.Revert();
                     }
                 }
                 EditorGUILayout.EndHorizontal();
@@ -113,6 +112,15 @@ namespace Essentials.EssentialsSettings
             }
             
             GUILayout.Label("");
+            
+            #region Tooltip
+                GUIStyle style = GUI.skin.label; //get the current style of the GUI;
+                TextAnchor defaultAlignment = style.alignment; // Expected: TextAnchor.MiddleLeft
+                style.alignment = TextAnchor.MiddleRight;
+                GUILayout.Label (GUI.tooltip, style);
+                style.alignment = defaultAlignment;
+            #endregion
+            
             EditorGUILayout.BeginHorizontal();
             if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} configuration modifiers", EditorStyles.helpBox);
             if (implementations == null) EditorGUILayout.LabelField($"NO IMPLEMENTATIONS FOUND");
@@ -127,7 +135,7 @@ namespace Essentials.EssentialsSettings
         /// </summary>
         private void SearchConfigurationModifiers()
         {
-            implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<IConfigurationModifier>();
+            implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<IModification>();
         }
     }
 }

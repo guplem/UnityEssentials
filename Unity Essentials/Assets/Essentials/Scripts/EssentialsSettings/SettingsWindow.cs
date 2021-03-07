@@ -122,9 +122,9 @@ namespace Essentials.EssentialsSettings
             #endregion
             
             EditorGUILayout.BeginHorizontal();
-            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} configuration modifiers", EditorStyles.helpBox);
+            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} modifications", EditorStyles.helpBox);
             if (implementations == null) EditorGUILayout.LabelField($"NO IMPLEMENTATIONS FOUND");
-            if (GUILayout.Button("Search for configuration modifiers") && implementations == null)
+            if (GUILayout.Button(new GUIContent("Search for modifications", "Search for any implementation of the abstract class 'Modification' to be displayed in this window." )) && implementations == null)
                 SearchConfigurationModifiers();
             EditorGUILayout.EndHorizontal();
             

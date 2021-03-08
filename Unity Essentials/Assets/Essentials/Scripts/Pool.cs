@@ -9,11 +9,13 @@ namespace UnityEngine
     {
         private List<GameObject> referencedObjects;
         public GameObject[] baseObjects;
-        private int activeIndex = 0;
-        private int lastBaseObjectRegisteredIndex = 0;
+        public int activeIndex { get; private set; }
+        public int lastBaseObjectRegisteredIndex { get; private set; }
         public Vector3 instantiationPosition = Vector3.zero;
         public Quaternion instantiationRotation = Quaternion.identity;
+        public bool randomInstantiationSequence = false; // If ture, they will only be chosen randomly for the first initialization, not the further respawns
         public int size;
+        public EasyRandom easyRandomInstantiation = new EasyRandom();
 
         /// <summary>
         /// Creates a Pool instance.
@@ -59,10 +61,15 @@ namespace UnityEngine
         /// <param name="instantiationPosition">The position where the objects must be instantiated.</param>
         /// <param name="instantiationRotation">The rotation that the objects must have when instantiated.</param>
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
-        public Pool(GameObject baseObjects, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false) : this(baseObjects, size, instantiateAllAtCreation)
+        /// <param name="randomInstantiationSequence">If false, the objects will be instantiated in the appearing order in the 'baseObjects array. If true, the order of instantiation of the pooled objects is going to be random./param>
+        /// <param name="intantiationRandomizationSeed">The seed used to randomly pick the baseObjects in the first instantiation process</param>
+        public Pool(GameObject[] baseObjects, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false, bool randomInstantiationSequence = false, int intantiationRandomizationSeed = -1) : this(baseObjects, size, instantiateAllAtCreation)
         {
             this.instantiationPosition = instantiationPosition;
             this.instantiationRotation = instantiationRotation;
+            this.randomInstantiationSequence = randomInstantiationSequence;
+            if (intantiationRandomizationSeed != -1)
+                this.easyRandomInstantiation = new EasyRandom(intantiationRandomizationSeed);
         }
 
         /// <summary>
@@ -112,21 +119,30 @@ namespace UnityEngine
             if (referencedObjects.Count >= size || (index < referencedObjects.Count && referencedObjects[index] != null))
                 return null;
             
-            GameObject go = Object.Instantiate(GetNextBaseObject(true), instantiationPosition, instantiationRotation, parent);
+            GameObject go = Object.Instantiate(GetNextBaseObjectToInitialize(true), instantiationPosition, instantiationRotation, parent);
             go.SetActive(false);
             referencedObjects.Add(go);
             return go;
         }
 
         // Returns the next BaseObject to be spawned
-        private GameObject GetNextBaseObject(bool register)
+        private GameObject GetNextBaseObjectToInitialize(bool register)
         {
-            //Debug.Log(lastBaseObjectRegisteredIndex);
-            
-            
-            lastBaseObjectRegisteredIndex = register
-                ? lastBaseObjectRegisteredIndex.GetLooped(baseObjects.Length)
-                : lastBaseObjectRegisteredIndex;
+            Debug.Log(lastBaseObjectRegisteredIndex);
+
+            if (randomInstantiationSequence)
+            {
+                lastBaseObjectRegisteredIndex = register
+                    ? easyRandomInstantiation.GetRandomInt(baseObjects.Length)
+                    : lastBaseObjectRegisteredIndex;
+            }
+            else
+            {
+                lastBaseObjectRegisteredIndex = register
+                    ? lastBaseObjectRegisteredIndex.GetLooped(baseObjects.Length)
+                    : lastBaseObjectRegisteredIndex;
+            }
+
             return baseObjects[lastBaseObjectRegisteredIndex];
         }
 

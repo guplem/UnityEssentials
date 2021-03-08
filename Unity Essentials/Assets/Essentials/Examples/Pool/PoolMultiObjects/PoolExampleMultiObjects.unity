@@ -345,6 +345,7 @@ MonoBehaviour:
   - {fileID: 167105353}
   - {fileID: 884644593}
   parentForPooled: {fileID: 259688596}
+  randomInstamtiationSequence: 1
 --- !u!4 &259688596
 Transform:
   m_ObjectHideFlags: 0

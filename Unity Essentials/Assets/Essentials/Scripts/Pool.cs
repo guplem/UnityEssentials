@@ -70,14 +70,30 @@ namespace UnityEngine
 
             return goToReturn;
         }
+
+        /// <summary>
+        /// Loads an objet to be later activated/used.
+        /// </summary>
+        /// <param name="quantity">The amount of GameObjects that are wanted to be load (but not activated yet)</param>
+        public void Load(int quantity, Transform parent = null)
+        {
+            int remainingQuantity = Mathf.Min(size - referencedObjects.Count, quantity);
+            for (int i = 0; i < size; i++)
+            {
+                if (InstantiateNewAt(i, parent) != null)
+                    remainingQuantity--;
+                if (remainingQuantity <= 0)
+                    break;
+            }
+        }
         
         //Only instantiates new elements if the pool size is preserved and if there are non existing GameObjects in the indicated index.
-        private GameObject InstantiateNewAt(int index)
+        private GameObject InstantiateNewAt(int index, Transform parent = null)
         {
             if (referencedObjects.Count >= size || (index < referencedObjects.Count && referencedObjects[index] != null))
                 return null;
-
-            GameObject go = Object.Instantiate(baseObject, instantiationPosition, instantiationRotation);
+            
+            GameObject go = Object.Instantiate(baseObject, instantiationPosition, instantiationRotation, parent);
             go.SetActive(false);
             referencedObjects.Add(go);
             return go;

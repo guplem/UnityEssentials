@@ -12,15 +12,21 @@ public class PoolExampleBig : MonoBehaviour
 
     private Pool pool;
     private EasyRandom random;
+    private IEnumerator coroutineHolder; // Keeps track of the coroutine
 
     private void Start()
     {
         // The pool is created
-        pool = new Pool(objectToSpawn, 3, false);
+        pool = new Pool(objectToSpawn, 100, false);
         
         random = new EasyRandom();
         
         Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
+        
+        //Assign the coroutine to the holder
+        coroutineHolder = CourutineMethod();
+        //Run the coroutine
+        StartCoroutine(coroutineHolder);
     }
 
     void Update()
@@ -39,5 +45,16 @@ public class PoolExampleBig : MonoBehaviour
             spawned.gameObject.name = "Random number name - " + random.GetRandomInt(0,1000).ToString();
         }
         
+    }
+    
+    // Method/Corroutine used as example
+    private IEnumerator CourutineMethod()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Loaded");
+            pool.Load(1, parentForPooled);
+        }
     }
 }

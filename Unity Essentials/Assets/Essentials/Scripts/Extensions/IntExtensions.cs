@@ -3,7 +3,7 @@
     public static class IntExtensions
     {
         /// <summary>
-        /// Loops the integer between a minimum and maximum.
+        /// Loops returning the integer between a minimum and maximum (it does not update the looped int value).
         /// </summary>
         /// <param name="exclusiveMaximum">The exclusive maximum value than can be obtained.</param>
         /// <param name="inclusiveMinimum">The minimum value that can be obtained.</param>
@@ -16,7 +16,6 @@
                 returnInt = inclusiveMinimum;
             return returnInt;
         }
-
 
     }
 }

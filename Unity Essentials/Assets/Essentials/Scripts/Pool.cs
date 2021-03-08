@@ -8,8 +8,9 @@ namespace UnityEngine
     public class Pool
     {
         private List<GameObject> referencedObjects;
-        public GameObject baseObject;
+        public GameObject[] baseObjects;
         private int activeIndex = 0;
+        private int lastBaseObjectRegisteredIndex = 0;
         public Vector3 instantiationPosition = Vector3.zero;
         public Quaternion instantiationRotation = Quaternion.identity;
         public int size;
@@ -20,9 +21,27 @@ namespace UnityEngine
         /// <param name="baseObject">The object that will be instantiated by the pool.</param>
         /// <param name="size">The maximum number of objects that can be instantiated at the same time.</param>
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
-        public Pool(GameObject baseObject, int size, bool instantiateAllAtCreation = false)
+        public Pool(GameObject[] baseObjects, int size, bool instantiateAllAtCreation = false)
         {
-            this.baseObject = baseObject;
+            this.baseObjects = baseObjects;
+            this.size = size;
+            referencedObjects = new List<GameObject>();
+            activeIndex = 0;
+            
+            if (instantiateAllAtCreation)
+                for (int i = 0; i < size; i++)
+                    InstantiateNewAt(i);
+        }
+        
+        /// <summary>
+        /// Creates a Pool instance.
+        /// </summary>
+        /// <param name="baseObjects">The object that will be instantiated by the pool.</param>
+        /// <param name="size">The maximum number of objects that can be instantiated at the same time.</param>
+        /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
+        public Pool(GameObject baseObjects, int size, bool instantiateAllAtCreation = false)
+        {
+            this.baseObjects = new GameObject[] {baseObjects};
             this.size = size;
             referencedObjects = new List<GameObject>();
             activeIndex = 0;
@@ -35,12 +54,12 @@ namespace UnityEngine
         /// <summary>
         /// Creates a Pool instance.
         /// </summary>
-        /// <param name="baseObject">The object that will be instantiated by the pool.</param>
+        /// <param name="baseObjects">The object that will be instantiated by the pool.</param>
         /// <param name="size">The maximum number of objects that can be instantiated at the same time.</param>
         /// <param name="instantiationPosition">The position where the objects must be instantiated.</param>
         /// <param name="instantiationRotation">The rotation that the objects must have when instantiated.</param>
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
-        public Pool(GameObject baseObject, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false) : this(baseObject, size, instantiateAllAtCreation)
+        public Pool(GameObject baseObjects, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false) : this(baseObjects, size, instantiateAllAtCreation)
         {
             this.instantiationPosition = instantiationPosition;
             this.instantiationRotation = instantiationRotation;
@@ -93,10 +112,22 @@ namespace UnityEngine
             if (referencedObjects.Count >= size || (index < referencedObjects.Count && referencedObjects[index] != null))
                 return null;
             
-            GameObject go = Object.Instantiate(baseObject, instantiationPosition, instantiationRotation, parent);
+            GameObject go = Object.Instantiate(GetNextBaseObject(true), instantiationPosition, instantiationRotation, parent);
             go.SetActive(false);
             referencedObjects.Add(go);
             return go;
+        }
+
+        // Returns the next BaseObject to be spawned
+        private GameObject GetNextBaseObject(bool register)
+        {
+            //Debug.Log(lastBaseObjectRegisteredIndex);
+            
+            
+            lastBaseObjectRegisteredIndex = register
+                ? lastBaseObjectRegisteredIndex.GetLooped(baseObjects.Length)
+                : lastBaseObjectRegisteredIndex;
+            return baseObjects[lastBaseObjectRegisteredIndex];
         }
 
         /// <summary>

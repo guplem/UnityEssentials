@@ -1,3 +1,5 @@
+# Unity Essentials
+
 This is the repository of the asset ¨Essentials¨found [here](https://assetstore.unity.com/packages/tools/utilities/essentials-161141 "here").
 It is currently being improved as part of a university final year project.
 

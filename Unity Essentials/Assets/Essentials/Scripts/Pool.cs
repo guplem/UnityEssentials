@@ -128,8 +128,6 @@ namespace UnityEngine
         // Returns the next BaseObject to be spawned
         private GameObject GetNextBaseObjectToInitialize(bool register)
         {
-            Debug.Log(lastBaseObjectRegisteredIndex);
-
             if (randomInstantiationSequence)
             {
                 lastBaseObjectRegisteredIndex = register

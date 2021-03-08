@@ -9,7 +9,7 @@ public class PoolExampleMultiObjects : MonoBehaviour
     [SerializeField] private KeyCode keyToSpawn;
     [SerializeField] private GameObject[] objectsToSpawn;
     [SerializeField] private Transform parentForPooled;
-    [SerializeField] private bool randomInstamtiationSequence;
+    [SerializeField] private bool randomInstantiationSequence;
 
     private Pool pool;
     private EasyRandom random;
@@ -17,7 +17,7 @@ public class PoolExampleMultiObjects : MonoBehaviour
     private void Start()
     {
         // The pool is created
-        pool = new Pool(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstamtiationSequence);
+        pool = new Pool(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstantiationSequence);
         
         random = new EasyRandom();
         

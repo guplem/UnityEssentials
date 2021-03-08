@@ -16,7 +16,7 @@ Some of the features that it includes are:
 - Additional shortcuts.
 - Etc.
 
-To find more detailed information, you can access [this](docs.google.com/document/d/1-strmOzT7ka8uO8hEH_W3Xjlr-ajjKcJ0b6h5KYnpJQ/edit?usp=sharing "this") file.
+To find more detailed information, you can access [this](https://docs.google.com/document/d/1-strmOzT7ka8uO8hEH_W3Xjlr-ajjKcJ0b6h5KYnpJQ/edit?usp=sharing "this") file.
 
 ## The university final year project
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolExample : MonoBehaviour
+public class PoolExampleSmall : MonoBehaviour
 {
 
     [SerializeField] private KeyCode keyToSpawn;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiAnimationsExample : MonoBehaviour
+public class RectTransformAnimationExample : MonoBehaviour
 {
     [SerializeField] private SimpleAnimationsManager simpleAnimationsManager;
     [Space]

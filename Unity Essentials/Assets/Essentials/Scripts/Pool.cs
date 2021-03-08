@@ -53,12 +53,15 @@ namespace UnityEngine
         /// <param name="position">The position where the objects must be moved to.</param>
         /// <param name="rotation">The rotation that must be set to the object.</param>
         /// <param name="scale">The scale that must be set to the object.</param>
-        public GameObject Spawn(Vector3 position, Quaternion rotation, Vector3 scale)
+        /// <param name="parent">The parent that will be set to the activated object.</param>
+        public GameObject Spawn(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent = null)
         {
             if (activeIndex>=referencedObjects.Count || referencedObjects[activeIndex] == null)
                 InstantiateNewAt(activeIndex);
 
             referencedObjects[activeIndex].transform.SetProperties(position, rotation, scale);
+            if (parent != null)
+                referencedObjects[activeIndex].transform.parent = parent;
             referencedObjects[activeIndex].SetActive(true);
             
             GameObject goToReturn = referencedObjects[activeIndex];

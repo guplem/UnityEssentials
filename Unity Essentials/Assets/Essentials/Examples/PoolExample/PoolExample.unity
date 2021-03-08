@@ -153,6 +153,7 @@ MonoBehaviour:
   keyToSpawn: 32
   objectToSpawn: {fileID: 4258832863152518079, guid: ca50d8c9f25ea0d43b3a74a3053b1e64,
     type: 3}
+  parentForPooled: {fileID: 259688596}
 --- !u!4 &259688596
 Transform:
   m_ObjectHideFlags: 0

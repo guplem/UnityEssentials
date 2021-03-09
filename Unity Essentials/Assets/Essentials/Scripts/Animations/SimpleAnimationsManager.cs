@@ -95,6 +95,29 @@ namespace UnityEngine
                 }
             }
         }
+        
+        /// <summary>
+        /// Sets the animation at the given progress.
+        /// </summary>
+        /// <param name="animation">The animation that is wanted to be played.</param>
+        /// <param name="progress">The progress of the animation [0,1]</param>
+        public void SetProgression(SimpleAnimation animation, float progress)
+        {
+            animation.SetProgress(progress);
+        }
+        
+        /// <summary>
+        /// Sets the animation at the given progress.
+        /// </summary>
+        /// <param name="index">The index of animation in the 'SimpleAnimationsManager' that is wanted to be played.</param>
+        /// <param name="progress">The progress of the animation [0,1]</param>
+        public void SetProgression(int index, float progress)
+        {
+            if (animations.Count > index)
+                SetProgression((SimpleAnimation)animations[index], progress);
+            else
+                Debug.LogWarning("Trying to set the progression of a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
+        }
     }
     
 }

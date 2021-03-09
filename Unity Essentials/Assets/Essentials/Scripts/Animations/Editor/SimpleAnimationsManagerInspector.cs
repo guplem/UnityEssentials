@@ -12,7 +12,7 @@ namespace UnityEngine
     {
         private Type[] implementations;
         private int selectedImplementationIndex;
-
+        private SimpleAnimationsManager simpleAnimationsManager;
         
         
         public override void OnInspectorGUI()
@@ -25,7 +25,7 @@ namespace UnityEngine
             
             
             //specify type
-            SimpleAnimationsManager simpleAnimationsManager = target as SimpleAnimationsManager;
+            simpleAnimationsManager = target as SimpleAnimationsManager;
             if (simpleAnimationsManager == null) { return; }
             
             //find all implementations of ISimpleAnimation using System.Reflection.Module
@@ -80,9 +80,8 @@ namespace UnityEngine
             EditorGUI.indentLevel += 1;
             EditorGUILayout.Space(); 
             GUILayout.Label("Animations Configuration", EditorStyles.boldLabel);
-            //using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
-                ShowArrayProperty(serializedObject.FindProperty("animations"));
-            //}
+            ShowArrayProperty(serializedObject.FindProperty("animations"));
+
             EditorGUI.indentLevel -= 1;
             
             // Draw horizontal line
@@ -112,18 +111,43 @@ namespace UnityEngine
         
         private void ShowArrayProperty(UnityEditor.SerializedProperty list)
         {
+            
+            
             UnityEditor.EditorGUI.indentLevel += 1;
             for (int i = 0; i < list.arraySize; i++)
             {
                 EditorGUILayout.Space();
                 using (new GUILayout.VerticalScope(EditorStyles.helpBox))
                 {
-                    //UnityEditor.EditorGUILayout.PropertyField (
-                    //    list.GetArrayElementAtIndex(i),
-                    //    new UnityEngine.GUIContent("Animation " + (i + 1).ToString())
-                    //);
                     SerializedProperty transformProp = list.GetArrayElementAtIndex(i);
                     EditorGUILayout.PropertyField(transformProp, new GUIContent("Animation " + i), true);
+
+                    SimpleAnimation animation = ((SimpleAnimation) simpleAnimationsManager.animations[i]);
+                    float animProgression = animation.progression;
+                    
+                    int oldIndentLevel = UnityEditor.EditorGUI.indentLevel;
+                    UnityEditor.EditorGUI.indentLevel = 1;
+                    EditorGUILayout.BeginHorizontal();
+                    float oldLabelWidth = EditorGUIUtility.labelWidth;
+                    EditorGUIUtility.labelWidth=75;
+                    EditorGUILayout.LabelField("Animation progress");
+                    EditorGUIUtility.labelWidth=oldLabelWidth;
+                    EditorGUI.BeginChangeCheck();
+                    animProgression = EditorGUILayout.Slider(animProgression, 0, 1);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        //ToDo: A way to be able to modify the progression. Currently the changes are not being detected because it is not possible to know the Unity Object to watch. 
+                        Undo.RecordObject( simpleAnimationsManager.gameObject, "Changed animation progression" );
+                        animation.SetProgress(animProgression);
+                    }
+                    EditorGUILayout.EndHorizontal();
+                    
+                    UnityEditor.EditorGUI.indentLevel = oldIndentLevel;
+                    
+                    //var childrenProperties = transformProp.GetVisibleChildren();
+                    //foreach (var property in childrenProperties) {
+                    //    Debug.Log($"Animation {i}: {property.name}");
+                    //}
                     EditorGUILayout.Space();
                 }
                 EditorGUILayout.Space();
@@ -131,7 +155,6 @@ namespace UnityEngine
             }
             UnityEditor.EditorGUI.indentLevel -= 1;
         }
-        
     }
 }
 

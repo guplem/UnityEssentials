@@ -422,7 +422,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
   - id: 0
-  - id: 1
   references:
     version: 1
     00000000:
@@ -457,44 +456,9 @@ MonoBehaviour:
         onFinish:
           m_PersistentCalls:
             m_Calls: []
-        transformToAnimate: {fileID: 1340663744}
-        originTransform: {fileID: 1061533335}
-        destinationTransform: {fileID: 847240055}
-    00000001:
-      type: {class: RectTransformAnimation, ns: UnityEngine, asm: UnityEssentials}
-      data:
-        mirror: 0
-        duration: 1
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        onFinish:
-          m_PersistentCalls:
-            m_Calls: []
-        rectTransformToAnimate: {fileID: 0}
-        originRectTransform: {fileID: 0}
-        destinationRectTransform: {fileID: 0}
+        transformToAnimate: {fileID: 0}
+        originTransform: {fileID: 0}
+        destinationTransform: {fileID: 0}
 --- !u!23 &1340663742
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -549,9 +513,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340663740}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.5735764, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 9.5, y: -0.5, z: 4.2}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -568,6 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dad6b8a0ce19048a34769a3ae26c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleAnimationsManager: {fileID: 1340663741}
+  simpleAnimationsManager: {fileID: 0}
   origin: {fileID: 1061533335}
   destination: {fileID: 847240055}

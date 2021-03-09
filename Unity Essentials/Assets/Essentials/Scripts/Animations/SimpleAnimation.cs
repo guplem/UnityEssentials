@@ -7,7 +7,8 @@ namespace UnityEngine
     public abstract class SimpleAnimation : ISimpleAnimation
     {
         public float timeStamp { get; protected set; }
-        [Header("Animation configuration", order = 1)]
+        public float progression { get => timeStamp/duration; }
+        //[Header("Animation configuration", order = 1)]
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
         [SerializeField] public AnimationCurve curve;
@@ -67,7 +68,20 @@ namespace UnityEngine
                     throw new ArgumentOutOfRangeException(nameof(curve), curve, null);
             }
         }
+
+        /// <summary>
+        /// Sets the animation at the given progress. 
+        /// </summary>
+        /// <param name="progress">The progress of the animation [0,1]</param>
+        public virtual void SetProgress(float progress)
+        {
+            float desiredTime = progress * duration;
+            Step(desiredTime - timeStamp);
+        }
+        
     }
+    
+    
     public enum Curve
     {
         Linear,

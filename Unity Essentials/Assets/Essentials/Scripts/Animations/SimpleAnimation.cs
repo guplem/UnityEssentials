@@ -7,12 +7,12 @@ namespace UnityEngine
     public abstract class SimpleAnimation : ISimpleAnimation
     {
         public float timeStamp { get; protected set; }
-        [Space(30, order = 0)]
         [Header("Animation configuration", order = 1)]
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
         [SerializeField] public AnimationCurve curve;
         [SerializeField] public UnityEvent onFinish;
+
 
         /// <summary>
         /// Go forward or backwards in the animation.

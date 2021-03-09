@@ -7,7 +7,6 @@ public class PoolExampleSmall : MonoBehaviour
 {
 
     [SerializeField] private KeyCode keyToSpawn;
-    [SerializeField] private Transform parentForPooled;
     [Space]
     [SerializeField] private Pool pool;
     
@@ -26,10 +25,9 @@ public class PoolExampleSmall : MonoBehaviour
         {
             // Activate/Respawn/Move one game object each time 'Spawn' is called
             GameObject spawned = pool.Spawn(
-                random.GetRandomVector3(-5, 5),   // Position
-                Quaternion.identity,                                               // Rotation
-                random.GetRandomVector3(0.5f,1.5f), // Scale
-                parentForPooled                                                    // Parent
+                random.GetRandomVector3(-5, 5),  // Position
+                Quaternion.identity,                                              // Rotation
+                random.GetRandomVector3(0.5f,1.5f) // Scale
             );
         
             // Set a random name to the spawned GameObject 

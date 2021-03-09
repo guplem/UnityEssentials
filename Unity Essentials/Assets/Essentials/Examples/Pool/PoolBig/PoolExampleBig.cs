@@ -9,6 +9,7 @@ public class PoolExampleBig : MonoBehaviour
     [SerializeField] private KeyCode keyToSpawn;
     [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private Transform parentForPooled;
+    [SerializeField] private float timeBetweenLoadingInstances = 1;
 
     private Pool pool;
     private EasyRandom random;
@@ -24,7 +25,7 @@ public class PoolExampleBig : MonoBehaviour
         Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
         
         //Assign the coroutine to the holder
-        coroutineHolder = CourutineMethod();
+        coroutineHolder = LoadingCoroutine();
         //Run the coroutine
         StartCoroutine(coroutineHolder);
     }
@@ -48,12 +49,12 @@ public class PoolExampleBig : MonoBehaviour
     }
     
     // Method/Corroutine used as example
-    private IEnumerator CourutineMethod()
+    private IEnumerator LoadingCoroutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            Debug.Log("Loaded");
+            yield return new WaitForSeconds(timeBetweenLoadingInstances);
+            
             pool.Load(1, parentForPooled);
         }
     }

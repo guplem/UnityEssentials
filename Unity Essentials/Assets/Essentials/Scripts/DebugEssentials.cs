@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityEngine
 {
-    public class DebugPro : Debug
+    public class DebugEssentials : Debug
     {
         
         /// <summary>

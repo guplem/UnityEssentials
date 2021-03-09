@@ -151,8 +151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToSpawn: 32
-  objectToSpawn: {fileID: 6982390982906522900}
   parentForPooled: {fileID: 259688596}
+  pool:
+    baseObjects:
+    - {fileID: 6982390982906522900}
+    randomInstantiationSequence: 0
+    size: 10
 --- !u!4 &259688596
 Transform:
   m_ObjectHideFlags: 0

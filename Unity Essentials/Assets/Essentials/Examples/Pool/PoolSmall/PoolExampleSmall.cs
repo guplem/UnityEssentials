@@ -7,17 +7,14 @@ public class PoolExampleSmall : MonoBehaviour
 {
 
     [SerializeField] private KeyCode keyToSpawn;
-    [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private Transform parentForPooled;
-
-    private Pool pool;
+    [Space]
+    [SerializeField] private Pool pool;
+    
     private EasyRandom random;
 
     private void Start()
     {
-        // The pool is created
-        pool = new Pool(objectToSpawn, 3, false);
-        
         random = new EasyRandom();
         
         Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");

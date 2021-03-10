@@ -123,21 +123,25 @@ namespace UnityEngine
                     EditorGUILayout.PropertyField(transformProp, new GUIContent("Animation " + i), true);
 
                     SimpleAnimation animation = ((SimpleAnimation) simpleAnimationsManager.animations[i]);
-                    float animProgression = animation.progression;
-                    
+                     
                     int oldIndentLevel = UnityEditor.EditorGUI.indentLevel;
                     UnityEditor.EditorGUI.indentLevel = 1;
                     EditorGUILayout.BeginHorizontal();
                     float oldLabelWidth = EditorGUIUtility.labelWidth;
-                    EditorGUIUtility.labelWidth=75;
+                    EditorGUIUtility.labelWidth = 75;
                     EditorGUILayout.LabelField("Animation progress");
-                    EditorGUIUtility.labelWidth=oldLabelWidth;
+                    EditorGUIUtility.labelWidth = oldLabelWidth;
                     EditorGUI.BeginChangeCheck();
-                    animProgression = EditorGUILayout.Slider(animProgression, 0, 1);
+                    float animProgression = animation.progress;
+                    // Todo: fix bug where the slider is not set to the proper value by default (after opening the scene, all the sliders are at 0, not at the proper value)
+                    animProgression = EditorGUILayout.Slider(animProgression, 0.0f, 1.0f);
                     if (EditorGUI.EndChangeCheck())
                     {
-                        //ToDo: A way to be able to modify the progression. Currently the changes are not being detected because it is not possible to know the Unity Object to watch. 
-                        Undo.RecordObject( simpleAnimationsManager.gameObject, "Changed animation progression" );
+                        UnityEngine.Object animatedObject = animation.GetAnimatedObject();
+                        if (animatedObject != null) {
+                            Undo.RecordObject( animatedObject, "Changed animation progress (Animated Object)" );
+                        }
+                        Undo.RecordObject( simpleAnimationsManager, "Changed animation progress (Simple Animation Manager)" );
                         animation.SetProgress(animProgression);
                     }
                     EditorGUILayout.EndHorizontal();

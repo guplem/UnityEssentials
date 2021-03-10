@@ -116,7 +116,7 @@ namespace UnityEngine
             if (animations.Count > index)
                 SetProgression((SimpleAnimation)animations[index], progress);
             else
-                Debug.LogWarning("Trying to set the progression of a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
+                Debug.LogWarning("Trying to set the progress of a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
         }
     }
     

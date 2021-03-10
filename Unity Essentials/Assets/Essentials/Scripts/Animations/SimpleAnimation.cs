@@ -6,8 +6,9 @@ namespace UnityEngine
     [Serializable]
     public abstract class SimpleAnimation : ISimpleAnimation
     {
-        public float timeStamp { get; protected set; }
-        public float progression { get => timeStamp/duration; }
+        public float timeStamp { get => _timeStamp; protected set => _timeStamp = value; }
+        [HideInInspector] private float _timeStamp;
+        public float progress { get => timeStamp/duration; set => SetProgress(value); }
         //[Header("Animation configuration", order = 1)]
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
@@ -78,7 +79,12 @@ namespace UnityEngine
             float desiredTime = progress * duration;
             Step(desiredTime - timeStamp);
         }
-        
+
+        /// <summary>
+        /// Returns the UnityEngine.Object animated. If not applicable, return null.
+        /// </summary>
+        public abstract UnityEngine.Object GetAnimatedObject();
+
     }
     
     

@@ -183,18 +183,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257426592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.008022731, w: 0.9999678}
+  m_LocalPosition: {x: 0, y: 0, z: 7.058043}
+  m_LocalScale: {x: 1.1492035, y: 1.2336487, z: 1}
   m_Children: []
   m_Father: {fileID: 1221537005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.47036588, y: 0.33821306}
+  m_AnchorMax: {x: 0.66341215, y: 0.82304627}
+  m_AnchoredPosition: {x: 8.028732, y: 1.7064362}
+  m_SizeDelta: {x: 65.23146, y: 65.23146}
+  m_Pivot: {x: 1.7494622, y: 0.7221852}
 --- !u!114 &257426594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -250,7 +251,8 @@ MonoBehaviour:
     00000000:
       type: {class: RectTransformAnimation, ns: UnityEngine, asm: UnityEssentials}
       data:
-        mirror: 0
+        _progression: 0
+        mirror: 1
         duration: 1
         curve:
           serializedVersion: 2
@@ -276,20 +278,9 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        OnFinish:
+        onFinish:
           m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 257426597}
-              m_MethodName: InvertAndPlayAgain
-              m_Mode: 1
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
+            m_Calls: []
         rectTransformToAnimate: {fileID: 257426593}
         originRectTransform: {fileID: 1746291888}
         destinationRectTransform: {fileID: 43771281}

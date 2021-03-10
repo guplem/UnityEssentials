@@ -34,5 +34,10 @@ namespace UnityEngine
 
             return endOfAnimation;
         }
+
+        public override Object GetAnimatedObject()
+        {
+            return transformToAnimate;
+        }
     }
 }

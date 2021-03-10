@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UnityEngine
 {
@@ -16,7 +17,27 @@ namespace UnityEngine
         /// </summary>
         public SimpleAnimation GetAnimation(int index)
         {
-            return (SimpleAnimation) animations[index];
+            if (animations.Count > index)
+                return (SimpleAnimation) animations[index];
+            
+            Debug.LogWarning($"Trying to get the animation with index '{index}' of the 'SimpleAnimationsManager' of the GameObject {gameObject.name} but the size of the array is {animations.Count}.", gameObject);
+            return null;
+        }
+        /// <summary>
+        /// Returns the simple animation stored in this SimpleAnimationsManager witht he same name as the given. 
+        /// </summary>
+        /// <param name="animationName">The name of the wanted animation.</param>
+        /// <returns></returns>
+        public SimpleAnimation GetAnimation(string animationName)
+        {
+            foreach (ISimpleAnimation IAnimation in animations)
+            {
+                SimpleAnimation animation = (SimpleAnimation)IAnimation;
+                if (string.Compare(animation.name, animationName, StringComparison.Ordinal) == 0)
+                    return animation;
+            }
+            Debug.LogWarning($"Trying to find the animation with name '{animationName}' but it is not found in the 'SimpleAnimationsManager' of the GameObject {gameObject.name}", gameObject);
+            return null;
         }
         
         // List of all the animations that should stopped so they will be removed from the "playingAnimations" list at the next frame.
@@ -43,14 +64,21 @@ namespace UnityEngine
         /// <summary>
         /// Starts playing the animation.
         /// </summary>
+        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be played.</param>
+        /// <param name="resume">If the animation should continue where it was left (true) or restart (false, default).</param>
+        public void Play(string animationName, bool resume = false)
+        {
+            Play(GetAnimation(animationName), resume);
+        }
+
+        /// <summary>
+        /// Starts playing the animation.
+        /// </summary>
         /// <param name="index">The index of animation in the 'SimpleAnimationsManager' that is wanted to be played.</param>
         /// <param name="resume">If the animation should continue where it was left (true) or restart (false, default).</param>
         public void Play(int index, bool resume = false)
         {
-            if (animations.Count > index)
-                Play((SimpleAnimation)animations[index], resume);
-            else
-                Debug.LogWarning("Trying to play a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
+            Play(GetAnimation(index), resume);
         }
         
         /// <summary>
@@ -66,13 +94,19 @@ namespace UnityEngine
         /// <summary>
         /// Stops playing the animation.
         /// </summary>
-        /// <param name="index">The index of animation in the 'SimpleAnimationsManager' that is wanted to be stopped.</param>
+        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be stopped.</param>
+        public void Play(string animationName)
+        {
+            Stop(GetAnimation(animationName));
+        }
+        
+        /// <summary>
+        /// Stops playing the animation.
+        /// </summary>
+        /// <param name="index">The index of the animation in the 'SimpleAnimationsManager' that is wanted to be stopped.</param>
         public void Stop(int index)
         {
-            if (animations.Count > index)
-                Stop((SimpleAnimation)animations[index]);
-            else
-                Debug.LogWarning("Trying to stop a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
+            Stop(GetAnimation(index));
         }
 
         private void Update()
@@ -99,9 +133,9 @@ namespace UnityEngine
         /// <summary>
         /// Sets the animation at the given progress.
         /// </summary>
-        /// <param name="animation">The animation that is wanted to be played.</param>
+        /// <param name="animation">The animation in the 'SimpleAnimationsManager' that is wanted to be updated with the new progress.</param>
         /// <param name="progress">The progress of the animation [0,1]</param>
-        public void SetProgression(SimpleAnimation animation, float progress)
+        public void SetProgress(SimpleAnimation animation, float progress)
         {
             animation.SetProgress(progress);
         }
@@ -109,14 +143,21 @@ namespace UnityEngine
         /// <summary>
         /// Sets the animation at the given progress.
         /// </summary>
-        /// <param name="index">The index of animation in the 'SimpleAnimationsManager' that is wanted to be played.</param>
+        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be updated with the new progress.</param>
         /// <param name="progress">The progress of the animation [0,1]</param>
-        public void SetProgression(int index, float progress)
+        public void SetProgress(string animationName, float progress)
         {
-            if (animations.Count > index)
-                SetProgression((SimpleAnimation)animations[index], progress);
-            else
-                Debug.LogWarning("Trying to set the progress of a non-existing animation in the SimpleAnimationsManager of the GameObject " + gameObject.name, gameObject);
+            SetProgress(GetAnimation(animationName), progress);
+        }
+        
+        /// <summary>
+        /// Sets the animation at the given progress.
+        /// </summary>
+        /// <param name="index">The index of animation in the 'SimpleAnimationsManager' that is wanted to be updated with the new progress.</param>
+        /// <param name="progress">The progress of the animation [0,1]</param>
+        public void SetProgress(int index, float progress)
+        {
+            SetProgress(GetAnimation(index), progress);
         }
     }
     

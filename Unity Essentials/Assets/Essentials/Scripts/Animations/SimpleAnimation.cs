@@ -6,6 +6,7 @@ namespace UnityEngine
     [Serializable]
     public abstract class SimpleAnimation : ISimpleAnimation
     {
+        [SerializeField] public string name;
         public float timeStamp { get => _timeStamp; protected set => _timeStamp = value; }
         [HideInInspector] private float _timeStamp;
         public float progress { get => timeStamp/duration; set => SetProgress(value); }

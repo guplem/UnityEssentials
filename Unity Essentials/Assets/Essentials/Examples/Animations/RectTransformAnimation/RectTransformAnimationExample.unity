@@ -251,7 +251,7 @@ MonoBehaviour:
     00000000:
       type: {class: RectTransformAnimation, ns: UnityEngine, asm: UnityEssentials}
       data:
-        _progression: 0
+        name: Open
         mirror: 1
         duration: 1
         curve:

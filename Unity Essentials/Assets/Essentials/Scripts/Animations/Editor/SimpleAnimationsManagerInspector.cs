@@ -120,10 +120,16 @@ namespace UnityEngine
                 using (new GUILayout.VerticalScope(EditorStyles.helpBox))
                 {
                     SerializedProperty transformProp = list.GetArrayElementAtIndex(i);
-                    EditorGUILayout.PropertyField(transformProp, new GUIContent("Animation " + i), true);
 
                     SimpleAnimation animation = ((SimpleAnimation) simpleAnimationsManager.animations[i]);
-                     
+
+                    string itemName;
+                    if (animation.name.IsNullOrEmpty())
+                        itemName = $"Animation ({i})";
+                    else
+                        itemName = $"{animation.name} animation ({i})";
+                    EditorGUILayout.PropertyField(transformProp, new GUIContent(itemName), true);
+  
                     int oldIndentLevel = UnityEditor.EditorGUI.indentLevel;
                     UnityEditor.EditorGUI.indentLevel = 1;
                     EditorGUILayout.BeginHorizontal();

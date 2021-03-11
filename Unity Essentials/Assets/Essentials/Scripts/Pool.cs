@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace UnityEngine
 {
@@ -15,7 +12,7 @@ namespace UnityEngine
         public int lastBaseObjectRegisteredIndex { get; private set; }
         public bool randomInstantiationSequence = false; // If ture, they will only be chosen randomly for the first initialization, not the further respawns
         public int size = 10;
-        public EasyRandom easyRandomInstantiation = new EasyRandom();
+        public RandomEssentials randomEssentialsInstantiation = new RandomEssentials();
         private DefaultPositionAndRotation defaultPositionAndRotation = new DefaultPositionAndRotation();
 
         /// <summary>
@@ -79,7 +76,7 @@ namespace UnityEngine
             defaultPositionAndRotation = new DefaultPositionAndRotation(instantiationPosition, instantiationRotation);
             this.randomInstantiationSequence = randomInstantiationSequence;
             if (intantiationRandomizationSeed != -1)
-                this.easyRandomInstantiation = new EasyRandom(intantiationRandomizationSeed);
+                this.randomEssentialsInstantiation = new RandomEssentials(intantiationRandomizationSeed);
         }
 
         /// <summary>
@@ -157,7 +154,7 @@ namespace UnityEngine
             if (randomInstantiationSequence)
             {
                 lastBaseObjectRegisteredIndex = register
-                    ? easyRandomInstantiation.GetRandomInt(baseObjects.Length)
+                    ? randomEssentialsInstantiation.GetRandomInt(baseObjects.Length)
                     : lastBaseObjectRegisteredIndex;
             }
             else

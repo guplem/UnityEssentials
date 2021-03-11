@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace UnityEngine
 {
-    public class EasyRandom : System.Random
+    public class RandomEssentials : System.Random
     {
         /// <summary>
         /// Creates a pseudo-random number generator, which is an algorithm that produces a sequence of numbers that meet certain statistical requirements for randomness.
         /// <para>Initializes pseudo-random number generator using a default seed value.</para>
         /// </summary>
-        public EasyRandom()
+        public RandomEssentials()
         {
         }
 
@@ -20,7 +20,7 @@ namespace UnityEngine
         /// <para>Initializes pseudo-random number generator, using the specified seed value.</para>
         /// <para>Using a custom seed ensures that the generated results will be the same (in the same order) all the times the same seed is used.</para>
         /// </summary>
-        public EasyRandom(int seed) : base(seed)
+        public RandomEssentials(int seed) : base(seed)
         {
         }
 
@@ -58,7 +58,7 @@ namespace UnityEngine
         }
 
         /// <summary>
-        /// Returns a random sign.
+        /// Returns a random sign as -1 or +1.
         /// </summary>
         /// <param name="negativeProbability">The probability of returning a -1 instead of a 1. It must be within the range [0, 1]</param>
         /// <returns>A random 1 or -1</returns>

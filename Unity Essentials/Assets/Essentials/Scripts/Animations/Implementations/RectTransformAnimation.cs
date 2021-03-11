@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Essentials.Scripts.Extensions.RectTransformExtensions;
 using UnityEngine;
 
 namespace UnityEngine

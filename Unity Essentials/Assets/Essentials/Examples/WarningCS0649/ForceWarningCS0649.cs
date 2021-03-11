@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Essentials
+namespace Essentials.Examples.WarningCS0649
 {
     // Dummy class to test if the warning CS0649 appears in the Unity's Console or not
     public class ForceWarningCS0649 : MonoBehaviour

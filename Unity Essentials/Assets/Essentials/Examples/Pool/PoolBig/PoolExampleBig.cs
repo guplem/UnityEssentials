@@ -1,61 +1,62 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-public class PoolExampleBig : MonoBehaviour
+namespace Essentials.Examples.Pool.PoolBig
 {
-
-    [SerializeField] private KeyCode keyToSpawn;
-    [SerializeField] private GameObject objectToSpawn;
-    [SerializeField] private Transform parentForPooled;
-    [SerializeField] private float timeBetweenLoadingInstances = 1;
-
-    private Pool pool;
-    private EasyRandom random;
-    private IEnumerator coroutineHolder; // Keeps track of the coroutine
-
-    private void Start()
+    public class PoolExampleBig : MonoBehaviour
     {
-        // The pool is created
-        pool = new Pool(objectToSpawn, 100, false);
-        
-        random = new EasyRandom();
-        
-        Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
-        
-        //Assign the coroutine to the holder
-        coroutineHolder = LoadingCoroutine();
-        //Run the coroutine
-        StartCoroutine(coroutineHolder);
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(keyToSpawn))
+        [SerializeField] private KeyCode keyToSpawn;
+        [SerializeField] private GameObject objectToSpawn;
+        [SerializeField] private Transform parentForPooled;
+        [SerializeField] private float timeBetweenLoadingInstances = 1;
+
+        private UnityEngine.Pool pool;
+        private UnityEngine.RandomEssentials randomEssentials;
+        private IEnumerator coroutineHolder; // Keeps track of the coroutine
+
+        private void Start()
         {
-            // Activate/Respawn/Move one game object each time 'Spawn' is called
-            GameObject spawned = pool.Spawn(
-                random.GetRandomVector3(-5, 5),   // Position
-                Quaternion.identity,                                               // Rotation
-                random.GetRandomVector3(0.5f,1.5f), // Scale
-                parentForPooled                                                    // Parent
-            );
+            // The pool is created
+            pool = new UnityEngine.Pool(objectToSpawn, 100, false);
         
-            // Set a random name to the spawned GameObject 
-            spawned.gameObject.name = "Random number name - " + random.GetRandomInt(0,1000).ToString();
+            randomEssentials = new UnityEngine.RandomEssentials();
+        
+            Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
+        
+            //Assign the coroutine to the holder
+            coroutineHolder = LoadingCoroutine();
+            //Run the coroutine
+            StartCoroutine(coroutineHolder);
         }
-        
-    }
-    
-    // Method/Corroutine used as example
-    private IEnumerator LoadingCoroutine()
-    {
-        while (true)
+
+        void Update()
         {
-            yield return new WaitForSeconds(timeBetweenLoadingInstances);
+            if (Input.GetKeyDown(keyToSpawn))
+            {
+                // Activate/Respawn/Move one game object each time 'Spawn' is called
+                GameObject spawned = pool.Spawn(
+                    randomEssentials.GetRandomVector3(-5, 5),   // Position
+                    Quaternion.identity,                                               // Rotation
+                    randomEssentials.GetRandomVector3(0.5f,1.5f), // Scale
+                    parentForPooled                                                    // Parent
+                );
+        
+                // Set a random name to the spawned GameObject 
+                spawned.gameObject.name = "Random number name - " + randomEssentials.GetRandomInt(0,1000).ToString();
+            }
+        
+        }
+    
+        // Method/Corroutine used as example
+        private IEnumerator LoadingCoroutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(timeBetweenLoadingInstances);
             
-            pool.Load(1, parentForPooled);
+                pool.Load(1, parentForPooled);
+            }
         }
     }
 }

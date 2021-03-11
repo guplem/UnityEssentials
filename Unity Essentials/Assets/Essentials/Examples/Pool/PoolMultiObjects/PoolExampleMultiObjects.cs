@@ -1,45 +1,45 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PoolExampleMultiObjects : MonoBehaviour
+namespace Essentials.Examples.Pool.PoolMultiObjects
 {
-
-    [SerializeField] private KeyCode keyToSpawn;
-    [SerializeField] private GameObject[] objectsToSpawn;
-    [SerializeField] private Transform parentForPooled;
-    [SerializeField] private bool randomInstantiationSequence;
-
-    private Pool pool;
-    private EasyRandom random;
-
-    private void Start()
+    public class PoolExampleMultiObjects : MonoBehaviour
     {
-        // The pool is created
-        pool = new Pool(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstantiationSequence);
-        
-        random = new EasyRandom();
-        
-        Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(keyToSpawn))
+        [SerializeField] private KeyCode keyToSpawn;
+        [SerializeField] private GameObject[] objectsToSpawn;
+        [SerializeField] private Transform parentForPooled;
+        [SerializeField] private bool randomInstantiationSequence;
+
+        private UnityEngine.Pool pool;
+        private UnityEngine.RandomEssentials randomEssentials;
+
+        private void Start()
         {
-            // Activate/Respawn/Move one game object each time 'Spawn' is called
-            GameObject spawned = pool.Spawn(
-                random.GetRandomVector3(-5, 5),   // Position
-                Quaternion.identity,                                               // Rotation
-                random.GetRandomVector3(0.5f,1.5f), // Scale
-                parentForPooled                                                    // Parent
-            );
+            // The pool is created
+            pool = new UnityEngine.Pool(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstantiationSequence);
         
-            // Set a random name to the spawned GameObject 
-            spawned.gameObject.name = "Random number name - " + random.GetRandomInt(0,1000).ToString();
+            randomEssentials = new UnityEngine.RandomEssentials();
+        
+            Debug.Log($"Press '{keyToSpawn}' to spawn a new object from the pool.");
         }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(keyToSpawn))
+            {
+                // Activate/Respawn/Move one game object each time 'Spawn' is called
+                GameObject spawned = pool.Spawn(
+                    randomEssentials.GetRandomVector3(-5, 5),   // Position
+                    Quaternion.identity,                                               // Rotation
+                    randomEssentials.GetRandomVector3(0.5f,1.5f), // Scale
+                    parentForPooled                                                    // Parent
+                );
         
-    }
+                // Set a random name to the spawned GameObject 
+                spawned.gameObject.name = "Random number name - " + randomEssentials.GetRandomInt(0,1000).ToString();
+            }
+        
+        }
     
+    }
 }

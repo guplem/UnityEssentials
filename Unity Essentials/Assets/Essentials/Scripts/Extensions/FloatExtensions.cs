@@ -1,4 +1,4 @@
-﻿namespace UnityEngine
+﻿namespace Essentials.Scripts.Extensions
 {
     public static class FloatExtensions
     {

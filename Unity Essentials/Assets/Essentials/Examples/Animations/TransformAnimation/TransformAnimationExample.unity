@@ -422,12 +422,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
   - id: 0
+  - id: 1
   references:
     version: 1
     00000000:
       type: {class: TransformAnimation, ns: UnityEngine, asm: UnityEssentials}
       data:
-        _progression: 0
+        name: Name
+        mirror: 0
+        duration: 3
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        onFinish:
+          m_PersistentCalls:
+            m_Calls: []
+        transformToAnimate: {fileID: 1340663744}
+        originTransform: {fileID: 1061533335}
+        destinationTransform: {fileID: 847240055}
+    00000001:
+      type: {class: RectTransformAnimation, ns: UnityEngine, asm: UnityEssentials}
+      data:
+        name: 
         mirror: 0
         duration: 1
         curve:
@@ -457,9 +494,9 @@ MonoBehaviour:
         onFinish:
           m_PersistentCalls:
             m_Calls: []
-        transformToAnimate: {fileID: 1340663744}
-        originTransform: {fileID: 1061533335}
-        destinationTransform: {fileID: 847240055}
+        rectTransformToAnimate: {fileID: 0}
+        originRectTransform: {fileID: 0}
+        destinationRectTransform: {fileID: 0}
 --- !u!23 &1340663742
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -514,9 +551,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340663740}
-  m_LocalRotation: {x: 0, y: 0.6777653, z: 0, w: 0.73527837}
-  m_LocalPosition: {x: 6.560757, y: -0.345303, z: 0.73478705}
-  m_LocalScale: {x: 1, y: 0.4475152, z: 0.7834242}
+  m_LocalRotation: {x: 0, y: 0.6723404, z: 0, w: 0.7402421}
+  m_LocalPosition: {x: 6.7195306, y: -0.3536595, z: 0.9219726}
+  m_LocalScale: {x: 1, y: 0.4341448, z: 0.7951233}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

@@ -80,7 +80,7 @@ namespace UnityEngine
             EditorGUI.indentLevel += 1;
             EditorGUILayout.Space(); 
             GUILayout.Label("Animations Configuration", EditorStyles.boldLabel);
-            ShowArrayProperty(serializedObject.FindProperty("animations"));
+            ShowAnimationsArray(serializedObject.FindProperty("animations"));
 
             EditorGUI.indentLevel -= 1;
             
@@ -109,10 +109,8 @@ namespace UnityEngine
         
         
         
-        private void ShowArrayProperty(UnityEditor.SerializedProperty list)
+        private void ShowAnimationsArray(UnityEditor.SerializedProperty list)
         {
-            
-            
             UnityEditor.EditorGUI.indentLevel += 1;
             for (int i = 0; i < list.arraySize; i++)
             {
@@ -122,20 +120,29 @@ namespace UnityEngine
                     SerializedProperty transformProp = list.GetArrayElementAtIndex(i);
 
                     SimpleAnimation animation = ((SimpleAnimation) simpleAnimationsManager.animations[i]);
-
+                    
                     string itemName;
                     if (animation.name.IsNullOrEmpty())
-                        itemName = $"Animation ({i})";
+                        itemName = $"Animation [{i}]";
                     else
-                        itemName = $"{animation.name} animation ({i})";
+                        itemName = $"{animation.name} animation [{i}]";
+
+                    string animType = animation.GetType().Name;
+                    int charSize = 57;
+                    int reaminingChars = charSize - animType.Length - itemName.Length;
+                    for (int j = 0; j < reaminingChars; j++)
+                        itemName += " ";
+                    itemName += animType;
                     EditorGUILayout.PropertyField(transformProp, new GUIContent(itemName), true);
+                    //EditorGUILayout.LabelField(animation.GetType().Name);
+
   
                     int oldIndentLevel = UnityEditor.EditorGUI.indentLevel;
                     UnityEditor.EditorGUI.indentLevel = 1;
                     EditorGUILayout.BeginHorizontal();
                     float oldLabelWidth = EditorGUIUtility.labelWidth;
                     EditorGUIUtility.labelWidth = 75;
-                    EditorGUILayout.LabelField("Animation progress");
+                    EditorGUILayout.LabelField("Animation preview");
                     EditorGUIUtility.labelWidth = oldLabelWidth;
                     EditorGUI.BeginChangeCheck();
                     float animProgression = animation.progress;

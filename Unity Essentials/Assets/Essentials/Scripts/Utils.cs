@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
@@ -23,9 +24,9 @@ namespace Essentials
         /// </summary>
         /// <typeparam name="T">The type from whom all the implementations are.</typeparam>
         /// <returns></returns>
-        public static Type[] GetTypeImplementations<T>()
+        public static IEnumerable<Type> GetTypeImplementations<T>()
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes());
+            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes());
 
             Type interfaceType = typeof(T);
             return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
@@ -43,11 +44,11 @@ namespace Essentials
             Rect mainWindowRect = GetEditorMainWindowPos();
             return GetCenteredWindowPosition(mainWindowRect, windowSize);
         }
-        
-        static UnityEngine.Object s_MainWindow = null;
+
+        private static UnityEngine.Object sMainWindow = null;
         private static Rect GetEditorMainWindowPos()
         {
-            if (s_MainWindow == null)
+            if (sMainWindow == null)
             {
                 var containerWinType = AppDomain.CurrentDomain.GetAllDerivedTypes(typeof(ScriptableObject)).FirstOrDefault(t => t.Name == "ContainerWindow");
                 if (containerWinType == null)
@@ -58,22 +59,22 @@ namespace Essentials
                 var windows = Resources.FindObjectsOfTypeAll(containerWinType);
                 foreach (var win in windows)
                 {
-                    var showMode = (int)showModeField.GetValue(win);
+                    int showMode = (int)showModeField.GetValue(win);
                     if (showMode == 4) // main window
                     {
-                        s_MainWindow = win;
+                        sMainWindow = win;
                         break;
                     }
                 }
             }
 
-            if (s_MainWindow == null)
+            if (sMainWindow == null)
                 return new Rect(0, 0, 800, 600);
 
-            var positionProperty = s_MainWindow.GetType().GetProperty("position", BindingFlags.Public | BindingFlags.Instance);
+            var positionProperty = sMainWindow.GetType().GetProperty("position", BindingFlags.Public | BindingFlags.Instance);
             if (positionProperty == null)
                 throw new MissingFieldException("Can't find internal fields 'position'. Maybe something has changed inside Unity.");
-            return (Rect)positionProperty.GetValue(s_MainWindow, null);
+            return (Rect)positionProperty.GetValue(sMainWindow, null);
         }
         
         private static Type[] GetAllDerivedTypes(this AppDomain aAppDomain, Type aType)
@@ -89,8 +90,8 @@ namespace Essentials
                 width = Mathf.Min(size.x, parentWindowPosition.width * 0.90f),
                 height = Mathf.Min(size.y, parentWindowPosition.height * 0.90f)
             };
-            var w = (parentWindowPosition.width - pos.width) * 0.5f;
-            var h = (parentWindowPosition.height - pos.height) * 0.5f;
+            float w = (parentWindowPosition.width - pos.width) * 0.5f;
+            float h = (parentWindowPosition.height - pos.height) * 0.5f;
             pos.x = parentWindowPosition.x + w;
             pos.y = parentWindowPosition.y + h;
             return pos;

@@ -30,16 +30,17 @@ namespace Essentials.Examples.RandomEssentials
         private void Start()
         {
             randomEssentials = new UnityEngine.RandomEssentials();
-        
-            //EXAMPLES: 
-            //easyRandom.GetRandomBool(0.75f);
-            //easyRandom.GetRandomInt(3,10);
-            //easyRandom.GetRandomFloat(0.5f, 0.1f);
-            //easyRandom.GetRandomVector3(0.5f, 0.1f);
-            //easyRandom.GetRandomVector2(0.5f, 0.1f);
-            //easyRandom.GetRandomSign(0.4f);
-            //easyRandom.GetRandomBoolTrueEnsured(3, 10);
-            //easyRandom.GetPseudoRandomDistributedBool(5, 0.25f);
+            
+            //EXAMPLES:
+            bool randomBool = randomEssentials.GetRandomBool(0.75f);
+            int randomInt = randomEssentials.GetRandomInt(3,10);
+            float randomFloat = randomEssentials.GetRandomFloat(0.5f, 0.1f);
+            Vector3 randomVector3 = randomEssentials.GetRandomVector3(0.5f, 0.1f);
+            Vector2 randomVector2 = randomEssentials.GetRandomVector2(0.5f, 0.1f);
+            int randomSign = randomEssentials.GetRandomSign(0.4f);
+            bool randomBoolTrueEnsured = randomEssentials.GetRandomBoolTrueEnsured(3, 10);
+            bool randomDistributedBool = randomEssentials.GetPseudoRandomDistributedBool(5, 0.25f);
+                // This variables are not used anywhere, they exist only to help the example.
         }
 
         void Update()

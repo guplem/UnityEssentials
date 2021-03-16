@@ -15,11 +15,11 @@ C:/Users/guple/Documents/GitHub/UnityEssentials/Unity Essentials
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56127
+50388
 Successfully changed project path to: C:/Users/guple/Documents/GitHub/UnityEssentials/Unity Essentials
 C:/Users/guple/Documents/GitHub/UnityEssentials/Unity Essentials
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 29.56 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 27.09 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,111 +35,278 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56704
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56960
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003233 seconds.
+Registered in 0.002141 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 29.39 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 39.84 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.661 seconds
+- Completed reload, in  1.500 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001226 seconds.
+Registered in 0.002064 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 33.18 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 30.63 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.208 seconds
+- Completed reload, in  1.016 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1265 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 61.4 MB.
 System memory in use after: 61.5 MB.
 
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1714.
-Total: 3.209400 ms (FindLiveObjects: 0.264200 ms CreateObjectMapping: 0.175200 ms MarkObjects: 2.655100 ms  DeleteObjects: 0.112500 ms)
+Total: 2.422800 ms (FindLiveObjects: 0.165700 ms CreateObjectMapping: 0.039200 ms MarkObjects: 2.129800 ms  DeleteObjects: 0.087000 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Essentials/Scripts/Utils.cs
-  artifactKey: Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Essentials/Scripts/Utils.cs using Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e565d666d713ea8bb807de24abd3beee') in 0.058518 seconds
-  Import took 0.062539 seconds .
+  path: Assets/Essentials/Scripts/Extensions/FloatExtensions.cs
+  artifactKey: Guid(252c748a125bd32439e8fbb4c1ba59aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/FloatExtensions.cs using Guid(252c748a125bd32439e8fbb4c1ba59aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f529489e695d5141a1521b9831a5ea28') in 0.040927 seconds
+  Import took 0.043901 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.383998 seconds.
+  path: Assets/Essentials/Scripts/Extensions/ComponentExtensions.cs
+  artifactKey: Guid(4788b89788db8a0458980ba6ecf4e5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/ComponentExtensions.cs using Guid(4788b89788db8a0458980ba6ecf4e5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36eedf49dc1021a04f02fafc87a1a24d') in 0.010535 seconds
+  Import took 0.014398 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002784 seconds.
+  path: Assets/Essentials/Scripts/Extensions/ComponentExtensions.cs
+  artifactKey: Guid(4788b89788db8a0458980ba6ecf4e5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/ComponentExtensions.cs using Guid(4788b89788db8a0458980ba6ecf4e5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36eedf49dc1021a04f02fafc87a1a24d') in 0.004209 seconds
+  Import took 0.006727 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.170258 seconds.
+  path: Assets/Essentials/Scripts/Extensions/DebugExtensions.cs
+  artifactKey: Guid(643776440af946d488761348f995e3cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/DebugExtensions.cs using Guid(643776440af946d488761348f995e3cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c46c5ec521b78852ceba4d36d3f5731') in 0.037989 seconds
+  Import took 0.059990 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.494866 seconds.
+  path: Assets/Essentials/Scripts/Extensions/GameObjectExtensions.cs
+  artifactKey: Guid(93ad6a9fd22790740a3fcad5405da7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/GameObjectExtensions.cs using Guid(93ad6a9fd22790740a3fcad5405da7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '987af8724f89148cbc61cb6255adc494') in 0.012289 seconds
+  Import took 0.016136 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.451679 seconds.
+  path: Assets/Essentials/Scripts/Extensions/ICollectionExtensions.cs
+  artifactKey: Guid(47633fb8359740f4497cd9be5cfe1e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/ICollectionExtensions.cs using Guid(47633fb8359740f4497cd9be5cfe1e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78cd3889222aff31d154a24677f87e3a') in 0.009388 seconds
+  Import took 0.014743 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.361001 seconds.
+  path: Assets/Essentials/Scripts/Extensions/IEnumerableExtensions.cs
+  artifactKey: Guid(8a0ad683d9f783a40ba7b08815ab4547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/IEnumerableExtensions.cs using Guid(8a0ad683d9f783a40ba7b08815ab4547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50a107b86489714e4b8b3f741a097832') in 0.011344 seconds
+  Import took 0.016011 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.674648 seconds.
+  path: Assets/Essentials/Scripts/Extensions/IntExtensions.cs
+  artifactKey: Guid(b1739fff2fae7274d887403cfc6b1305) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/IntExtensions.cs using Guid(b1739fff2fae7274d887403cfc6b1305) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd85fd3c64b410b08fad1c4eb6cccdc35') in 0.019677 seconds
+  Import took 0.029164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.025764 seconds.
+  path: Assets/Essentials/Scripts/Extensions/LayerMaskExtensions.cs
+  artifactKey: Guid(3ac9a06eaafe4494980466a8fb242bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/LayerMaskExtensions.cs using Guid(3ac9a06eaafe4494980466a8fb242bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b00f39f67b84809963c4a6d2973813b') in 0.029996 seconds
+  Import took 0.070795 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.521344 seconds.
+  path: Assets/Essentials/Scripts/Extensions/MathfExtensions.cs
+  artifactKey: Guid(dd52a97c29780d042a62a7b39a80c5dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/MathfExtensions.cs using Guid(dd52a97c29780d042a62a7b39a80c5dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16593f8e0e035f37afba3c4df596290d') in 0.015590 seconds
+  Import took 0.022943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001373 seconds.
+  path: Assets/Essentials/Scripts/Extensions/MathfExtensions.cs
+  artifactKey: Guid(dd52a97c29780d042a62a7b39a80c5dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/MathfExtensions.cs using Guid(dd52a97c29780d042a62a7b39a80c5dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16593f8e0e035f37afba3c4df596290d') in 0.003961 seconds
+  Import took 0.009140 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.498995 seconds.
+  path: Assets/Essentials/Scripts/Extensions/SerializedPropertyExtensions.cs
+  artifactKey: Guid(bbdd10b2872be1b4ba3a48e04cad0ac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/SerializedPropertyExtensions.cs using Guid(bbdd10b2872be1b4ba3a48e04cad0ac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f72e97ebb6daa388f2fb03d8d5452fa') in 0.019252 seconds
+  Import took 0.024576 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003840 seconds.
+  path: Assets/Essentials/Scripts/Extensions/SerializedPropertyExtensions.cs
+  artifactKey: Guid(bbdd10b2872be1b4ba3a48e04cad0ac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/SerializedPropertyExtensions.cs using Guid(bbdd10b2872be1b4ba3a48e04cad0ac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f72e97ebb6daa388f2fb03d8d5452fa') in 0.008041 seconds
+  Import took 0.012469 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.767034 seconds.
+  path: Assets/Essentials/Scripts/Extensions/StringExtensions.cs
+  artifactKey: Guid(4165c0f09cf84e649b1665f47410cef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/StringExtensions.cs using Guid(4165c0f09cf84e649b1665f47410cef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90cad63d721a72db3c0cb3f0f2489b2b') in 0.014289 seconds
+  Import took 0.019695 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000679 seconds.
+  path: Assets/Essentials/Scripts/Extensions/StringExtensions.cs
+  artifactKey: Guid(4165c0f09cf84e649b1665f47410cef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/StringExtensions.cs using Guid(4165c0f09cf84e649b1665f47410cef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90cad63d721a72db3c0cb3f0f2489b2b') in 0.006872 seconds
+  Import took 0.010852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.966234 seconds.
+  path: Assets/Essentials/Scripts/Extensions/TransformExtensions.cs
+  artifactKey: Guid(091d9ed59ca5f164ea1a36916d37d43d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/TransformExtensions.cs using Guid(091d9ed59ca5f164ea1a36916d37d43d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94973cf12a38090fa43313b384bf07ab') in 0.013458 seconds
+  Import took 0.018216 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.527290 seconds.
+  path: Assets/Essentials/Scripts/Extensions/VectorExtensions.cs
+  artifactKey: Guid(9fb3922c3c359454095d642876bc49d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/VectorExtensions.cs using Guid(9fb3922c3c359454095d642876bc49d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f28b236601977c683ff8c06177f753f') in 0.015874 seconds
+  Import took 0.020282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.738184 seconds.
+  path: Assets/Essentials/Scripts/Extensions/VectorIntExtensions.cs
+  artifactKey: Guid(70bc65ca82c450f4984f6c65f760229b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/VectorIntExtensions.cs using Guid(70bc65ca82c450f4984f6c65f760229b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c031d7c7d287141a3a1c8fb8b964c59c') in 0.036146 seconds
+  Import took 0.042995 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001241 seconds.
+Registered in 0.001262 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.23 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.902 seconds
+- Completed reload, in  0.812 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1260 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 61.4 MB.
 System memory in use after: 61.5 MB.
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1717.
-Total: 2.212600 ms (FindLiveObjects: 0.214400 ms CreateObjectMapping: 0.064200 ms MarkObjects: 1.897500 ms  DeleteObjects: 0.035400 ms)
+Total: 2.703200 ms (FindLiveObjects: 0.187500 ms CreateObjectMapping: 0.039700 ms MarkObjects: 2.458600 ms  DeleteObjects: 0.015100 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 494.896713 seconds.
-  path: Assets/Essentials/Scripts/Utils.cs
-  artifactKey: Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Essentials/Scripts/Utils.cs using Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9122491272ed98cb2dddb4181aae7311') in 0.006424 seconds
-  Import took 0.008691 seconds .
+  Time since last request: 114.320383 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs
+  artifactKey: Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs using Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46c24299996e9f3351a8d6db4996bcb0') in 0.019013 seconds
+  Import took 0.022533 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.726809 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs
+  artifactKey: Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs using Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2643b0bcdbd211f3128695a5b83c2625') in 0.011093 seconds
+  Import took 0.017878 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002314 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs
+  artifactKey: Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs using Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2643b0bcdbd211f3128695a5b83c2625') in 0.004152 seconds
+  Import took 0.007515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.060187 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs
+  artifactKey: Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/RectTransformExtensions.cs using Guid(2ef1ea5c286837444ba5de259d777a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab86c8fcbbb6c2f7a99393f8513f26fc') in 0.008438 seconds
+  Import took 0.012702 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.537616 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs
+  artifactKey: Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs using Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eea1b4a07a40c44b010fdf80fee3051') in 0.004979 seconds
+  Import took 0.012496 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006217 seconds.
+  path: Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs
+  artifactKey: Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Essentials/Scripts/Extensions/RectTransformExtensions/Rectangle01.cs using Guid(e1c42540b7f9ab545bc1db9c16e05810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eea1b4a07a40c44b010fdf80fee3051') in 0.003536 seconds
+  Import took 0.006741 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001481 seconds.
+Registered in 0.001310 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.892 seconds
+- Completed reload, in  1.004 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.22 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.23 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1260 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 61.4 MB.
 System memory in use after: 61.5 MB.
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1720.
-Total: 2.967500 ms (FindLiveObjects: 0.114400 ms CreateObjectMapping: 0.037600 ms MarkObjects: 2.796600 ms  DeleteObjects: 0.017900 ms)
+Total: 2.579300 ms (FindLiveObjects: 0.274100 ms CreateObjectMapping: 0.045100 ms MarkObjects: 2.209700 ms  DeleteObjects: 0.049400 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 77.466470 seconds.
-  path: Assets/Essentials/Scripts/Utils.cs
-  artifactKey: Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Essentials/Scripts/Utils.cs using Guid(6bc67bb6f0046aa42aa63d0f0bd44a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e524794665780a83763c1a28c19fadf') in 0.005851 seconds
-  Import took 0.011298 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file

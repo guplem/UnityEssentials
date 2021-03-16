@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Essentials.Scripts.Extensions.RectTransformExtensions
+﻿namespace UnityEngine
 {
     public struct Rectangle01
     {

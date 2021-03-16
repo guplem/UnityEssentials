@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace UnityEngine
 {
-    static class IEnumerableExtensions
+    public static class IEnumerableExtensions
     {
         /// <summary>
         /// Creates a new enumerable with all the elements of the original one cloned in it.

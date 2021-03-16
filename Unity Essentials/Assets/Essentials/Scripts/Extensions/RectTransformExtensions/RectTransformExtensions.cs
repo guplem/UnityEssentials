@@ -26,9 +26,7 @@ THE SOFTWARE.
 // Thanks Christian 'ketura' McCarty for your code, which I found extremely useful and a must-have.
 
 
-using UnityEngine;
-
-namespace Essentials.Scripts.Extensions.RectTransformExtensions
+namespace UnityEngine
 {
   public static class RectTransformExtensions
   {

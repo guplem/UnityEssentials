@@ -1,5 +1,4 @@
-﻿using Essentials.Scripts.Extensions;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Tests

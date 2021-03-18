@@ -1,4 +1,6 @@
-﻿namespace Essentials.EssentialsSettings
+﻿using UnityEngine;
+
+namespace Essentials.EssentialsSettings
 {
     public abstract class Modification : IModification
     {
@@ -35,6 +37,28 @@
         /// Text displayed on the button to revert the modification
         /// </summary>
         public abstract string revertButtonText { get; }
-    
+        
+        /// <summary>
+        /// Text displayed on the button to get more information about the modification
+        /// </summary>
+        public string infoButtonText => "Info";
+        /// <summary>
+        /// URL where the information regarding the modification can be found
+        /// </summary>
+        public abstract string infoURL { get; }
+        
+        /// <summary>
+        /// If the modification should be displayed or not in the Essentials' settings window
+        /// </summary>
+        public virtual bool showInSettingsWindow => true;
+        
+        /// <summary>
+        /// Opens the URL containing the information of the modification
+        /// </summary>
+        public void OpenInfoURL()
+        {
+            Application.OpenURL(infoURL);
+        }
+
     }
 }

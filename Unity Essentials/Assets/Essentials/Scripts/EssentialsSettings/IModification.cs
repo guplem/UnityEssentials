@@ -9,5 +9,10 @@
         void Revert();
         string applyModificationShortEplanation { get; }
         string revertModificationShortEplanation { get; }
+
+        string infoButtonText { get; }
+        public abstract string infoURL { get; }
+        public bool showInSettingsWindow { get; }
+        void OpenInfoURL();
     }
 }

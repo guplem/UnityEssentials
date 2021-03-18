@@ -32,12 +32,14 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 
         public override string title { get => "Disable warning CS0649"; }
         public override string revertButtonText { get => "Revert"; }
+        public override string infoURL { get => "https://answers.unity.com/questions/60461/warning-cs0649-field-is-never-assigned-to-and-will.html"; }
         public override string applyButtonText { get => "Apply"; }
 
         public override string applyModificationShortEplanation { get => "Disable the warning CS069 creating a file named csc.rsp in the project folder."; }
         public override string revertModificationShortEplanation { get => "Enable the warning CS069 by removing a file named csc.rsp in the project folder."; }
-        
-        }
+
+        public override bool showInSettingsWindow => false;
+    }
 
 }
 #endif

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Essentials.Scripts.Extensions
+namespace UnityEngine
 {
     public static class ComponentExtensions
     {

@@ -10,6 +10,7 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
         public override string title { get => "Install Quick Search"; }
         public override string applyButtonText { get => "Apply"; }
         public override string revertButtonText { get => "Revert"; }
+        public override string infoURL { get => "https://docs.unity3d.com/Packages/com.unity.quicksearch@1.1/manual/index.html"; }
 
         /// <summary>
         /// Install the Quick Search package adding a dependency in the project.

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Essentials.Scripts.Extensions;
 using UnityEditor;
 
 namespace UnityEngine

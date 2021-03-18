@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Essentials.Scripts.Extensions
+namespace UnityEngine
 {
     public static class DebugExtensions
     {

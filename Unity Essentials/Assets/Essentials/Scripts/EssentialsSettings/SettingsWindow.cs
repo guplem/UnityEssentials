@@ -56,7 +56,7 @@ namespace Essentials.EssentialsSettings
             if (implementations != null && implementations.Length != 0)
             {
                 
-                GUILayout.Label("Available modifications:");
+                GUILayout.Label("Recommended modifications:");
                 
                 EditorGUILayout.BeginHorizontal();
                 

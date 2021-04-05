@@ -8,8 +8,8 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
     public class QuickSearch : Modification
     {
         public override string title { get => "Install Quick Search"; }
-        public override string applyButtonText { get => "Apply"; }
-        public override string revertButtonText { get => "Revert"; }
+        public override string applyButtonText { get => "Add dependency"; }
+        public override string revertButtonText { get => "Remove dependency"; }
         public override string infoURL { get => "https://docs.unity3d.com/Packages/com.unity.quicksearch@1.1/manual/index.html"; }
 
         /// <summary>

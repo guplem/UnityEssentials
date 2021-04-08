@@ -1,21 +1,24 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Essentials.Examples.Animations.TransformAnimation
+namespace Essentials.Examples.Animations.CameraAnimation
 {
-    public class CubeAnimationExample : MonoBehaviour
+    public class CameraAnimationExample : MonoBehaviour
     {
 
         [SerializeField] private SimpleAnimationsManager simpleAnimationsManager;
         [Space]
-        [SerializeField] private Transform origin;
-        [SerializeField] private Transform destination;
+        [SerializeField] private Camera cameraToAnimate;
+        [SerializeField] private Camera origin;
+        [SerializeField] private Camera destination;
 
 
-        private UnityEngine.TransformAnimation codeAnimation = null;
+        private UnityEngine.CameraAnimation codeAnimation = null;
     
         void Start()
         {
-            codeAnimation = new UnityEngine.TransformAnimation(this.transform, destination, origin, 1f, Curve.Linear);
+            codeAnimation = new UnityEngine.CameraAnimation(cameraToAnimate, destination, origin, 1f, Curve.Linear);
         
             Debug.Log("Press G to play and T to stop the animation inserted by code");
             Debug.Log("Press H to play and Y to stop the animation inserted trough the inspector");

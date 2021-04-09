@@ -161,7 +161,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.25717336, g: 0.6770139, b: 0.7924528, a: 0}
+  m_BackGroundColor: {r: 0.6044651, g: 0.25882354, b: 0.7921569, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -172,14 +172,14 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.5
-  near clip plane: 2
-  far clip plane: 4.4
-  field of view: 60
+    width: 0.5
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 50
+  field of view: 150
   orthographic: 0
   orthographic size: 5
-  m_Depth: -10
+  m_Depth: -5
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -236,9 +236,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d8d36295b507141a4b64d8ebf2c605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animations: []
+  animations:
+  - id: 0
   references:
     version: 1
+    00000000:
+      type: {class: CameraAnimation, ns: UnityEngine, asm: UnityEssentials}
+      data:
+        name: 
+        mirror: 1
+        duration: 3
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 7.634927
+            outSlope: 7.634927
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.015554299
+          - serializedVersion: 3
+            time: 0.24152863
+            value: 0.9733727
+            inSlope: -0.238024
+            outSlope: -0.238024
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.66895044
+            value: 0.8096868
+            inSlope: 0.0739245
+            outSlope: 0.0739245
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0.6409058
+            outSlope: 0.6409058
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.27094653
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        onFinish:
+          m_PersistentCalls:
+            m_Calls: []
+        cameraToAnimate: {fileID: 345068875}
+        originCamera: {fileID: 1638188104}
+        destinationCamera: {fileID: 904313148}
 --- !u!1 &498516663
 GameObject:
   m_ObjectHideFlags: 0

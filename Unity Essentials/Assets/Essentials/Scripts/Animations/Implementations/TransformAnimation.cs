@@ -23,9 +23,9 @@ namespace UnityEngine
             this.curve = SimpleAnimation.GetCurve(curve);
         }
 
-        public override bool Step(float deltaTime)
+        public override bool Step(float deltaTime, bool inverseIfMirror = true)
         {
-            bool endOfAnimation = base.Step(deltaTime);
+            bool endOfAnimation = base.Step(deltaTime, inverseIfMirror);
             
             transformToAnimate.SetLerp(originTransform.transform, destinationTransform, curve.Evaluate(timeStamp / duration));
 

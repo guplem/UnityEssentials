@@ -23,11 +23,11 @@ namespace UnityEngine
             this.curve = SimpleAnimation.GetCurve(curve);
         }
 
-        public override bool Step(float deltaTime)
+        public override bool Step(float deltaTime, bool inverseIfMirror = true)
         {
-            bool endOfAnimation = base.Step(deltaTime);
+            bool endOfAnimation = base.Step(deltaTime, inverseIfMirror);
             
-            cameraToAnimate.SetLerp(originCamera, destinationCamera, curve.Evaluate(timeStamp / duration));
+            cameraToAnimate.SetLerp(originCamera, destinationCamera, currentAnimationValue);
 
             return endOfAnimation;
         }

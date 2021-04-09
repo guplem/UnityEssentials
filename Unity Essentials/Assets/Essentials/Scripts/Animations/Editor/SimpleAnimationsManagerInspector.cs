@@ -147,7 +147,8 @@ namespace UnityEngine
                     EditorGUI.BeginChangeCheck();
                     float animProgression = animation.progress;
                     // Todo: fix bug where the slider is not set to the proper value by default (after opening the scene, all the sliders are at 0, not at the proper value)
-                    animProgression = EditorGUILayout.Slider(animProgression, 0.0f, 1.0f);
+                    //animProgression = EditorGUILayout.Slider(animProgression, animation.mirror?1f:0f, animation.mirror?0f:1f);
+                    animProgression = EditorGUILayout.Slider(animProgression, 0f, 1f);
                     if (EditorGUI.EndChangeCheck())
                     {
                         UnityEngine.Object animatedObject = animation.GetAnimatedObject();

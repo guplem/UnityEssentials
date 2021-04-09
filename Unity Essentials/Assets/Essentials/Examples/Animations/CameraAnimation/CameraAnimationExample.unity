@@ -161,7 +161,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6044651, g: 0.25882354, b: 0.7921569, a: 0}
+  m_BackGroundColor: {r: 0.25717336, g: 0.6770139, b: 0.7924528, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -172,14 +172,14 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.5
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 50
-  field of view: 150
+    width: 1
+    height: 0.5
+  near clip plane: 2
+  far clip plane: 4.4
+  field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -5
+  m_Depth: -10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -259,22 +259,22 @@ MonoBehaviour:
             inWeight: 0
             outWeight: 0.015554299
           - serializedVersion: 3
-            time: 0.24152863
-            value: 0.9733727
-            inSlope: -0.238024
-            outSlope: -0.238024
+            time: 0.29949677
+            value: 0.6034386
+            inSlope: -0.39939395
+            outSlope: -0.39939395
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
+            inWeight: 0.1832076
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 0.66895044
-            value: 0.8096868
-            inSlope: 0.0739245
-            outSlope: 0.0739245
+            time: 0.7014822
+            value: 0.8002645
+            inSlope: -0.5463834
+            outSlope: -0.5463834
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
+            inWeight: 0.16915552
             outWeight: 0.33333334
           - serializedVersion: 3
             time: 1

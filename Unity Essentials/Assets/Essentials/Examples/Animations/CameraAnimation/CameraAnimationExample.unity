@@ -161,7 +161,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.25717336, g: 0.6770139, b: 0.7924528, a: 0}
+  m_BackGroundColor: {r: 0.50701785, g: 0.37616438, b: 0.7922399, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -172,14 +172,14 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.5
-  near clip plane: 2
-  far clip plane: 4.4
-  field of view: 60
+    width: 0.640296
+    height: 0.859704
+  near clip plane: 0.77700627
+  far clip plane: 37.20501
+  field of view: 124.74673
   orthographic: 0
   orthographic size: 5
-  m_Depth: -10
+  m_Depth: -6.4029593
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -243,7 +243,8 @@ MonoBehaviour:
     00000000:
       type: {class: CameraAnimation, ns: UnityEngine, asm: UnityEssentials}
       data:
-        name: 
+        name: Camera
+        wrapMode: 0
         mirror: 1
         duration: 3
         curve:
@@ -288,6 +289,9 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+        onStep:
+          m_PersistentCalls:
+            m_Calls: []
         onFinish:
           m_PersistentCalls:
             m_Calls: []

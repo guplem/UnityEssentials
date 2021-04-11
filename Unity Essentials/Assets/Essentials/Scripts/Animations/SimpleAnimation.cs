@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace UnityEngine
 {
-    [Serializable]
+    [Serializable] 
     public abstract class SimpleAnimation : ISimpleAnimation
     {
         [SerializeField] public string name;

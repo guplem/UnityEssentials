@@ -10,7 +10,7 @@ namespace Essentials.Examples.FlowControl
 
         private void Start()
         {
-            Debug.Log("Press 'S' to invoke the sequence.");
+            Debug.Log("Press 'S' to invoke the Sequence.");
         }
 
         private void Update()
@@ -23,17 +23,17 @@ namespace Essentials.Examples.FlowControl
 
         public void DummyMethodA()
         {
-            Debug.Log("A");
+            Debug.Log("Executing method from Sequence (A)");
         }
         
         public void DummyMethodB()
         {
-            Debug.Log("B");
+            Debug.Log("Executing method from Sequence (B)");
         }
         
         public void DummyMethodC()
         {
-            Debug.Log("C");
+            Debug.Log("Executing method from Sequence (C)");
         }
     }
 }

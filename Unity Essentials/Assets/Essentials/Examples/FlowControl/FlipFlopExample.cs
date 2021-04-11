@@ -23,12 +23,12 @@ namespace Essentials.Examples.FlowControl
 
         public void DummyMethodA()
         {
-            Debug.Log("A");
+            Debug.Log("Executing method from FlipFlop (A)");
         }
         
         public void DummyMethodB()
         {
-            Debug.Log("B");
+            Debug.Log("Executing method from FlipFlop (B)");
         }
     }
 }

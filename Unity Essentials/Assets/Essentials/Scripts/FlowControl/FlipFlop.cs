@@ -9,7 +9,7 @@ namespace UnityEngine
         
         [SerializeField] public UnityEvent firstEvent;
         [SerializeField] public UnityEvent secondEvent;
-        [HideInInspector] public UnityEvent nextEvent;
+        [NonSerialized] public UnityEvent nextEvent;
 
         public FlipFlop(UnityEvent firstEvent, UnityEvent secondEvent)
         {
@@ -19,7 +19,7 @@ namespace UnityEngine
 
         public void Invoke()
         {
-            if (nextEvent.GetPersistentEventCount() <= 0)
+            if (nextEvent == null || nextEvent.GetPersistentEventCount() <= 0)
                 nextEvent = firstEvent;
 
             nextEvent?.Invoke();

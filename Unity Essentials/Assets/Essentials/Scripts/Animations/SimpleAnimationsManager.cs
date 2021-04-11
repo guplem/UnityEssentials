@@ -92,12 +92,12 @@ namespace UnityEngine
         }
         
         /// <summary>
-        /// Stops playing the animation.
+        /// Starts playing the animation.
         /// </summary>
-        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be stopped.</param>
+        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be played.</param>
         public void Play(string animationName)
         {
-            Stop(GetAnimation(animationName));
+            Play(GetAnimation(animationName));
         }
         
         /// <summary>
@@ -107,6 +107,15 @@ namespace UnityEngine
         public void Stop(int index)
         {
             Stop(GetAnimation(index));
+        }
+        
+        /// <summary>
+        /// Stops playing the animation.
+        /// </summary>
+        /// <param name="animationName">The name of the animation in the 'SimpleAnimationsManager' that is wanted to be stopped.</param>
+        public void Stop(string animationName)
+        {
+            Stop(GetAnimation(animationName));
         }
 
         private void Update()

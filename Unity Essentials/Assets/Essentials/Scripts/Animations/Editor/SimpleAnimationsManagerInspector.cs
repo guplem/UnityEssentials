@@ -125,17 +125,16 @@ namespace UnityEngine
                     if (animation.name.IsNullOrEmpty())
                         itemName = $"Animation [{i}]";
                     else
-                        itemName = $"{animation.name} animation [{i}]";
+                        itemName = $"'{animation.name}' animation [{i}]";
 
-                    string animType = animation.GetType().Name;
+                    /*string animType = animation.GetType().Name;
                     int charSize = 57;
                     int reaminingChars = charSize - animType.Length - itemName.Length;
                     for (int j = 0; j < reaminingChars; j++)
                         itemName += " ";
-                    itemName += animType;
+                    itemName += animType;*/
                     EditorGUILayout.PropertyField(transformProp, new GUIContent(itemName), true);
-                    //EditorGUILayout.LabelField(animation.GetType().Name);
-                    
+
                     DisplayPreview(animation);
 
                     EditorGUILayout.Space();

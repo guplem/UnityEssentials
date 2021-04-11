@@ -12,7 +12,7 @@ namespace UnityEngine
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
         public ColorAnimation() : this(Color.white, Color.white, Color.white) { } 
         
-        public ColorAnimation(Color colorToAnimate, Color destination, Color origin, float duration = 1f, Curve curve = Curve.EaseInOut)
+        public ColorAnimation(Color colorToAnimate, Color destination, Color origin, float duration = 1f, Curve curve = Curve.EaseInOut, WrapMode wrapMode = WrapMode.Once)
         {
             this.colorToAnimate = colorToAnimate;
             this.originColor = origin;
@@ -21,13 +21,14 @@ namespace UnityEngine
 
             this.duration = duration;
             this.curve = SimpleAnimation.GetCurve(curve);
+            this.wrapMode = wrapMode;
         }
 
         public override bool Step(float deltaTime, bool inverseIfMirror = true)
         {
             bool endOfAnimation = base.Step(deltaTime, inverseIfMirror);
             
-            colorToAnimate = Color.Lerp(originColor, destinationColor, currentAnimationValue);
+            colorToAnimate = Color.Lerp(originColor, destinationColor, currentAnimationCurveValue);
 
             return endOfAnimation;
         }

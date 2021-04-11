@@ -12,7 +12,7 @@ namespace UnityEngine
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
         public TransformAnimation() : this(null, null, null) { } 
         
-        public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f, Curve curve = Curve.EaseInOut)
+        public TransformAnimation(Transform transformToAnimate, Transform destination, Transform origin, float duration = 1f, Curve curve = Curve.EaseInOut, WrapMode wrapMode = WrapMode.Once)
         {
             this.transformToAnimate = transformToAnimate;
             this.originTransform = origin;
@@ -21,6 +21,7 @@ namespace UnityEngine
 
             this.duration = duration;
             this.curve = SimpleAnimation.GetCurve(curve);
+            this.wrapMode = wrapMode;
         }
 
         public override bool Step(float deltaTime, bool inverseIfMirror = true)

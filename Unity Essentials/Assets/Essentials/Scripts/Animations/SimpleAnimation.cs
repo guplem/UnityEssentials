@@ -18,11 +18,11 @@ namespace UnityEngine
             }
             set => SetProgress(value);
         }
-        [SerializeField] public WrapMode wrapMode = WrapMode.Once;
+        [SerializeField] public WrapMode wrapMode;
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
         [SerializeField] public AnimationCurve curve;
-        public float currentAnimationValue => curve.Evaluate(timeStamp / duration);
+        public float currentAnimationCurveValue => curve.Evaluate(timeStamp / duration);
         [SerializeField] public UnityEvent onStep;
         [SerializeField] public UnityEvent onFinish;
 

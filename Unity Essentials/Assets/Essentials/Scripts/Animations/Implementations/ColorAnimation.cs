@@ -5,12 +5,12 @@ namespace UnityEngine
     [Serializable]
     public class ColorAnimation : SimpleAnimation
     {
-        [SerializeField] public Color colorToAnimate;
+        [NonSerialized] public Color colorToAnimate;
         [SerializeField] public Color originColor;
         [SerializeField] public Color destinationColor;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
-        public ColorAnimation() : this(new Color(), new Color(), new Color()) { } 
+        public ColorAnimation() : this(Color.white, Color.white, Color.white) { } 
         
         public ColorAnimation(Color colorToAnimate, Color destination, Color origin, float duration = 1f, Curve curve = Curve.EaseInOut)
         {
@@ -32,9 +32,10 @@ namespace UnityEngine
             return endOfAnimation;
         }
 
-        public override Object GetAnimatedObject()
+        public override Object GetAnimatedObject(bool displayWarningIfNotApplicable)
         {
-            Debug.LogWarning("Trying to obtain the animated object from a ColorAnimation. This action is not supported. Access the 'colorToAnimate' instead.");
+            if (displayWarningIfNotApplicable)
+                Debug.LogWarning("Trying to obtain the animated object from a ColorAnimation. This action is not supported. Access the 'colorToAnimate' instead.");
             return null;
         }
     }

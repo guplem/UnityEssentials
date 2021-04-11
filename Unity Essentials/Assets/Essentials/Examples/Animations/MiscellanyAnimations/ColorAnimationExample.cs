@@ -8,10 +8,10 @@ namespace Essentials.Examples.Animations.CameraAnimation
 {
     public class ColorAnimationExample : MonoBehaviour
     {
-        [SerializeField] private Image imageToChangeColor;
+        
         private SimpleAnimationsManager simpleAnimationsManager;
 
-        private void ApplyColorToImage()
+        public void ApplyColorToImage(Image imageToChangeColor)
         {
             ColorAnimation colorAnimation = ((ColorAnimation) simpleAnimationsManager.GetAnimation("Color"));
             imageToChangeColor.color = colorAnimation.colorToAnimate;

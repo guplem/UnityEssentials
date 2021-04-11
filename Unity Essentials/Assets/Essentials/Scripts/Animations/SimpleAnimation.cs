@@ -11,23 +11,28 @@ namespace UnityEngine
         [HideInInspector] private float _timeStamp;
         public float progress
         {
-            get
-            {
+            get {
                 if (!mirror)
                     return timeStamp/ duration;
-                else
-                    return 1 - (timeStamp/ duration);
+                return 1 - (timeStamp/ duration);
             }
             set => SetProgress(value);
         }
-
+        [SerializeField] public WrapMode wrapMode = WrapMode.Once;
         [SerializeField] public bool mirror;
         [SerializeField] public float duration;
         [SerializeField] public AnimationCurve curve;
         public float currentAnimationValue => curve.Evaluate(timeStamp / duration);
+        [SerializeField] public UnityEvent onStep;
         [SerializeField] public UnityEvent onFinish;
 
-
+        public enum WrapMode
+        {
+            Once,
+            Loop,
+            PingPong
+        }
+        
         /// <summary>
         /// Go forward or backwards in the animation.
         /// </summary>
@@ -43,6 +48,8 @@ namespace UnityEngine
             else
                 Debug.LogError("Unexpected Step call for a SimpleAnimation.");
 
+            onStep?.Invoke();
+            
             if ( ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror) )
             {
                 if (!mirror)
@@ -51,6 +58,22 @@ namespace UnityEngine
                     timeStamp = 0;
                 
                 onFinish?.Invoke();
+
+                switch (wrapMode)
+                {
+
+                    case WrapMode.Once:
+                        break;
+                    case WrapMode.Loop:
+                        SetProgress(0f);
+                        break;
+                    case WrapMode.PingPong:
+                        mirror = !mirror;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
                 return ((timeStamp >= duration) && !mirror) || ((timeStamp <= 0) && mirror); // Double evaluation to avoid bugs with modifications on the event invoked.
             }
 
@@ -104,16 +127,14 @@ namespace UnityEngine
         /// <summary>
         /// Returns the UnityEngine.Object animated. If not applicable, return null.
         /// </summary>
-        public abstract UnityEngine.Object GetAnimatedObject();
+        public abstract UnityEngine.Object GetAnimatedObject(bool displayWarningIfNotApplicable = true);
 
     }
-    
     
     public enum Curve
     {
         Linear,
         EaseInOut
     }
-    
     
 }

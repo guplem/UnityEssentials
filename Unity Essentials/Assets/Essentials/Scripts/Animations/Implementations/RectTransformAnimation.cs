@@ -32,7 +32,7 @@ namespace UnityEngine
             return endOfAnimation;
         }
 
-        public override Object GetAnimatedObject()
+        public override Object GetAnimatedObject(bool displayWarningIfNotApplicable)
         {
             return rectTransformToAnimate;
         }

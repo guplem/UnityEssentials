@@ -7,21 +7,27 @@ namespace UnityEngine
     public class FlipFlop
     {
         
-        [SerializeField] public UnityEvent a;
-        [SerializeField] public UnityEvent b;
+        [SerializeField] public UnityEvent firstEvent;
+        [SerializeField] public UnityEvent secondEvent;
         [HideInInspector] public UnityEvent nextEvent;
-        
+
+        public FlipFlop(UnityEvent firstEvent, UnityEvent secondEvent)
+        {
+            this.firstEvent = firstEvent;
+            this.secondEvent = secondEvent;
+        }
+
         public void Invoke()
         {
             if (nextEvent.GetPersistentEventCount() <= 0)
-                nextEvent = a;
+                nextEvent = firstEvent;
 
             nextEvent?.Invoke();
             
-            if (nextEvent == a)
-                nextEvent = b;
+            if (nextEvent == firstEvent)
+                nextEvent = secondEvent;
             else
-                nextEvent = a;
+                nextEvent = firstEvent;
         }
         
     }

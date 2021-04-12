@@ -6,7 +6,7 @@ namespace Essentials.Examples.FlowControl
 {
     public class FlipFlopExample : MonoBehaviour
     {
-        [SerializeField] private FlipFlop flipFlop;
+        private FlipFlop flipFlop;
 
         private void Start()
         {

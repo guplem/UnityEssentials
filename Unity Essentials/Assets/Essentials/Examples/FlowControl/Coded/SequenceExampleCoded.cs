@@ -16,7 +16,7 @@ namespace Essentials.Examples.FlowControl
             unityActions.Add(DummyMethodA);
             unityActions.Add(DummyMethodB);
             unityActions.Add(DummyMethodC);
-            sequence = new Sequence(unityActions.ToArray());
+            sequence = new Sequence(unityActions.ToArray(), true);
                 
             Debug.Log("Press 'S' to invoke the Sequence.");
         }

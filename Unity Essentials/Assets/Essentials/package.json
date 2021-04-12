@@ -1,0 +1,39 @@
+{
+	"name": "com.guplem.unityessentials",
+	"version": "1.0.0",
+	"displayName": "Unity Essentials",
+	"description": " Essentials for unity.",
+	"unity": "2019.2",
+	"dependencies": {
+		"com.guciodevs.simple-min-max-slider": ""
+	},
+	"keywords": ["Essentials", "Unity", "Basic"],
+	"author": {
+		"name": "Guillem Poy",
+		"email": "guplem@gmail.com",
+		"url": "https://www.triunitystudios.com/"
+	},
+
+	"samples": [
+		{ 	
+			"displayName": "DebugPro Example",
+			"description": "",
+			"path": "Examples/DebugProExample"
+		},
+ 		{ 	
+			"displayName": "Pool Example",
+			"description": "",
+			"path": "Examples/PoolExample"
+		},
+ 		{ 	
+			"displayName": "DebugPro Example",
+			"description": "",
+			"path": "Examples/DebugProExample"
+		},
+ 		{ 	
+			"displayName": "Force Warning CS0649 as Test/Example",
+			"description": "",
+			"path": "Examples/ForceWarningCS0649"
+		}
+	]
+}

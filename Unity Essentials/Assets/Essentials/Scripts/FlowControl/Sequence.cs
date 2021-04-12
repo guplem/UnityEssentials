@@ -8,10 +8,10 @@ namespace UnityEngine
     public class Sequence
     {
         [SerializeField] public bool randomizeOrder;
-        private RandomEssentials random = new RandomEssentials();
+        [NonSerialized] public RandomEssentials random = new RandomEssentials();
         [SerializeField] public UnityEvent[] events;
         [NonSerialized] public UnityEvent nextEvent = null;
-        [NonSerialized] public int nextEventIndex = 0;
+        [NonSerialized] private int nextEventIndex = 0;
 
         public Sequence(UnityAction[] actions, bool randomizeOrder = false, int randomizationSeed = -1) 
         {

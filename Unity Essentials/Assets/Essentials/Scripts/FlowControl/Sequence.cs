@@ -10,7 +10,7 @@ namespace UnityEngine
         [SerializeField] public bool randomizeOrder;
         private RandomEssentials random = new RandomEssentials();
         [SerializeField] public UnityEvent[] events;
-        [NonSerialized] public UnityEvent nextEvent;
+        [NonSerialized] public UnityEvent nextEvent = null;
         [NonSerialized] public int nextEventIndex = 0;
 
         public Sequence(UnityAction[] actions, bool randomizeOrder = false, int randomizationSeed = -1) 
@@ -49,7 +49,7 @@ namespace UnityEngine
             if (randomizeOrder && random == null)
                 random = new RandomEssentials();
             
-            if (nextEvent == null || nextEvent.GetPersistentEventCount() <= 0)
+            if (nextEvent == null)
             {
                 if (!randomizeOrder)
                 {

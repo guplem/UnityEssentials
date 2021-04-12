@@ -9,7 +9,7 @@ namespace UnityEngine
         
         [SerializeField] public UnityEvent firstEvent;
         [SerializeField] public UnityEvent secondEvent;
-        [NonSerialized] public UnityEvent nextEvent;
+        [NonSerialized] public UnityEvent nextEvent = null;
 
 
         public FlipFlop(UnityAction firstAction, UnityAction secondAction)
@@ -32,8 +32,7 @@ namespace UnityEngine
 
         public void Invoke()
         {
-            if (nextEvent == null || nextEvent.GetPersistentEventCount() <= 0)
-                nextEvent = firstEvent;
+            nextEvent ??= firstEvent;
 
             nextEvent?.Invoke();
             

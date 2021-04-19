@@ -1,86 +1,86 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Presets;
 using UnityEngine;
 
-public static class PresetsTools
+namespace Essentials.Scripts.Presets
 {
-    [MenuItem("CONTEXT/Preset/Validate all Game Objects in scene")]
-    public static void ValidateAllGameObjectsInScene(MenuCommand command)
+    public static class PresetsTools
     {
-        // Get our current selected Preset.
-        Preset referencePreset = command.context as Preset;
-
-        if (referencePreset == null)
-            return;
-
-        bool foundAnyMissmatch = false;
-        
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
-        foreach (GameObject go in allObjects)
+        [MenuItem("CONTEXT/Preset/Validate all Game Objects in scene")]
+        public static void ValidateAllGameObjectsInScene(MenuCommand command)
         {
-            //if (!go.activeInHierarchy)
-            //    continue;
+            // Get our current selected Preset.
+            Preset referencePreset = command.context as Preset;
 
-            foreach (Component component in go.GetComponents(typeof(Component)))
+            if (referencePreset == null)
+                return;
+
+            bool foundAnyMissmatch = false;
+        
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
+            foreach (GameObject go in allObjects)
             {
-                if (!referencePreset.CanBeAppliedTo(component))
-                    continue;
+                //if (!go.activeInHierarchy)
+                //    continue;
 
-                if (!referencePreset.DataEquals(component))
+                foreach (Component component in go.GetComponents(typeof(Component)))
                 {
-                    Debug.LogWarning($"The '{referencePreset.GetTargetTypeName()}' in the Game Object '{go}' does not match the selected preset.", component);
-                    foundAnyMissmatch = true;
+                    if (!referencePreset.CanBeAppliedTo(component))
+                        continue;
+
+                    if (!referencePreset.DataEquals(component))
+                    {
+                        Debug.LogWarning($"The '{referencePreset.GetTargetTypeName()}' in the Game Object '{go}' does not match the selected preset.", component);
+                        foundAnyMissmatch = true;
+                    }
+
                 }
 
             }
-
-        }
         
-        if (!foundAnyMissmatch)
-            Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
-    }
+            if (!foundAnyMissmatch)
+                Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
+        }
     
     
-    [MenuItem("CONTEXT/Preset/DO NOT USE")]
-    public static void ValidateSelectedGameObjects(MenuCommand command)
-    {
-        // Get our current selected Preset.
-        Preset referencePreset = command.context as Preset;
-
-        if (referencePreset == null)
-            return;
-
-        bool foundAnyMissmatch = false;
-
-        Transform[] allObjectsTransforms = Selection.transforms;//UnityEngine.Object.FindObjectsOfType<GameObject>() ;
-        foreach (Transform trans in allObjectsTransforms)
+        //[MenuItem("CONTEXT/Hierarchy/Search mismatches between scene GameObjects and default Presets")]
+        [MenuItem("GameObject/Presets/Search mismatches between scene GameObjects and default Presets", false)]
+        public static void ValidateGameObjectsInSceneAgainstDefaultPresets()
         {
-            GameObject go = trans.gameObject;
-            
-            //if (!go.activeInHierarchy)
-            //    continue;
+            bool foundAnyMissmatch = false;
 
-            foreach (Component component in go.GetComponents(typeof(Component)))
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
+            //Transform[] allObjectsTransforms = Selection.transforms;
+            foreach (GameObject go in allObjects)
             {
-                if (!referencePreset.CanBeAppliedTo(component))
-                    continue;
-
-                if (!referencePreset.DataEquals(component))
+                foreach (Component component in go.GetComponents(typeof(Component)))
                 {
-                    Debug.LogWarning($"The '{referencePreset.GetTargetTypeName()}' in the Game Object '{go}' does not match the selected preset.", component);
-                    foundAnyMissmatch = true;
+                    Preset[] defaults = Preset.GetDefaultPresetsForObject(component);
+
+                    foreach (Preset defaultPreset in defaults)
+                    {
+                        // Debug.Log($"Checking {defaultPreset.name} against '{defaultPreset.GetTargetTypeName()}' Component of '{go}' GameObject");
+                        if (!defaultPreset.CanBeAppliedTo(component))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (!defaultPreset.DataEquals(component))
+                            {
+                                Debug.LogWarning($"The '{defaultPreset.GetTargetTypeName()}' in the Game Object '{go}' does not match the default preset ({defaultPreset.name}).", component);
+                                foundAnyMissmatch = true;
+                            }
+                            break;
+                        }
+                    }
                 }
-
             }
-
+        
+            if (!foundAnyMissmatch)
+                Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
+        
         }
-        
-        if (!foundAnyMissmatch)
-            Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
-        
     }
 }

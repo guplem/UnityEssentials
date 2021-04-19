@@ -6,7 +6,7 @@ using UnityEditor.Experimental;
 using UnityEditor.Presets;
 using UnityEngine;
 
-namespace PresetsPerFolder
+namespace Essentials.Scripts.Presets
 {
     /// <summary>
    /// This sample class applies Presets automatically to Assets in the folder containing the Preset and any subfolders.

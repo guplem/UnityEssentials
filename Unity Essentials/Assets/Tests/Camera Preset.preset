@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Camera
+  m_Name: Camera Preset
   m_TargetType:
     m_NativeTypeID: 20
     m_ManagedTypePPtr: {fileID: 0}
@@ -22,15 +22,15 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.r
-    value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_BackGroundColor.g
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_BackGroundColor.g
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_BackGroundColor.b
-    value: 0.99065304
+    value: 0.06811166
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.a

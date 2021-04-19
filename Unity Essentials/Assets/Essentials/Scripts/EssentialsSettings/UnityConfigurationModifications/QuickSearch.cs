@@ -7,6 +7,7 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 
     public class QuickSearch : Modification
     {
+        public override bool showInSettingsWindow { get => false; }
         public override string title { get => "Install Quick Search"; }
         public override string applyButtonText { get => "Add dependency"; }
         public override string revertButtonText { get => "Remove dependency"; }

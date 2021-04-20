@@ -1,10 +1,9 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Reflection;
-using UnityEditor;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
-#if UNITY_EDITOR
 namespace Essentials.Shortcuts
 {
     public class ConsoleWindowShortcuts : MonoBehaviour

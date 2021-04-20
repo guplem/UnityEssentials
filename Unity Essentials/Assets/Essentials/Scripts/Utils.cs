@@ -33,7 +33,7 @@ namespace Essentials
         }
 
     #region GetMainWindowCenteredPosition
-
+        #if UNITY_EDITOR
         /// <summary>
         /// Returns a Rect containing the configuration to center a window.
         /// </summary>
@@ -45,6 +45,7 @@ namespace Essentials
             return GetCenteredWindowPosition(mainWindowRect, windowSize);
         }
 
+       
         private static UnityEngine.Object sMainWindow = null;
         private static Rect GetEditorMainWindowPos()
         {
@@ -96,7 +97,7 @@ namespace Essentials
             pos.y = parentWindowPosition.y + h;
             return pos;
         }
-
+        #endif
     #endregion
         
     }

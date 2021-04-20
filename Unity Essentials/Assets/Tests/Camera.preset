@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Camera Preset
+  m_Name: Camera
   m_TargetType:
     m_NativeTypeID: 20
     m_ManagedTypePPtr: {fileID: 0}
@@ -22,19 +22,19 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.r
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.g
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.b
-    value: 0.06811166
+    value: 0.072832584
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_BackGroundColor.a
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_projectionMatrixMode
@@ -94,7 +94,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: field of view
-    value: 146.9
+    value: 60
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: orthographic
@@ -106,11 +106,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Depth
-    value: -1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_CullingMask.m_Bits
-    value: 39
+    value: 4294967295
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_RenderingPath

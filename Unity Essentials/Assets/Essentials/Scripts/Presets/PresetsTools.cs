@@ -45,8 +45,8 @@ namespace Essentials.Scripts.Presets
         }
     
     
-        //[MenuItem("CONTEXT/Hierarchy/Search mismatches between scene GameObjects and default Presets")]
-        [MenuItem("GameObject/Presets/Search mismatches between scene GameObjects and default Presets", false)]
+
+        [MenuItem("GameObject/Presets/Search mismatches between scene GameObjects and default Presets", false, -20)]
         public static void ValidateGameObjectsInSceneAgainstDefaultPresets()
         {
             bool foundAnyMissmatch = false;

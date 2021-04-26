@@ -25,6 +25,28 @@ namespace UnityEngine
         {
             Debug.Log(message + enumerable.ToStringAllElements(separator), context);
         }
+        
+        /// <summary>
+        /// Creates a 'Debug.LogWarning' message with all the contents in the enumerable.
+        /// </summary>
+        /// <param name="separator">The string that will be in-between each string of each element (the default is ', ').</param>
+        /// <param name="message">The message that will be displayed at the beginning of the 'Debug.Log' message.</param>
+        /// <param name="context">Object to which the message applies.</param>
+        public static void DebugLogWarning<T>(this IEnumerable<T> enumerable, string separator = ", ", string message = "", Object context = null)
+        {
+            Debug.LogWarning(message + enumerable.ToStringAllElements(separator), context);
+        }
+        
+        /// <summary>
+        /// Creates a 'Debug.LogError' message with all the contents in the enumerable.
+        /// </summary>
+        /// <param name="separator">The string that will be in-between each string of each element (the default is ', ').</param>
+        /// <param name="message">The message that will be displayed at the beginning of the 'Debug.Log' message.</param>
+        /// <param name="context">Object to which the message applies.</param>
+        public static void DebugLogError<T>(this IEnumerable<T> enumerable, string separator = ", ", string message = "", Object context = null)
+        {
+            Debug.LogError(message + enumerable.ToStringAllElements(separator), context);
+        }
     
         /// <summary>
         /// Get an string of all elements.
@@ -90,6 +112,15 @@ namespace UnityEngine
         public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source, IEqualityComparer<T> comparer = null)
         {
             return new HashSet<T>(source, comparer);
+        }
+        
+        /// <summary>
+        /// Indicates whether the IEnumerable is null or does not contain any element.
+        /// </summary>
+        /// <returns>True if the value IEnumerable is null or does not contain any element. Otherwise, false.</returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source == null || !source.Any();
         }
 
     }

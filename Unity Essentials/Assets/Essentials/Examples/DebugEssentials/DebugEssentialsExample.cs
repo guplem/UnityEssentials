@@ -13,7 +13,7 @@ namespace Essentials.Examples.Debug_Essentials
             DebugEssentials.Log(" ======== DEBUGGING ARRAY: ======== ");
             int[] arrayInts = {1, 2, 3, 4, 5, 6, 7, 8};
             
-            arrayInts.DebugLog(", ", "Message printed before the list array: ", this);  // Array with message and referencing the component's gameObject
+            arrayInts.DebugLog(", ", "Message printed before the array: ", this);  // Array with message and referencing the component's gameObject
             DebugEssentials.LogEnumerable(arrayInts); // Array with no message and default separator
             DebugEssentials.LogEnumerable(arrayInts, " | "); // Array with no message
             DebugEssentials.LogEnumerable(arrayInts, " - ", "Message printed before the array: "); // Array with message
@@ -25,7 +25,7 @@ namespace Essentials.Examples.Debug_Essentials
             DebugEssentials.Log(" ======== DEBUGGING LIST: ======== ");
             List<int> listInts = arrayInts.ToList();
             
-            listInts.DebugLog(", ", "Message printed before the list array: ", this);  // Array with message and referencing the component's gameObject
+            listInts.DebugLog(", ", "Message printed before the list: ", this);  // Array with message and referencing the component's gameObject
             DebugEssentials.LogEnumerable(listInts); // List with no message and default separator
             DebugEssentials.LogEnumerable(listInts, " | "); // List with no message
             DebugEssentials.LogEnumerable(listInts, " - ", "Message printed before the list: "); // List with message

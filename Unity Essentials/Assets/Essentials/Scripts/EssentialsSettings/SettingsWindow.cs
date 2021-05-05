@@ -133,13 +133,29 @@ namespace Essentials.EssentialsSettings
                 style.alignment = defaultAlignment;
             #endregion
             
+            #region ModificationsSearch
             EditorGUILayout.BeginHorizontal();
             if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} modifications", EditorStyles.helpBox);
             if (implementations == null) EditorGUILayout.LabelField($"NO IMPLEMENTATIONS FOUND");
             if (GUILayout.Button(new GUIContent("Search for modifications", "Search for any implementation of the abstract class 'Modification' to be displayed in this window." )) && implementations == null)
                 SearchConfigurationModifiers();
             EditorGUILayout.EndHorizontal();
+            #endregion
             
+            GUILayout.Label("");
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            
+            
+            #region Links
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button(new GUIContent("Rate the asset! ❤️", "Open the Asset Store page of the asset, so you can rate it, share it or give any kind of love you want!" )))
+                Application.OpenURL("https://assetstore.unity.com/packages/slug/161141");
+            if (GUILayout.Button(new GUIContent("Give feedback or any ideas! 💡", "Open a form to share any thoughts you have about the asset, so we can keep improving." )))
+                Application.OpenURL("https://forms.gle/diuUu6nZHAf5T67C9");
+            if (GUILayout.Button(new GUIContent("About me  : )", "Open my personal webpage where you can know more about me!" )))
+                Application.OpenURL("https://TriunityStudios.com");
+            EditorGUILayout.EndHorizontal();
+            #endregion
         }
 
         /// <summary>

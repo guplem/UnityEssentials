@@ -2,7 +2,9 @@
 
 namespace UnityEngine
 {
-
+    /// <summary>
+    /// Allows GameObjects pooling by reusing pre-instantiated GameObjects
+    /// </summary>
     [System.Serializable]
     public class Pool
     {

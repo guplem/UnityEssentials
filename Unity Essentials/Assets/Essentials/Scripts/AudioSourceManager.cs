@@ -148,16 +148,11 @@ namespace UnityEngine
 
             return AddAudioSource();
         }
-
-        // ToDo: check if this is the way is wanted to be the default configuration
+        
         private AudioSource AddAudioSource()
         {
             AudioSource newAudioSource = gameObject.AddComponent<AudioSource>();
             newAudioSource.playOnAwake = false;
-            //newAudioSource.spatialBlend = 1f;
-            //newAudioSource.rolloffMode = AudioRolloffMode.Linear;
-            //newAudioSource.minDistance = 0.0f;
-            //newAudioSource.maxDistance = 30.0f; 
             audioSources.Add(newAudioSource);
 
             return newAudioSource;

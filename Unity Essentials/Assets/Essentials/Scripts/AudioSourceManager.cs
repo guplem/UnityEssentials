@@ -10,8 +10,7 @@ namespace UnityEngine
         [Tooltip("The amount of Audio Sources that will exist in the GameObject where this component lives. If they are missing, they will be created during this component's Awake.")]
         [SerializeField] private int minimumQuantityOfExistingAudioSources;
         [HideInInspector] private List<AudioSource> audioSources;
-
-
+        
         /// <summary>
         /// Plays the clip.
         /// </summary>
@@ -35,25 +34,42 @@ namespace UnityEngine
             return configuredAudioSource;
         }
         
-        public AudioSource StopClip(AudioClip clipInAudioSource)
+        /// <summary>
+        /// Stops playing the clip in all AudioSources related to this AudioSoundManager that are playing it.
+        /// </summary>
+        /// <param name="clipInAudioSource">The AudioClip that must stop playing.</param>
+        /// <returns></returns>
+        public List<AudioSource> StopClip(AudioClip clipInAudioSource)
         {
-            AudioSource audioSourceWithClip = GetAudioSource(clipInAudioSource);
-            audioSourceWithClip.Stop();
-            return audioSourceWithClip;
+            List<AudioSource> audioSourcesWithClip = GetAudioSources(clipInAudioSource);
+            foreach (AudioSource audioSourceWithClip in audioSourcesWithClip)
+            {
+                audioSourceWithClip.Stop();
+            }
+
+            return audioSourcesWithClip;
         }
 
+        /// <summary>
+        /// Returns the AudioSource with the given index from the list of managed audio sources of this AudioSourceManager.
+        /// </summary>
+        /// <param name="index">The index of the AudioSource</param>
+        /// <returns></returns>
         public AudioSource GetAudioSource(int index)
         {
             return audioSources[index];
         }
         
+        /// <summary>
+        /// Stops playing all clips i all AudioSources related to this AudioSourceManager.
+        /// </summary>
+        /// <param name="fadeOut"></param>
         public void StopAllClips(bool fadeOut = false)
         {
             foreach (AudioSource audioSource in audioSources)
             {
                 if (fadeOut)
                 {
-                    //ToDo: Be able to stop the sounds with any type of animation curve
                     FadeOutAudioSource(audioSource);
                 }
                 else
@@ -63,20 +79,31 @@ namespace UnityEngine
             }
         }
 
+        /// <summary>
+        /// Returns an AudioSource that is playing the given clip.
+        /// </summary>
+        /// <param name="clipInAudioSource">The clip that must be playing the returned AudioSource.</param>
+        /// <returns></returns>
         public AudioSource GetAudioSource(AudioClip clipInAudioSource)
         {
             foreach (AudioSource audioSource in audioSources)
             {
                 if (audioSource.clip == clipInAudioSource)
                 {
-                    return audioSource;
+                    if (audioSource.isPlaying)
+                        return audioSource;
                 }
             }
             
-            Debug.LogWarning($"Audio Source with clip '{clipInAudioSource.name}' not found ");
+            //Debug.LogWarning($"No Audio Source playing the clip '{clipInAudioSource.name}' was found ");
             return null;
         }
         
+        /// <summary>
+        /// Returns all AudioSources that are playing the given clip.
+        /// </summary>
+        /// <param name="clipInAudioSource">The clip that all returned AudioSources must be playing.</param>
+        /// <returns></returns>
         public List<AudioSource> GetAudioSources(AudioClip clipInAudioSource)
         {
             List<AudioSource> foundAudioSources = new List<AudioSource>();
@@ -84,12 +111,13 @@ namespace UnityEngine
             {
                 if (audioSource.clip == clipInAudioSource)
                 {
-                    foundAudioSources.Add(audioSource);
+                    if (audioSource.isPlaying)
+                        foundAudioSources.Add(audioSource);
                 }
             }
             
-            if (foundAudioSources.Count <= 0)
-                Debug.LogWarning($"Audio Sources with clip '{clipInAudioSource.name}' not found ");
+            //if (foundAudioSources.Count <= 0)
+            //    Debug.LogWarning($"No Audio Sources playing the clip '{clipInAudioSource.name}' were found ");
             
             return foundAudioSources;
         }

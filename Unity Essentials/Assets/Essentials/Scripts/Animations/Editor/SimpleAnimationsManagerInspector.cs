@@ -159,7 +159,7 @@ namespace UnityEngine
             EditorGUIUtility.labelWidth = oldLabelWidth;
             EditorGUI.BeginChangeCheck();
             float animProgression = animation.progress;
-            // Todo: fix bug where the slider is not set to the proper value by default (after opening the scene, all the sliders are at 0, not at the proper value)
+            // Glitch to fix: The slider is not set to the proper value by default (after opening the scene, all the sliders are at 0, not at the proper value)
             //animProgression = EditorGUILayout.Slider(animProgression, animation.mirror?1f:0f, animation.mirror?0f:1f);
             animProgression = EditorGUILayout.Slider(animProgression, 0f, 1f);
             if (EditorGUI.EndChangeCheck())

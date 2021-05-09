@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79432e697442b624f97fe566ef04f6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumQuantityOfExistingAudioSources: 0
+  minimumQuantityOfExistingAudioSources: 1
 --- !u!114 &540007775
 MonoBehaviour:
   m_ObjectHideFlags: 0

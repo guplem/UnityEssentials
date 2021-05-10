@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 namespace UnityEngine
 {
@@ -8,18 +9,18 @@ namespace UnityEngine
         /// <summary>
         /// Sets the transform position, rotation and scale to the default values. Position = (0,0,0), Rotation = Quaternion.identity, Scale = (1,1,1).
         /// </summary>
-        public static void ResetTransform(this Transform trans)
+        public static void ResetTransform(this Transform self)
         {
-            trans.SetProperties(Vector3.zero, Quaternion.identity, Vector3.one);
+            self.SetProperties(Vector3.zero, Quaternion.identity, Vector3.one);
         }
 
         /// <summary>
         /// Sets the transform position, rotation and scale to the same values in the given transform.
         /// </summary>
         /// <param name="properties">The transform from which the position, rotation and scale will be copied.</param>
-        public static void SetProperties(this Transform trans, Transform properties)
+        public static void SetProperties(this Transform self, Transform properties)
         {
-            trans.SetProperties(properties.position, properties.rotation, properties.localScale);
+            self.SetProperties(properties.position, properties.rotation, properties.localScale);
         }
         /// <summary>
         /// Sets the transform position, rotation and scale to the given values.
@@ -27,41 +28,41 @@ namespace UnityEngine
         /// <param name="position">The position to be set in the transform.</param>
         /// <param name="rotation">The rotation to be set in the transform.</param>
         /// <param name="scale">The scale to be set in the transform.</param>
-        public static void SetProperties(this Transform trans, Vector3 position, Quaternion rotation, Vector3 scale)
+        public static void SetProperties(this Transform self, Vector3 position, Quaternion rotation, Vector3 scale)
         {
-            trans.position = position;
-            trans.rotation = rotation;
-            trans.localScale = scale;
+            self.position = position;
+            self.rotation = rotation;
+            self.localScale = scale;
         }
         /// <summary>
         /// Sets the transform rotation and scale to the given values.
         /// </summary>
         /// <param name="rotation">The rotation to be set in the transform.</param>
         /// <param name="scale">The scale to be set in the transform.</param>
-        public static void SetProperties(this Transform trans, Quaternion rotation, Vector3 scale)
+        public static void SetProperties(this Transform self, Quaternion rotation, Vector3 scale)
         {
-            trans.rotation = rotation;
-            trans.localScale = scale;
+            self.rotation = rotation;
+            self.localScale = scale;
         }
         /// <summary>
         /// Sets the transform position and scale to the given values.
         /// </summary>
         /// <param name="position">The position to be set in the transform.</param>
         /// <param name="scale">The scale to be set in the transform.</param>
-        public static void SetProperties(this Transform trans, Vector3 position, Vector3 scale)
+        public static void SetProperties(this Transform self, Vector3 position, Vector3 scale)
         {
-            trans.position = position;
-            trans.localScale = scale;
+            self.position = position;
+            self.localScale = scale;
         }
         /// <summary>
         /// Sets the transform position and rotation to the given values.
         /// </summary>
         /// <param name="position">The position to be set in the transform.</param>
         /// <param name="rotation">The rotation to be set in the transform.</param>
-        public static void SetProperties(this Transform trans, Vector3 position, Quaternion rotation)
+        public static void SetProperties(this Transform self, Vector3 position, Quaternion rotation)
         {
-            trans.position = position;
-            trans.rotation = rotation;
+            self.position = position;
+            self.rotation = rotation;
         }
     
         /// <summary>
@@ -157,5 +158,6 @@ namespace UnityEngine
                 if (exceptions == null || !exceptionsArray.Contains(child))
                     Object.Destroy(child.gameObject);
         }
+        
     }
 }

@@ -40,7 +40,12 @@ namespace Essentials.Examples.RandomEssentials
             int randomSign = randomEssentials.GetRandomSign(0.4f);
             bool randomBoolTrueEnsured = randomEssentials.GetRandomBoolTrueEnsured(3, 10);
             bool randomDistributedBool = randomEssentials.GetPseudoRandomDistributedBool(5, 0.25f);
-                // This variables are not used anywhere, they exist only to help the example.
+
+            // To make easier the single use of RandomEssentials, the object can be created and used as follows:
+            randomBool = UnityEngine.RandomEssentials.GetNew().GetRandomBool();
+            randomBool = UnityEngine.RandomEssentials.GetNew(123456).GetRandomBool(); // With custom seed
+            
+                    // This variables are not used anywhere, they exist only to help the example.
         }
 
         void Update()

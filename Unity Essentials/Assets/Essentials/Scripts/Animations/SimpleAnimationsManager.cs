@@ -55,7 +55,7 @@ namespace UnityEngine
         {
             playingAnimations.Add(animation);
 
-            if (!resume) //TODO: If resume is true but the animation already finished, restart (or add another parameter "restartAtFinish" in the SimpleAnimation class?)
+            if (!resume)
                 animation.Reset();
             
             animationsToStop.Remove(animation);

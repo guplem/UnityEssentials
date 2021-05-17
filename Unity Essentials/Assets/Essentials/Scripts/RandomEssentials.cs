@@ -238,15 +238,64 @@ namespace UnityEngine
         #endregion
 
         #region Geometry
-
-        //Intended error:
-        ;
-        //Check class Random (from UnityEngine for the code, static methods with the same functionallity exist there)
-        //Todo: public Vector3 GetPointInsideCircle(float radius = 1){}	//Returns a random point inside a circle
-        //Todo: public Vector3 GetPointInsideSphere(float radius = 1){}	//Returns a random point inside a sphere
-        //Todo: public Vector3 GetPointOnSphere(float radius = 1){}	//Returns a random point on the surface of a sphere
-        //Todo: public Quaternion GetRotation(){}	//Returns a random rotation
-        //Todo: public Quaternion GetRotationUniform(){}	//Returns a random rotation with uniform distribution
+        
+        /// <summary>
+        /// Returns a random point inside a circle.
+        /// </summary>
+        /// <param name="center">The center of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <returns></returns>
+        public Vector2 GetPointInsideCircle(Vector2 center, float radius = 1f)
+        {
+            double angle = this.NextDouble() * 2 * Math.PI;
+            double r = radius * Math.Sqrt(NextDouble());
+            double x = center.x + r * Math.Cos(angle);
+            double y = center.y + r * Math.Sin(angle);
+            return new Vector2( Convert.ToSingle(x), Convert.ToSingle(y) );
+        }	
+        
+        /// <summary>
+        /// Returns a random point inside a circle with center (0, 0).
+        /// </summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <returns></returns>
+        public Vector2 GetPointInsideCircle( float radius = 1f)
+        {
+            return GetPointInsideCircle(Vector2.zero, radius);
+        }	
+        
+        
+        /// <summary>
+        /// Returns a random point on a circle.
+        /// </summary>
+        /// <param name="center">The center of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <returns></returns>
+        public Vector2 GetPointOnCircle(Vector2 center, float radius = 1f)
+        {
+            double angle = 2.0 * Math.PI * this.NextDouble();
+            double x = center.x + radius * Math.Cos(angle);
+            double y = center.y + radius * Math.Sin(angle);
+            return new Vector2( Convert.ToSingle(x), Convert.ToSingle(y) );
+        }	
+        
+        /// <summary>
+        /// Returns a random point inside a circle with center (0, 0).
+        /// </summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <returns></returns>
+        public Vector2 GetPointOnCircle( float radius = 1f)
+        {
+            return GetPointInsideCircle(Vector2.zero, radius);
+        }	
+        
+        // Similar methods to the ones Unity's Random class has
+        //To-do: public Vector3 GetPointInsideSphere(float radius = 1){}	//Returns a random point inside a sphere
+        //To-do: public Vector3 GetPointOnSphere(float radius = 1){}	//Returns a random point on the surface of a sphere
+        
+        // Similar methods to the ones Unity's Random class has
+        //To-do: public Quaternion GetRotation(){}	//Returns a random rotation
+        //To-do: public Quaternion GetRotationUniform(){}	//Returns a random rotation with uniform distribution
 
         #endregion
 

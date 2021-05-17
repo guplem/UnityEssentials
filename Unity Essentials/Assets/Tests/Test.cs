@@ -1,23 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using Random = System.Random;
 
 public class Test : MonoBehaviour
 {
 
-    bool rndBoolUnity { get { return (Random.value > 0.5f);  } }
-    bool rndBoolEssentials { get { return (RandomEssentials.GetNew().GetRandomBool());  } }
+    [SerializeField] private GameObject spawned;
+    [SerializeField] private float radius;
+    [SerializeField] private Vector2 center;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        Random.ColorHSV();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        var i = UnityEngine.Random.insideUnitSphere;
         
+        if (Input.GetKey(KeyCode.A))
+        {
+            Vector2 pos = RandomEssentials.GetNew().GetPointInsideCircle(center, radius);
+            Debug.Log($"INSTANTIATING AT {pos}");
+            Instantiate(spawned, pos, Quaternion.identity);
+        }
     }
+
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(center,radius);
+    }
+
 }

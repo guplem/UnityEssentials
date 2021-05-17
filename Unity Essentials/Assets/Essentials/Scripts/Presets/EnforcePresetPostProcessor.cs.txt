@@ -79,7 +79,7 @@ namespace Essentials.Scripts.Presets
     /// Whenever a Preset is added, removed, or moved from a folder, the CustomDependency for this folder needs to be updated
     /// so Assets that may depend on those Presets are reimported.
     ///
-    /// TODO: Ideally each CustomDependency should also be dependent on the PresetType,
+    /// TO-DO: Ideally each CustomDependency should also be dependent on the PresetType,
     /// so Textures are not re-imported by adding a new FBXImporterPreset in a folder.
     /// This makes the InitPresetDependencies and OnPostprocessAllAssets methods too complex for the purpose of this example.
     /// Unity suggests having the CustomDependency follow the form "Preset_{presetType}_{folder}",

@@ -30,7 +30,7 @@ namespace UnityEngine
             
             //find all implementations of ISimpleAnimation using System.Reflection.Module
             if (implementations == null)
-                implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<ISimpleAnimation>();
+                implementations = Utils.GetTypeImplementationsNotUnityObject<ISimpleAnimation>();
 
             EditorGUILayout.Space();
             
@@ -94,7 +94,7 @@ namespace UnityEngine
             if (implementations == null || GUILayout.Button("Search implementations"))
             {
                 //find all implementations of ISimpleAnimation using System.Reflection.Module
-                implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<ISimpleAnimation>();
+                implementations = Utils.GetTypeImplementationsNotUnityObject<ISimpleAnimation>();
             }
             EditorGUILayout.EndHorizontal();
             

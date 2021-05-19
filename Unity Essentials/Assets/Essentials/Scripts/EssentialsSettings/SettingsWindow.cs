@@ -163,7 +163,7 @@ namespace Essentials.EssentialsSettings
         /// </summary>
         private void SearchConfigurationModifiers()
         {
-            implementations = Essentials.Utils.GetTypeImplementationsNotUnityObject<IModification>();
+            implementations = Utils.GetTypeImplementationsNotUnityObject<IModification>();
         }
     }
 }

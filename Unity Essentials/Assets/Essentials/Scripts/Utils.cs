@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Essentials
+namespace UnityEngine
 {
     public static class Utils
     {
@@ -99,6 +99,17 @@ namespace Essentials
         }
         #endif
     #endregion
+        
+        /// <summary>
+        /// Returns the name of the project
+        /// </summary>
+        /// <returns></returns>
+        public static string GetProjectName()
+        {
+            string[] s = Application.dataPath.Split('/');
+            string projectName = s[s.Length - 2];
+            return projectName;
+        }
         
     }
 }

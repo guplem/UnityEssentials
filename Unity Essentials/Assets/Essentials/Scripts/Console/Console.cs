@@ -16,6 +16,12 @@ namespace UnityEngine
         [SerializeField] protected bool show = true;
         
         /// <summary>
+        /// Should the console toggle on and off pressing the toggleKey?"
+        /// </summary>
+        [Tooltip("Should the console toggle on and off pressing the 'Toggle key'?")]
+        [SerializeField] protected bool enableKeyToggle = true;
+        
+        /// <summary>
         /// Key to toggle on-off the in-game console.
         /// </summary>
         [Tooltip("Key to toggle on-off the in-game console.")]
@@ -57,7 +63,7 @@ namespace UnityEngine
 
         private void Update()
         {
-            if (Input.GetKeyDown(toggleKey))
+            if (enableKeyToggle && Input.GetKeyDown(toggleKey))
             {
                 ToggleShow();
             }

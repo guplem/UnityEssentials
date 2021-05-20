@@ -15,11 +15,11 @@ public class ConsoleExample : MonoBehaviour
                 break;
             case 1: Debug.Log("I hope you are enjoying this asset!");
                 break;
-            case 2: Debug.Log("Will anybody ready this?... ever?");
+            case 2: Debug.LogWarning("Will anybody ready this?... ever? (this is a warning)");
                 break;
-            case 3: Debug.Log("Maaaan...., I really wish to finish this feature soon...");
+            case 3: Debug.LogError("Maaaan...., I really wish to finish this feature soon... (this is an error)");
                 break;
-            case 4: Debug.Log("I hope you are having a nice day!");
+            case 4: Debug.Log("I hope you are having a nice day!  : )");
                 break;
         }
     }

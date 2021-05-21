@@ -71,7 +71,7 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
                 Popup window = ScriptableObject.CreateInstance<Popup>();
                 Vector2 windowSize = new Vector2(250f, 150f);
                 window.minSize = window.maxSize = windowSize;
-                window.position = Utils.GetWindowCenteredPosition(windowSize);
+                window.position = Utils.GetEditorWindowCenteredPosition(windowSize);
                 window.ShowPopup();
             }
 

@@ -38,7 +38,7 @@ namespace Essentials.EssentialsSettings
             //SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Modifications");
             var windowSize = new Vector2(600f, 420f);
             window.minSize = window.maxSize = windowSize;
-            window.position = Utils.GetWindowCenteredPosition(windowSize);
+            window.position = Utils.GetEditorWindowCenteredPosition(windowSize);
             window.titleContent = new GUIContent("Essentials' Settings and Modifications");
             window.Show();
             window.Focus();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
-using UnityEngine;
+using System.IO;
 
 namespace UnityEngine
 {
@@ -39,7 +39,7 @@ namespace UnityEngine
         /// </summary>
         /// <param name="windowSize">Size of the window that wants to be centered.</param>
         /// <returns></returns>
-        public static Rect GetWindowCenteredPosition(Vector2 windowSize)
+        public static Rect GetEditorWindowCenteredPosition(Vector2 windowSize)
         {
             Rect mainWindowRect = GetEditorMainWindowPos();
             return GetCenteredWindowPosition(mainWindowRect, windowSize);
@@ -109,6 +109,45 @@ namespace UnityEngine
             string[] s = Application.dataPath.Split('/');
             string projectName = s[s.Length - 2];
             return projectName;
+        }
+        
+        /// <summary>
+        /// Checks if the IO is supported on current platform or not.
+        /// </summary>
+        /// <returns><c>true</c>, if supported was IOed, <c>false</c> otherwise.</returns>
+        public static bool IsIOSupported()
+        {
+            return Application.platform != RuntimePlatform.WebGLPlayer &&
+                   Application.platform != RuntimePlatform.WSAPlayerARM &&
+                   Application.platform != RuntimePlatform.WSAPlayerX64 &&
+                   Application.platform != RuntimePlatform.WSAPlayerX86 &&
+                   Application.platform != RuntimePlatform.tvOS &&
+                   Application.platform != RuntimePlatform.PS4;
+        }
+
+        /// <summary>
+        /// Determines if the string is file path.
+        /// </summary>
+        /// <returns><c>true</c> if is file path the specified str; otherwise, <c>false</c>.</returns>
+        /// <param name="str">String.</param>
+        public static bool IsFilePath(string str)
+        {
+            bool result = false;
+            #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
+            if (Path.IsPathRooted(str))
+            {
+                try
+                {
+                    string fullPath = Path.GetFullPath(str);
+                    result = true;
+                }
+                catch (System.Exception)
+                {
+                    result = false;
+                }
+            }
+            #endif
+            return result;
         }
         
     }

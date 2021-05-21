@@ -9,6 +9,9 @@ public class SaveDataExampleInspector : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {
+        // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
+        serializedObject.Update ();
+        
         base.OnInspectorGUI();
         
         SaveDataExample saveDataExample = (SaveDataExample)target;
@@ -37,6 +40,9 @@ public class SaveDataExampleInspector : UnityEditor.Editor
         {
             saveDataExample.DeleteAll();
         }
+        
+        // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
+        serializedObject.ApplyModifiedProperties ();
     }
 
 }

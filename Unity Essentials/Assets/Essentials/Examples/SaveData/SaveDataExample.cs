@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SaveDataExample : MonoBehaviour
 {
+
+    #region Data
+
     [SerializeField] private float floatNumber;
     [SerializeField] private bool boolean;
     [SerializeField] private List<DummyClass> listOfDummyClasses = new List<DummyClass>();
@@ -15,8 +18,12 @@ public class SaveDataExample : MonoBehaviour
         public int intNumber;
         public Vector3 vector;
     }
+    
+    #endregion
 
-    public void Save()
+    #region Functionallity
+    
+    public void SaveAll()
     {
         // Simple Save to a file (without encryption)
         SaveDataManager.Save(floatNumber, "float_file");
@@ -28,7 +35,7 @@ public class SaveDataExample : MonoBehaviour
         SaveDataManager.Save(listOfDummyClasses, "listOfDummyClasses_file", "");
     }
     
-    public void Load()
+    public void LoadAll()
     {
         // Simple load of a file (without encryption)
         floatNumber = SaveDataManager.Load("float_file", -1f);
@@ -52,5 +59,7 @@ public class SaveDataExample : MonoBehaviour
     {
         SaveDataManager.DeleteAll();
     }
+    
+    #endregion
 }
 

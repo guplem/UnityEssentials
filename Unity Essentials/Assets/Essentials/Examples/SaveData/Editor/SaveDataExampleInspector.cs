@@ -18,12 +18,12 @@ public class SaveDataExampleInspector : UnityEditor.Editor
 
         if (GUILayout.Button("Save all"))
         {
-            saveDataExample.Save();
+            saveDataExample.SaveAll();
         }
         
         if (GUILayout.Button("Load all"))
         {
-            saveDataExample.Load();
+            saveDataExample.LoadAll();
         }
         
         if (GUILayout.Button("Open folder"))

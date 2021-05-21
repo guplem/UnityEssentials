@@ -33,27 +33,6 @@ namespace UnityEngine
 {
     public static class SavedDataManager
     {
-        
-
-        [MenuItem("TESTS/1. Save")]
-        public static void Save()
-        {
-            SavedDataManager.Save("This is the save message", "/folder/testSave", "password", null);
-        }
-        
-        [MenuItem("TESTS/2. Load")]
-        public static void Load()
-        {
-            string loaded = SavedDataManager.Load("/folder/testSave", "ERROR", "password");
-            Debug.Log($"Loaded {loaded}");
-        }
-        
-        
-        
-// ==================================================================//
-
-
-
         public static string savedDataPath = Application.persistentDataPath;
 
         /// <summary>

@@ -11,21 +11,31 @@ public class SaveDataExampleInspector : UnityEditor.Editor
     {
         base.OnInspectorGUI();
         
-        SaveDataExample myTarget = (SaveDataExample)target;
+        SaveDataExample saveDataExample = (SaveDataExample)target;
 
-        if (GUILayout.Button("Save"))
+        if (GUILayout.Button("Save all"))
         {
-            myTarget.Save();
+            saveDataExample.Save();
         }
         
-        if (GUILayout.Button("Load"))
+        if (GUILayout.Button("Load all"))
         {
-            myTarget.Load();
+            saveDataExample.Load();
         }
         
         if (GUILayout.Button("Open folder"))
         {
-            SavedDataManager.OpenSavedDataFolder();
+            saveDataExample.OpenSavedDataFolder();
+        }
+        
+        if (GUILayout.Button("Delete float file"))
+        {
+            saveDataExample.DeleteFloat();
+        }
+        
+        if (GUILayout.Button("Delete all"))
+        {
+            saveDataExample.DeleteAll();
         }
     }
 

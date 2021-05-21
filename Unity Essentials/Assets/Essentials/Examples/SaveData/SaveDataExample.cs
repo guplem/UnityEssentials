@@ -19,28 +19,38 @@ public class SaveDataExample : MonoBehaviour
     public void Save()
     {
         // Simple Save to a file (without encryption)
-        SavedDataManager.Save(floatNumber, "float_file");
+        SaveDataManager.Save(floatNumber, "float_file");
         
         // Saving while encrypting
-        SavedDataManager.Save(boolean, "boolean_file", "passwordHere");
+        SaveDataManager.Save(boolean, "boolean_file", "passwordHere");
         
         // Save of a list of a custom class without encryption
-        SavedDataManager.Save(listOfDummyClasses, "listOfDummyClasses_file", "");
+        SaveDataManager.Save(listOfDummyClasses, "listOfDummyClasses_file", "");
     }
     
     public void Load()
     {
         // Simple load of a file (without encryption)
-        floatNumber = SavedDataManager.Load("float_file", -1f);
+        floatNumber = SaveDataManager.Load("float_file", -1f);
         
         // Loading en encrypted file
-        boolean = SavedDataManager.Load("boolean_file", false, "passwordHere");
+        boolean = SaveDataManager.Load("boolean_file", false, "passwordHere");
         
         // Load of a list of a custom class without encryption
-        listOfDummyClasses = SavedDataManager.Load("listOfDummyClasses_file", new List<DummyClass>(), "");
+        listOfDummyClasses = SaveDataManager.Load("listOfDummyClasses_file", new List<DummyClass>(), "", null, true);
     }
     
-
-    
+    public void OpenSavedDataFolder()
+    {
+        SaveDataManager.OpenSavedDataFolder();
+    }
+    public void DeleteFloat()
+    {
+        SaveDataManager.Delete("float_file");
+    }
+    public void DeleteAll()
+    {
+        SaveDataManager.DeleteAll();
+    }
 }
 

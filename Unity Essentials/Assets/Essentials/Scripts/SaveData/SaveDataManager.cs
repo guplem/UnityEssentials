@@ -31,7 +31,7 @@ using UnityEditor;
 
 namespace UnityEngine
 {
-    public static class SavedDataManager
+    public static class SaveDataManager
     {
         public static string savedDataPath = Application.persistentDataPath;
 
@@ -129,7 +129,7 @@ namespace UnityEngine
             }
             stream.Dispose();
         }
-        
+
         /// <summary>
         /// Loads data using identifier.
         /// </summary>
@@ -137,8 +137,9 @@ namespace UnityEngine
         /// <param name="defaultValue">Default Value. Used in case the saved data is not found.</param>
         /// <param name="encryptionPassword">Encryption Password (set it to the same password you used to save it).</param>
         /// <param name="encoding">Encoding.</param>
+        /// <param name="supressFileNotFoundWarning">Should the warning be disabled so if the desired data is not found no warning is created? Set it to <c>True</c> for hiding the warning.</param>
         /// <typeparam name="T">The objectToSave's type.</typeparam>
-        public static T Load<T>(string filename, T defaultValue, string encryptionPassword = null, Encoding encoding = null)
+        public static T Load<T>(string filename, T defaultValue, string encryptionPassword = null, Encoding encoding = null, bool supressFileNotFoundWarning = false)
         {
             // Setup
             SD_JsonSerializer serializer = new SD_JsonSerializer();
@@ -156,11 +157,11 @@ namespace UnityEngine
 			if ( !Exists ( filePath, path ) )
             #endif
             {
-                Debug.LogWarningFormat(
-                    "The specified identifier ({1}) does not exists. please use Exists () to check for existent before calling Load.\n" +
-                    "returning the default(T) instance.",
-                    filePath,
-                    filename);
+                if (!supressFileNotFoundWarning)
+                    Debug.LogWarning(
+                        $"No file identified as '{filename}' has been found. You can use the parameter 'supressFileNotFoundWarning' to disable the warning or use 'Exists()' to check if such file exists or not before trying to load them.\n" +
+                        "Returning the default(T) instance."
+                    );
                 return result;
             }
             Stream stream = null;
@@ -219,21 +220,21 @@ namespace UnityEngine
         /// <summary>
         /// Checks whether the specified identifier exists or not.
         /// </summary>
-        /// <param name="identifier">Identifier.</param>
-        public static bool Exists(string identifier)
+        /// <param name="filename">Identifier of the file to check. Can route to a folder relative to the Application.persistentDataPath.</param>
+        public static bool Exists(string filename)
         {
-            if (string.IsNullOrEmpty(identifier))
+            if (string.IsNullOrEmpty(filename))
             {
-                throw new System.ArgumentNullException("identifier");
+                throw new System.ArgumentNullException("filename");
             }
             string filePath = "";
-            if (!Utils.IsFilePath(identifier))
+            if (!Utils.IsFilePath(filename))
             {
-                filePath = string.Format("{0}/{1}", Application.persistentDataPath, identifier);
+                filePath = string.Format("{0}/{1}", Application.persistentDataPath, filename);
             }
             else
             {
-                filePath = identifier;
+                filePath = filename;
             }
             #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
             if (Utils.IsIOSupported())
@@ -264,6 +265,76 @@ namespace UnityEngine
         }
 
 
+        
+        /// <summary>
+        /// Delete the specified identifier and path.
+        /// </summary>
+        /// <param name="filename">Identifier of the file to delete. Can route to a folder relative to the Application.persistentDataPath.</param>
+        public static void Delete(string filename)
+        {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new System.ArgumentNullException(nameof(filename));
+            }
+            string filePath = $"{Application.persistentDataPath}/{filename.Trim('/')}.json";
+            if (!Exists(filePath))
+            {
+                return;
+            }
+#if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
+            if (Utils.IsIOSupported())
+            {
+#if UNITY_WSA || UNITY_WINRT
+				UnityEngine.Windows.File.Delete ( filePath );
+#else
+                File.Delete(filePath);
+#endif
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey(filePath);
+            }
+#else
+			PlayerPrefs.DeleteKey ( filePath );
+#endif
+        }
+        
+        
+        /// <summary>
+        /// Deletes all.
+        /// </summary>
+        public static void DeleteAll()
+        {
+            string dirPath = savedDataPath;
+
+#if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
+            if (Utils.IsIOSupported())
+            {
+#if UNITY_WSA || UNITY_WINRT
+				UnityEngine.Windows.Directory.Delete ( dirPath );
+#else
+                DirectoryInfo info = new DirectoryInfo(dirPath);
+                FileInfo[] files = info.GetFiles();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    files[i].Delete();
+                }
+                DirectoryInfo[] dirs = info.GetDirectories();
+                for (int i = 0; i < dirs.Length; i++)
+                {
+                    dirs[i].Delete(true);
+                }
+#endif
+            }
+            else
+            {
+                PlayerPrefs.DeleteAll();
+            }
+#else
+			PlayerPrefs.DeleteAll ();
+#endif
+        }
+        
     }
 
 }

@@ -152,15 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876a4221cadd69d48968ee46cdc7bdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatNumber: 159.365
+  floatNumber: 420.69
   boolean: 1
   listOfDummyClasses:
-  - stringText: Element 0 name
-    intNumber: 12212
-    vector: {x: 4, y: 2, z: 0}
-  - stringText: Element 1 name
-    intNumber: 545313
-    vector: {x: 0, y: 6, z: 9}
+  - stringText: Demo
+    intNumber: 42
+    vector: {x: 6, y: 42, z: 9}
 --- !u!4 &1242053643
 Transform:
   m_ObjectHideFlags: 0

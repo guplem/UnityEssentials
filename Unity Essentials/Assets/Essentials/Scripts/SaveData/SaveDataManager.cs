@@ -33,7 +33,7 @@ namespace UnityEngine
 {
     public static class SaveDataManager
     {
-        public static string savedDataPath = Application.persistentDataPath;
+        public static string saveDataPath = Application.persistentDataPath;
 
         /// <summary>
         /// Opens/reveals the folder containing the saved data.
@@ -41,7 +41,7 @@ namespace UnityEngine
         [MenuItem("TESTS/Open data folder")]
         public static void OpenSavedDataFolder()
         {
-            EditorUtility.RevealInFinder(savedDataPath);
+            EditorUtility.RevealInFinder(saveDataPath);
         }
 
         /// <summary>
@@ -61,15 +61,15 @@ namespace UnityEngine
             objectToSave ??= default(T);
             if (string.IsNullOrEmpty(filename))
                 throw new System.ArgumentNullException(nameof(filename));
-            string filePath = $"{Application.persistentDataPath}/{filename.Trim('/')}.json";
+            string filePath = GetFilePath(filename);
             
             // Build IO stream
-            Stream stream = null;
+            Stream stream;
             #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
             #if UNITY_WSA || UNITY_WINRT
 			UnityEngine.Windows.Directory.CreateDirectory ( filePath );
             #else
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath) ?? string.Empty);
             #endif
             #endif
             if (!encryptionPassword.IsNullEmptyOrWhiteSpace())
@@ -130,6 +130,7 @@ namespace UnityEngine
             stream.Dispose();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Loads data using identifier.
         /// </summary>
@@ -148,26 +149,26 @@ namespace UnityEngine
             defaultValue ??= default(T);
             if (string.IsNullOrEmpty(filename))
                 throw new System.ArgumentNullException(nameof(filename));
-            string filePath = $"{Application.persistentDataPath}/{filename.Trim('/')}.json";
+            string filePath = GetFilePath(filename);
             T result = defaultValue;
             
             #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
-            if (!Exists(filePath))
+            if (!Exists(filename))
             #else
 			if ( !Exists ( filePath, path ) )
             #endif
             {
                 if (!supressFileNotFoundWarning)
                     Debug.LogWarning(
-                        $"No file identified as '{filename}' has been found. You can use the parameter 'supressFileNotFoundWarning' to disable the warning or use 'Exists()' to check if such file exists or not before trying to load them.\n" +
+                        $"The file '{GetFilePath(filename)}' was not found.    You can use the parameter 'supressFileNotFoundWarning' to disable the warning or use 'Exists()' to check if such file exists or not before trying to load them.\n" +
                         "Returning the default(T) instance."
                     );
                 return result;
             }
-            Stream stream = null;
+            Stream stream;
             if (!encryptionPassword.IsNullEmptyOrWhiteSpace())
             {
-                string data = "";
+                string data;
             #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
                 if (Utils.IsIOSupported())
                 {
@@ -227,15 +228,8 @@ namespace UnityEngine
             {
                 throw new System.ArgumentNullException("filename");
             }
-            string filePath = "";
-            if (!Utils.IsFilePath(filename))
-            {
-                filePath = string.Format("{0}/{1}", Application.persistentDataPath, filename);
-            }
-            else
-            {
-                filePath = filename;
-            }
+            string filePath = GetFilePath(filename);
+            
             #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
             if (Utils.IsIOSupported())
             {
@@ -264,8 +258,12 @@ namespace UnityEngine
             #endif
         }
 
+        private static string GetFilePath(string filename)
+        {
 
-        
+            return $"{saveDataPath}/{filename.Trim('/')}.json";
+        }
+
         /// <summary>
         /// Delete the specified identifier and path.
         /// </summary>
@@ -276,11 +274,8 @@ namespace UnityEngine
             {
                 throw new System.ArgumentNullException(nameof(filename));
             }
-            string filePath = $"{Application.persistentDataPath}/{filename.Trim('/')}.json";
-            if (!Exists(filePath))
-            {
-                return;
-            }
+            string filePath = GetFilePath(filename);
+            
 #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
             if (Utils.IsIOSupported())
             {
@@ -302,10 +297,11 @@ namespace UnityEngine
         
         /// <summary>
         /// Deletes all.
+        /// <para>Be aware, it will delete all files found in the '</para>>
         /// </summary>
         public static void DeleteAll()
         {
-            string dirPath = savedDataPath;
+            string dirPath = saveDataPath;
 
 #if !UNITY_SAMSUNGTV && !UNITY_TVOS && !UNITY_WEBGL
             if (Utils.IsIOSupported())

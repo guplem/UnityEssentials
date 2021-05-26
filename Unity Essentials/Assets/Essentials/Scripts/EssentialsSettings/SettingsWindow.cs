@@ -149,11 +149,11 @@ namespace Essentials.EssentialsSettings
             #region Links
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button(new GUIContent("Rate the asset! ❤️", "Open the Asset Store page of the asset, so you can rate it, share it or give any kind of love you want!" )))
-                Application.OpenURL("https://assetstore.unity.com/packages/slug/161141");
+                EssentialsHelp.OpenLinkRateAsset();
             if (GUILayout.Button(new GUIContent("Give feedback or any ideas! 💡", "Open a form to share any thoughts you have about the asset, so we can keep improving." )))
-                Application.OpenURL("https://forms.gle/diuUu6nZHAf5T67C9");
+                EssentialsHelp.OpenLinkFeedback();
             if (GUILayout.Button(new GUIContent("About me  : )", "Open my personal webpage where you can know more about me!" )))
-                Application.OpenURL("https://TriunityStudios.com");
+                EssentialsHelp.OpenLinkAboutMe();
             EditorGUILayout.EndHorizontal();
             #endregion
         }

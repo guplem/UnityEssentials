@@ -64,16 +64,6 @@ namespace UnityEngine
         }
 
         /// <summary>
-        /// Creates a new Vector3Int keeping the values from the 'x' and 'y' parameters of the original Vector2Int in that order.
-        /// </summary>
-        /// <param name="z">The desired value for the 'z' component on the new Vector 3.</param>
-        /// <returns>A new Vector3Int with the 'x' and 'y' values equal to the original Vector2Int.</returns>
-        public static Vector3Int ToVector3Int(this Vector2Int v, int z = 0)
-        {
-            return new Vector3Int(v.x, v.y, z);
-        }
-
-        /// <summary>
         /// Creates a new vector with the same values as the original.
         /// </summary>
         /// <returns>A new vector with the same values as the original.</returns>

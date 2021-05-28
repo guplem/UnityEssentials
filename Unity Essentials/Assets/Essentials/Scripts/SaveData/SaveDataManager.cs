@@ -38,7 +38,7 @@ namespace UnityEngine
         /// <summary>
         /// Opens/reveals the folder containing the saved data.
         /// </summary>
-        [MenuItem("TESTS/Open data folder")]
+        [MenuItem("File/Open saves data folder", false, 300)]
         public static void OpenSavedDataFolder()
         {
             EditorUtility.RevealInFinder(saveDataPath);

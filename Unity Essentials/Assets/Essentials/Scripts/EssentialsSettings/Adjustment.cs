@@ -2,7 +2,7 @@
 
 namespace Essentials.EssentialsSettings
 {
-    public abstract class Modification : IModification
+    public abstract class Adjustment : IAdjustment
     {
         /// <summary>
         /// Title or short definition of the configuration modification
@@ -23,11 +23,11 @@ namespace Essentials.EssentialsSettings
         /// Short explanation of what will be the actions done while applying the modification
         /// </summary>
         /// 
-        public virtual string applyModificationShortEplanation { get => title + " (apply)"; }
+        public virtual string applyAdjustmentShortEplanation { get => title + " (apply)"; }
         /// <summary>
         /// Short explanation of what will be the actions done while reverting the modification
         /// </summary>
-        public virtual string revertModificationShortEplanation { get => title + " (revert)"; }
+        public virtual string revertAdjustmentShortEplanation { get => title + " (revert)"; }
 
         /// <summary>
         /// Text displayed on the button to apply the modification

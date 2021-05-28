@@ -35,11 +35,11 @@ namespace Essentials.EssentialsSettings
         {
             // Get existing open window or if none, make a new one:
             SettingsWindow window = CreateWindow<SettingsWindow>();
-            //SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Modifications");
+            //SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Adjustments");
             var windowSize = new Vector2(600f, 420f);
             window.minSize = window.maxSize = windowSize;
             window.position = Utils.GetEditorWindowCenteredPosition(windowSize);
-            window.titleContent = new GUIContent("Essentials' Settings and Modifications");
+            window.titleContent = new GUIContent("Essentials' Settings and Adjustments");
             window.Show();
             window.Focus();
         }
@@ -56,39 +56,39 @@ namespace Essentials.EssentialsSettings
             if (implementations != null && implementations.Length != 0)
             {
                 
-                GUILayout.Label("Recommended modifications:");
+                GUILayout.Label("Available adjustments:");
                 
                 EditorGUILayout.BeginHorizontal();
                 
                 EditorGUILayout.BeginVertical();
-                foreach (var modificationType in implementations)
+                foreach (Type adjustmentType in implementations)
                 {
-                    IModification modification = (IModification) Activator.CreateInstance(modificationType);
-                    if (!modification.showInSettingsWindow)
+                    IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
+                    if (!adjustment.showInSettingsWindow)
                         continue;
-                    GUILayout.Label($" • {modification.title}");
+                    GUILayout.Label($" • {adjustment.title}");
                 }
                 EditorGUILayout.EndVertical();
                 
                 EditorGUILayout.BeginVertical();
-                foreach (var modificationType in implementations)
+                foreach (Type adjustmentType in implementations)
                 {
                     
-                    IModification modification = (IModification) Activator.CreateInstance(modificationType);
-                    if (!modification.showInSettingsWindow)
+                    IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
+                    if (!adjustment.showInSettingsWindow)
                         continue;
                     
                     EditorGUILayout.BeginHorizontal();
                     
-                    if (GUILayout.Button(new GUIContent(modification.infoButtonText, $"Open {modification.infoURL}")))
-                        modification.OpenInfoURL();
+                    if (GUILayout.Button(new GUIContent(adjustment.infoButtonText, $"Open {adjustment.infoURL}")))
+                        adjustment.OpenInfoURL();
                     GUILayout.Label(""); //Separation
                     GUILayout.Label(""); //Separation
                     
-                    if (GUILayout.Button(new GUIContent(modification.applyButtonText, modification.applyModificationShortEplanation)))
-                        modification.Apply();
-                    if (GUILayout.Button(new GUIContent(modification.revertButtonText, modification.revertModificationShortEplanation)))
-                        modification.Revert();
+                    if (GUILayout.Button(new GUIContent(adjustment.applyButtonText, adjustment.applyAdjustmentShortEplanation)))
+                        adjustment.Apply();
+                    if (GUILayout.Button(new GUIContent(adjustment.revertButtonText, adjustment.revertAdjustmentShortEplanation)))
+                        adjustment.Revert();
 
                     EditorGUILayout.EndHorizontal();
                 }
@@ -102,19 +102,19 @@ namespace Essentials.EssentialsSettings
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Apply all"))
                 {
-                    foreach (var modificationType in implementations)
+                    foreach (Type adjustmentType in implementations)
                     {
-                        IModification modification = (IModification) Activator.CreateInstance(modificationType);
-                        modification.Apply();
+                        IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
+                        adjustment.Apply();
                     }
                 }
 
                 if (GUILayout.Button("Revert all"))
                 {
-                    foreach (var modificationType in implementations)
+                    foreach (Type adjustmentType in implementations)
                     {
-                        IModification modification = (IModification) Activator.CreateInstance(modificationType);
-                        modification.Revert();
+                        IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
+                        adjustment.Revert();
                     }
                 }
                 EditorGUILayout.EndHorizontal();
@@ -133,14 +133,14 @@ namespace Essentials.EssentialsSettings
                 style.alignment = defaultAlignment;
             #endregion
             
-            #region ModificationsSearch
+            /*
             EditorGUILayout.BeginHorizontal();
-            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} modifications", EditorStyles.helpBox);
+            if (implementations != null) EditorGUILayout.LabelField($"Found {implementations.Count()} adjustments", EditorStyles.helpBox);
             if (implementations == null) EditorGUILayout.LabelField($"NO IMPLEMENTATIONS FOUND");
-            if (GUILayout.Button(new GUIContent("Search for modifications", "Search for any implementation of the abstract class 'Modification' to be displayed in this window." )) && implementations == null)
+            if (GUILayout.Button(new GUIContent("Search for adjustments", "Search for any implementation of the abstract class 'Adjustment' to be displayed in this window." )) && implementations == null)
                 SearchConfigurationModifiers();
             EditorGUILayout.EndHorizontal();
-            #endregion
+            */
             
             GUILayout.Label("");
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -163,7 +163,7 @@ namespace Essentials.EssentialsSettings
         /// </summary>
         private void SearchConfigurationModifiers()
         {
-            implementations = Utils.GetTypeImplementationsNotUnityObject<IModification>();
+            implementations = Utils.GetTypeImplementationsNotUnityObject<IAdjustment>();
         }
     }
 }

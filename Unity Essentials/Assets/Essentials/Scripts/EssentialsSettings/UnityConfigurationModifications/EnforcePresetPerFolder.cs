@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
-    public class EnforcePresetPerFolder : Modification
+    public class EnforcePresetPerFolder : Adjustment
     {
         /// <summary>
         /// Enforce preset per folder renaming a file named EnforcePresetPostProcessor to EnforcePresetPostProcessor.cs in the Essentials/Presets folder.
@@ -59,8 +59,8 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
         public override string infoURL { get => "https://docs.unity3d.com/Manual/DefaultPresetsByFolder.html"; }
         public override string applyButtonText { get => "Apply"; }
 
-        public override string applyModificationShortEplanation { get => "Applies the presets to all assets contained in the same folder."; }
-        public override string revertModificationShortEplanation { get => "Presets will no longer be automatically applied to the assets in the same folder."; }
+        public override string applyAdjustmentShortEplanation { get => "Applies the presets to all assets contained in the same folder of the preset."; }
+        public override string revertAdjustmentShortEplanation { get => "Presets will no longer be automatically applied to the assets in the same folder of the preset."; }
 
         public override bool showInSettingsWindow => true;
         

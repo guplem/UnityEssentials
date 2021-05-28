@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
-    public class QuickSearch : Modification
+    public class QuickSearch : Adjustment
     {
         public override bool showInSettingsWindow { get => false; }
         public override string title { get => "Install Quick Search"; }
@@ -31,8 +31,8 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
             Debug.Log("Uninstalling Quick Search...");
         }
         
-        public override string applyModificationShortEplanation { get => "Install the Quick Search package adding a dependency in the project."; }
-        public override string revertModificationShortEplanation { get => "Uninstall the Quick Search package by removing a dependency in the project."; }
+        public override string applyAdjustmentShortEplanation { get => "Install the Quick Search package adding a dependency in the project."; }
+        public override string revertAdjustmentShortEplanation { get => "Uninstall the Quick Search package by removing a dependency in the project."; }
 
         
     }

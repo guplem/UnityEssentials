@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 using System;
-using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -18,12 +17,12 @@ namespace Essentials.EssentialsSettings
             if (!InternalEditorUtility.isHumanControllingUs || InternalEditorUtility.inBatchMode)
                 return;
 
-            if (!EssentialsSettings.settingsShown)
+            if (!SavedData.settingsShown)
             {
                 EditorApplication.delayCall += () =>
                 {
                     OpenWindow();
-                    EssentialsSettings.settingsShown = true;
+                    SavedData.settingsShown = true;
                 };
             }
 
@@ -85,9 +84,9 @@ namespace Essentials.EssentialsSettings
                     GUILayout.Label(""); //Separation
                     GUILayout.Label(""); //Separation
                     
-                    if (GUILayout.Button(new GUIContent(adjustment.applyButtonText, adjustment.applyAdjustmentShortEplanation)))
+                    if (GUILayout.Button(new GUIContent(adjustment.applyButtonText, adjustment.applyAdjustmentShortExplanation)))
                         adjustment.Apply();
-                    if (GUILayout.Button(new GUIContent(adjustment.revertButtonText, adjustment.revertAdjustmentShortEplanation)))
+                    if (GUILayout.Button(new GUIContent(adjustment.revertButtonText, adjustment.revertAdjustmentShortExplanation)))
                         adjustment.Revert();
 
                     EditorGUILayout.EndHorizontal();

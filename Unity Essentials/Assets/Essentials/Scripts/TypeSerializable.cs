@@ -2,8 +2,6 @@
 // Written by Bryan Keiren (http://www.bryankeiren.com)
 // Found in: https://forum.unity.com/threads/serializable-system-type-get-it-while-its-hot.187557/
 
-using UnityEngine;
-using System.Runtime.Serialization;
 
 namespace UnityEngine
 {

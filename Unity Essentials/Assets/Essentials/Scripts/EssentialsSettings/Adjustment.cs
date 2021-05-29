@@ -2,8 +2,12 @@
 
 namespace Essentials.EssentialsSettings
 {
+    /// <summary>
+    /// Basic functionality 
+    /// </summary>
     public abstract class Adjustment : IAdjustment
     {
+        
         /// <summary>
         /// Title or short definition of the configuration modification
         /// </summary>
@@ -23,11 +27,11 @@ namespace Essentials.EssentialsSettings
         /// Short explanation of what will be the actions done while applying the modification
         /// </summary>
         /// 
-        public virtual string applyAdjustmentShortEplanation { get => title + " (apply)"; }
+        public virtual string applyAdjustmentShortExplanation { get => title + " (apply)"; }
         /// <summary>
         /// Short explanation of what will be the actions done while reverting the modification
         /// </summary>
-        public virtual string revertAdjustmentShortEplanation { get => title + " (revert)"; }
+        public virtual string revertAdjustmentShortExplanation { get => title + " (revert)"; }
 
         /// <summary>
         /// Text displayed on the button to apply the modification
@@ -55,10 +59,7 @@ namespace Essentials.EssentialsSettings
         /// <summary>
         /// Opens the URL containing the information of the modification
         /// </summary>
-        public void OpenInfoURL()
-        {
-            Application.OpenURL(infoURL);
-        }
+        public void OpenInfoURL() { Application.OpenURL(infoURL); }
 
     }
 }

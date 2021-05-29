@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Essentials.EssentialsSettings
 {
-    static class EssentialsSettings
+    /// <summary>
+    /// Data related to the "Essentials Settings Window"
+    /// </summary>
+    static class SavedData
     {
 
         #region WelcomeSettingsScreen
         
-            private static bool _settingsShown;
+            /// <summary>
+            /// Whether the settings window has been shown or not for this user.
+            /// </summary>
             public static bool settingsShown
             {
                 get
@@ -24,6 +28,7 @@ namespace Essentials.EssentialsSettings
                     PlayerPrefs.SetInt(nameof(settingsShown), value? 1 : 0);
                 }
             }
+            private static bool _settingsShown;
             
         #endregion
 

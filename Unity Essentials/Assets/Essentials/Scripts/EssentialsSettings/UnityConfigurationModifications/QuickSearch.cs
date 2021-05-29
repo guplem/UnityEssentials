@@ -31,8 +31,8 @@ namespace Essentials.EssentialsSettings.UnityConfigurationModifications
             Debug.Log("Uninstalling Quick Search...");
         }
         
-        public override string applyAdjustmentShortEplanation { get => "Install the Quick Search package adding a dependency in the project."; }
-        public override string revertAdjustmentShortEplanation { get => "Uninstall the Quick Search package by removing a dependency in the project."; }
+        public override string applyAdjustmentShortExplanation { get => "Install the Quick Search package adding a dependency in the project."; }
+        public override string revertAdjustmentShortExplanation { get => "Uninstall the Quick Search package by removing a dependency in the project."; }
 
         
     }

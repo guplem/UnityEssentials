@@ -1,5 +1,9 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for LayerMask
+    /// </summary>
+    
     public static class LayerMaskExtensions
     {
     

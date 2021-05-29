@@ -28,6 +28,10 @@ THE SOFTWARE.
 
 namespace UnityEngine
 {
+  
+  /// <summary>
+  /// Extensions for the RectTransform component
+  /// </summary>
   public static class RectTransformExtensions
   {
     /// <summary>
@@ -50,16 +54,16 @@ namespace UnityEngine
     /// The normalized position in the parent RectTransform that the corners is anchored to.
     /// </summary>
     /// <returns>A MinMax01 defining the normalized position in the parent RectTransform that the corners is anchored to.</returns>     
-    public static Rectangle01 GetAnchors(this RectTransform rt)
+    public static MinMax01 GetAnchors(this RectTransform rt)
     {
-      return new Rectangle01(rt.anchorMin, rt.anchorMax);
+      return new MinMax01(rt.anchorMin, rt.anchorMax);
     }
 
     
     /// <summary>
     /// Sets the normalized position in the parent RectTransform that the corners is anchored to.
     /// </summary>    
-    public static void SetAnchors(this RectTransform rt, Rectangle01 anchors)
+    public static void SetAnchors(this RectTransform rt, MinMax01 anchors)
     {
       rt.anchorMin = anchors.min;
       rt.anchorMax = anchors.max;
@@ -290,7 +294,7 @@ namespace UnityEngine
     /// </summary>
     /// <param name="anchor">The anchor to get the relative from.</param>
     /// <param name="distance">The distance to be moved to.</param>
-    public static void SetLeftFrom(this RectTransform rt, Rectangle01 anchor, float distance)
+    public static void SetLeftFrom(this RectTransform rt, MinMax01 anchor, float distance)
     {
       Vector2 origin = rt.AnchorToParentSpace(anchor.min - rt.anchorMin);
 
@@ -301,7 +305,7 @@ namespace UnityEngine
     /// </summary>
     /// <param name="anchor">The anchor to get the relative from.</param>
     /// <param name="distance">The distance to be moved to.</param>
-    public static void SetRightFrom(this RectTransform rt, Rectangle01 anchor, float distance)
+    public static void SetRightFrom(this RectTransform rt, MinMax01 anchor, float distance)
     {
       Vector2 origin = rt.AnchorToParentSpace(anchor.max - rt.anchorMax);
 
@@ -312,7 +316,7 @@ namespace UnityEngine
     /// </summary>
     /// <param name="anchor">The anchor to get the relative from.</param>
     /// <param name="distance">The distance to be moved to.</param>
-    public static void SetTopFrom(this RectTransform rt, Rectangle01 anchor, float distance)
+    public static void SetTopFrom(this RectTransform rt, MinMax01 anchor, float distance)
     {
       Vector2 origin = rt.AnchorToParentSpace(anchor.max - rt.anchorMax);
 
@@ -323,7 +327,7 @@ namespace UnityEngine
     /// </summary>
     /// <param name="anchor">The anchor to get the relative from.</param>
     /// <param name="distance">The distance to be moved to.</param>
-    public static void SetBottomFrom(this RectTransform rt, Rectangle01 anchor, float distance)
+    public static void SetBottomFrom(this RectTransform rt, MinMax01 anchor, float distance)
     {
       Vector2 origin = rt.AnchorToParentSpace(anchor.min - rt.anchorMin);
 
@@ -590,7 +594,7 @@ namespace UnityEngine
     /// <summary>
     /// Moves the RectTransform relative to an arbitrary anchor point.  This is effectively like setting the anchor, then moving, then setting it back, but does so without potentially getting in the way of anything else.
     /// </summary>
-    public static void MoveFrom(this RectTransform rt, Rectangle01 anchor, Vector2 point)
+    public static void MoveFrom(this RectTransform rt, MinMax01 anchor, Vector2 point)
     {
       rt.MoveFrom(anchor, point.x, point.y);
     }
@@ -598,7 +602,7 @@ namespace UnityEngine
     /// Moves the RectTransform relative to an arbitrary anchor point.  This is effectively like setting the anchor, then moving, then setting it back, but does so without potentially getting in the way of anything else.
     /// </summary>
     /// <param name="rt"></param>
-    public static void MoveFrom(this RectTransform rt, Rectangle01 anchor, float x, float y)
+    public static void MoveFrom(this RectTransform rt, MinMax01 anchor, float x, float y)
     {
       Vector2 origin = rt.AnchorToParentSpace(AnchorOrigin(anchor) - rt.AnchorOrigin());
       rt.anchoredPosition = new Vector2(origin.x + x, origin.y + y);
@@ -717,7 +721,7 @@ namespace UnityEngine
     /// The center of the rectangle the two anchors represent, which is the origin that a RectTransform's anchoredPosition is an offset of.
     /// </summary>
     /// <returns>The center of the rectangle the two anchors represent.</returns>
-    public static Vector2 AnchorOrigin(Rectangle01 anchor)
+    public static Vector2 AnchorOrigin(MinMax01 anchor)
     {
       float x = anchor.min.x + (anchor.max.x - anchor.min.x) / 2;
       float y = anchor.min.y + (anchor.max.y - anchor.min.y) / 2;

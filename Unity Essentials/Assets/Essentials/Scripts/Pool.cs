@@ -198,6 +198,9 @@ namespace UnityEngine
             return Disable(referencedObjects[gameObjectIndexInPool]);
         }
         
+        /// <summary>
+        /// Class to handle the default position and rotation where the objects will be instantiated
+        /// </summary>
         [System.Serializable]
         public class DefaultPositionAndRotation
         {

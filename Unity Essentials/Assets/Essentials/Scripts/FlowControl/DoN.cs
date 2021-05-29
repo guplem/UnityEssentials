@@ -3,11 +3,25 @@ using UnityEngine.Events;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the limitation of how many times a set of pre-defined events can be executed.
+    /// </summary>
     [Serializable]
     public class DoN
     {
-        [SerializeField] public int invokingTimes = 3;
+        /// <summary>
+        /// The amount of times the events can be invoked.
+        /// </summary>
+        [Tooltip("The amount of times the events can be invoked")]
+        [SerializeField] public int invokingTimes = 1;
+        /// <summary>
+        /// How many times the events have been invoked.
+        /// </summary>
         [NonSerialized] public int invokedTimes = 0;
+        /// <summary>
+        /// The events called at every invoke.
+        /// </summary>
+        [Tooltip("The events called at every invoke")]
         [SerializeField] public UnityEvent calledEvent;
 
         public DoN(UnityAction unityAction, int invokingTimes)
@@ -24,6 +38,9 @@ namespace UnityEngine
             this.invokingTimes = invokingTimes;
         }
 
+        /// <summary>
+        /// Invokes all registered events callbacks (runtime and persistent).
+        /// </summary>
         public void Invoke()
         {
             if (invokedTimes < invokingTimes)

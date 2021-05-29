@@ -2,11 +2,26 @@
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the animation of RectTransform components.
+    /// </summary>
     [Serializable]
     public class RectTransformAnimation : SimpleAnimation
     {
+        /// <summary>
+        /// The RectTransform to animate
+        /// </summary>
+        [Tooltip("The RectTransform to animate")]
         [SerializeField] public RectTransform rectTransformToAnimate;
+        /// <summary>
+        /// The state of the RectTransform at the start of the animation
+        /// </summary>
+        [Tooltip("The state of the RectTransform at the start of the animation")]
         [SerializeField] public RectTransform originRectTransform;
+        /// <summary>
+        /// The state of the RectTransform at the end of the animation
+        /// </summary>
+        [Tooltip("The state of the RectTransform at the end of the animation")]
         [SerializeField] public RectTransform destinationRectTransform;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.

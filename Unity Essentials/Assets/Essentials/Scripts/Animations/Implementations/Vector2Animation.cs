@@ -2,11 +2,26 @@ using System;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the animation of a Vector2.
+    /// </summary>
     [Serializable]
     public class Vector2Animation : SimpleAnimation
     {
+        /// <summary>
+        /// The animated Vector2
+        /// </summary>
+        [Tooltip("The animated Vector2")]
         [NonSerialized] public Vector2 vector2ToAnimate;
+        /// <summary>
+        /// The Vector2 at the start of the animation
+        /// </summary>
+        [Tooltip("The Vector2 at the start of the animation")]
         [SerializeField] public Vector2 originVector2;
+        /// <summary>
+        /// The Vector2 at the end of the animation
+        /// </summary>
+        [Tooltip("The Vector2 at the end of the animation")]
         [SerializeField] public Vector2 destinationVector2;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.

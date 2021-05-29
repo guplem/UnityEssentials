@@ -20,7 +20,7 @@ namespace FullSerializer {
         /// </summary>
         /// <param name="type">The given type.</param>
         /// <returns>True if the processor should be applied, false otherwise.</returns>
-        public virtual bool CanProcess(Type type) { throw new NotImplementedException(); }
+        public virtual bool CanProcess(Type type) { throw new Exception("NotImplementedException"); }
 
         /// <summary>
         /// Called before serialization.

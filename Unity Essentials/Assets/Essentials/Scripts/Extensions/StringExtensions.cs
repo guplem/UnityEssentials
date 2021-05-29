@@ -1,5 +1,9 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for string
+    /// </summary>
+    
     public static class StringExtensions
     {
 

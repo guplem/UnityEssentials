@@ -1,5 +1,8 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for Vector
+    /// </summary>
     public static class VectorExtensions
     {
         /// <summary>

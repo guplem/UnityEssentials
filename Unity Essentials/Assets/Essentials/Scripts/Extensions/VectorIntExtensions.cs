@@ -1,5 +1,8 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for VectorInt
+    /// </summary>
     public static class VectorIntExtensions
     {
         /// <summary>

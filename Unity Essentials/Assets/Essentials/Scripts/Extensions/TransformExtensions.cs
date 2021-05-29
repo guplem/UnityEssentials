@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for the Transform component
+    /// </summary>
     public static class TransformExtensions
     {
         /// <summary>

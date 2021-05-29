@@ -34,8 +34,8 @@ namespace Essentials.SaveData
 {
 
 	/// <summary>
-	/// Save Game Simple Encoder.
-	/// Grabbed from https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
+	/// Simple Encoder used by the SaveData class.
+	/// <para>Grabbed from https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp</para>>
 	/// </summary>
 	public class SD_Encoder
 	{

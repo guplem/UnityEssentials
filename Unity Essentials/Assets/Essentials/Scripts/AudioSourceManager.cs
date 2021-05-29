@@ -4,6 +4,9 @@ using UnityEngine.Audio;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Component to manage multiple AudioSources (or AudioClips) at the same time (or in the same component)
+    /// </summary>
     public class AudioSourceManager : MonoBehaviour
     {
         [Tooltip("The amount of Audio Sources that will exist in the GameObject where this component lives. If they are missing, they will be created during this component's Awake.")]

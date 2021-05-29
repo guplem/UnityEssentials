@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace UnityEngine
 {
-
+    /// <summary>
+    /// Component used to control the behaviour of any SimpleAnimation
+    /// </summary>
     public class SimpleAnimationsManager : MonoBehaviour
     {
         /// <summary>
@@ -40,10 +42,14 @@ namespace UnityEngine
             return null;
         }
         
-        // List of all the animations that should stopped so they will be removed from the "playingAnimations" list at the next frame.
+        /// <summary>
+        /// List of all the animations that should stopped so they will be removed from the "playingAnimations" list at the next frame.
+        /// </summary>
         private HashSet<SimpleAnimation> animationsToStop = new HashSet<SimpleAnimation>();
         
-        // List of all the animations that are being played.
+        /// <summary>
+        /// List of all the animations that are being played.
+        /// </summary>
         private HashSet<SimpleAnimation> playingAnimations = new HashSet<SimpleAnimation>();
 
         /// <summary>

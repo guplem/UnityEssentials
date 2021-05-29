@@ -65,7 +65,7 @@ namespace FullSerializer.Internal {
 
                     // We have to read in the existing value, since we need to support partial
                     // deserialization. However, this is bad for perf.
-                    // TODO: Find a way to avoid this call when we are not doing a partial deserialization
+                    // TO-DO: Find a way to avoid this call when we are not doing a partial deserialization
                     //       Maybe through a new property, ie, Serializer.IsPartialSerialization, which just
                     //       gets set when starting a new serialization? We cannot pipe the information
                     //       through CreateInstance unfortunately.

@@ -33,7 +33,7 @@ using UnityEngine;
 namespace Essentials.SaveData
 {
 	/// <summary>
-	/// Save Game Json Serializer.
+	/// Json Serializer used by the SaveData class.
 	/// </summary>
 	public class SD_JsonSerializer
 	{

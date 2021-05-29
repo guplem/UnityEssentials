@@ -2,7 +2,9 @@ using System;
 
 namespace UnityEngine
 {
-    [ExecuteInEditMode]
+    /// <summary>
+    /// Base class to handle the console display in-game
+    /// </summary>
     public abstract class Console : MonoBehaviour
     {
         internal string fullLog = "";

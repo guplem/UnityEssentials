@@ -1,5 +1,9 @@
 namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for the Camera component
+    /// </summary>
+    
     public static class CameraExtensions
     {
         /// <summary>

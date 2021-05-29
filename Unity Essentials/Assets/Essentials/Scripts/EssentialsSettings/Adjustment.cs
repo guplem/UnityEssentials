@@ -3,7 +3,7 @@
 namespace Essentials.EssentialsSettings
 {
     /// <summary>
-    /// Basic functionality 
+    /// Basic functionality for any adjustment that can be managed in the "Essentials Settings Window"
     /// </summary>
     public abstract class Adjustment : IAdjustment
     {

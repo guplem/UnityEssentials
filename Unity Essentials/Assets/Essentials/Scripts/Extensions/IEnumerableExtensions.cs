@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for IEnumerable
+    /// </summary>
+    
     public static class IEnumerableExtensions
     {
         /// <summary>

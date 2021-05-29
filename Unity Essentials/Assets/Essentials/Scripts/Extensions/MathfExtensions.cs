@@ -2,6 +2,11 @@
 
 namespace UnityEngine
 {
+    
+    /// <summary>
+    /// Extensions for the Mathf class
+    /// </summary>
+    
     public static class MathfExtensions
     {
         /// <summary>

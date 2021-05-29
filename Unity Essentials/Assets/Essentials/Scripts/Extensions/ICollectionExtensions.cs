@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for ICollection
+    /// </summary>
     public static class ICollectionExtensions
     {
         /// <summary>

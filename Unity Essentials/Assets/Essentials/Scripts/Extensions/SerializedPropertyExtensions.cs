@@ -4,6 +4,10 @@ using UnityEditor;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for SerializedProperty
+    /// </summary>
+    /// 
     public static class SerializedPropertyExtensions
     {
         /// <summary>

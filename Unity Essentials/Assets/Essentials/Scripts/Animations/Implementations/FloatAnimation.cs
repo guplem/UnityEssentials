@@ -2,11 +2,26 @@ using System;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the animation of a float.
+    /// </summary>
     [Serializable]
     public class FloatAnimation : SimpleAnimation
     {
+        /// <summary>
+        /// The animated float
+        /// </summary>
+        [Tooltip("The animated float")]
         [NonSerialized] public float floatToAnimate;
+        /// <summary>
+        /// The float at the start of the animation
+        /// </summary>
+        [Tooltip("The float at the start of the animation")]
         [SerializeField] public float originFloat;
+        /// <summary>
+        /// The float at the end of the animation
+        /// </summary>
+        [Tooltip("The float at the end of the animation")]
         [SerializeField] public float destinationFloat;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
@@ -28,7 +43,6 @@ namespace UnityEngine
         {
             bool endOfAnimation = base.Step(deltaTime, inverseIfMirror);
             
-            //floatToAnimate = Color.Lerp(originFloat, destinationFloat, currentAnimationValue);
             floatToAnimate = Mathf.Lerp(originFloat, destinationFloat, currentAnimationCurveValue);
             
             return endOfAnimation;

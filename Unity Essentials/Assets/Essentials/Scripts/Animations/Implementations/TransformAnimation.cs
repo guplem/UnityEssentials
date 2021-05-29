@@ -2,11 +2,26 @@
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the animation of Transform components.
+    /// </summary>
     [Serializable]
     public class TransformAnimation : SimpleAnimation
     {
+        /// <summary>
+        /// The Transform to animate
+        /// </summary>
+        [Tooltip("The Transform to animate")]
         [SerializeField] public Transform transformToAnimate;
+        /// <summary>
+        /// The state of the Transform at the start of the animation
+        /// </summary>
+        [Tooltip("The state of the Transform at the start of the animation")]
         [SerializeField] public Transform originTransform;
+        /// <summary>
+        /// The state of the Transform at the end of the animation
+        /// </summary>
+        [Tooltip("The state of the Transform at the end of the animation")]
         [SerializeField] public Transform destinationTransform;
 
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.

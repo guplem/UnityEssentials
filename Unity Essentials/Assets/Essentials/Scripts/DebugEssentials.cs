@@ -2,6 +2,9 @@
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Class containing additional methods to ease debugging while developing a game.
+    /// </summary>
     public class DebugEssentials : Debug
     {
         

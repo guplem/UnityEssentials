@@ -2,13 +2,29 @@ using System;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows the animation of a Color.
+    /// </summary>
     [Serializable]
     public class ColorAnimation : SimpleAnimation
     {
+        /// <summary>
+        /// The animated color
+        /// </summary>
+        [Tooltip("The animated color")]
         [NonSerialized] public Color colorToAnimate;
+        /// <summary>
+        /// The color at the start of the animation
+        /// </summary>
+        [Tooltip("The color at the start of the animation")]
         [SerializeField] public Color originColor;
+        /// <summary>
+        /// The color at the end of the animation
+        /// </summary>
+        [Tooltip("The color at the end of the animation")]
         [SerializeField] public Color destinationColor;
 
+        
         // It is mandatory to have a parameterless constructor to properly work with the SimpleAnimationsManager component in the inspector.
         public ColorAnimation() : this(Color.white, Color.white, Color.white) { } 
         

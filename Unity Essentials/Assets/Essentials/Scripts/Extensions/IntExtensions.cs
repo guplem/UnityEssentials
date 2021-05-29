@@ -1,5 +1,9 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for int
+    /// </summary>
+    
     public static class IntExtensions
     {
         /// <summary>

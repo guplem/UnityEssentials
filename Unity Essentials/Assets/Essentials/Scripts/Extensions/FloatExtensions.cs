@@ -1,5 +1,8 @@
 ﻿namespace UnityEngine
 {
+    /// <summary>
+    /// Extensions for float
+    /// </summary>
     public static class FloatExtensions
     {
         /// <summary>

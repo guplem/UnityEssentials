@@ -3,12 +3,27 @@ using UnityEngine.Events;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Base class to create simple animations of any element.
+    /// <para>It can be used to animate cameras, int, floats, vectors, transforms, ...</para>
+    /// <para></para>
+    /// </summary>
     [Serializable] 
     public abstract class SimpleAnimation : ISimpleAnimation
     {
+        /// <summary>
+        /// The name of the animation
+        /// </summary>
+        [Tooltip("The name of the animation")]
         [SerializeField] public string name;
+        /// <summary>
+        /// The current moment/time of the animation. From 0 to duration.
+        /// </summary>
         public float timeStamp { get => _timeStamp; protected set => _timeStamp = value; }
         [HideInInspector] private float _timeStamp;
+        /// <summary>
+        /// The progress of the animation. From 0 to 1.
+        /// </summary>
         public float progress
         {
             get {
@@ -18,14 +33,45 @@ namespace UnityEngine
             }
             set => SetProgress(value);
         }
+        /// <summary>
+        /// Determines how the animation behaves once finished. Should be executed only once? Start over? Go back?
+        /// </summary>
+        [Tooltip("Determines how the animation behaves once finished. Should be executed only once? Start over? Go back?")]
         [SerializeField] public WrapMode wrapMode;
+        /// <summary>
+        /// Should the animation be played from end to start instead of from start to end?
+        /// </summary>
+        [Tooltip("Should the animation be played from end to start instead of from start to end?")]
         [SerializeField] public bool mirror;
+        /// <summary>
+        /// How much should the animation last?
+        /// </summary>
+        [Tooltip("How much should the animation last?")]
         [SerializeField] public float duration;
+        /// <summary>
+        /// The curve of the animation over time.
+        /// </summary>
+        [Tooltip("The curve of the animation over time. The bottom is the start state and the top is end state.")]
         [SerializeField] public AnimationCurve curve;
+        /// <summary>
+        /// The value of the animation at the current time. 0 means start state. 1 means end state.
+        /// </summary>
         public float currentAnimationCurveValue => curve.Evaluate(timeStamp / duration);
+        /// <summary>
+        /// Events executed every time the animation advances.
+        /// </summary>
+        [Tooltip("Events executed every time the animation advances")]
         [SerializeField] public UnityEvent onStep;
+        /// <summary>
+        /// Events executed when the animation finishes.
+        /// </summary>
+        [Tooltip("Events executed when the animation finishes")]
         [SerializeField] public UnityEvent onFinish;
 
+        
+        /// <summary>
+        /// How the animation behaves once finished. Should be executed only once? Start over? Go back?
+        /// </summary>
         public enum WrapMode
         {
             Once,
@@ -131,6 +177,9 @@ namespace UnityEngine
 
     }
     
+    /// <summary>
+    /// Predefined curves for the SimpleAnimations
+    /// </summary>
     public enum Curve
     {
         Linear,

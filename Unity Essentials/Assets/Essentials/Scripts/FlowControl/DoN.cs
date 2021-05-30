@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace UnityEngine
 {
     /// <summary>
-    /// Allows the limitation of how many times a set of pre-defined events can be executed.
+    /// Allows the limitation of how many times an event can be executed.
     /// </summary>
     [Serializable]
     public class DoN

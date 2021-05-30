@@ -2,6 +2,9 @@
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// An easier to use and a feature-rich class to generate pseudo-random results.
+    /// </summary>
     public class RandomEssentials : System.Random
     {
 

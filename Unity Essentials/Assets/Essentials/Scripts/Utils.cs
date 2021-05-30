@@ -7,8 +7,15 @@ using System.IO;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// A collection of useful methods that did not fit into any of the other sections of the asset.
+    /// <para>Please, if you can think of any improvement for the organization (or any other matter), report it on the feedback form: https://forms.gle/diuUu6nZHAf5T67C9</para>
+    /// </summary>
     public static class Utils
     {
+
+        #region Types
+
         /// <summary>
         /// Find all implementations of the given parameter type except from those that are a subclass of 'UnityEngine.Object'.
         /// </summary>
@@ -32,7 +39,10 @@ namespace UnityEngine
             return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
         }
 
-    #region GetMainWindowCenteredPosition
+        #endregion
+
+        #region GetMainWindowCenteredPosition
+        
         #if UNITY_EDITOR
         /// <summary>
         /// Returns a Rect containing the configuration to center a window.
@@ -98,8 +108,11 @@ namespace UnityEngine
             return pos;
         }
         #endif
-    #endregion
         
+        #endregion
+
+        #region Project
+
         /// <summary>
         /// Returns the name of the project
         /// </summary>
@@ -149,6 +162,9 @@ namespace UnityEngine
             #endif
             return result;
         }
+        
+        #endregion
+
         
     }
 }

@@ -5,9 +5,15 @@ using Console = UnityEngine.Console;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Component to display the console (debug logs) in-game using a TMP_Text component
+    /// </summary>
     [RequireComponent(typeof(TMP_Text))]
     public class ConsoleTMP : Console
     {
+        /// <summary>
+        /// The TMP_Text component that is going to be updated to display all the log messages.
+        /// </summary>
         [NonSerialized] public TMP_Text textTMP;
 
         protected override void UpdateVisuals()

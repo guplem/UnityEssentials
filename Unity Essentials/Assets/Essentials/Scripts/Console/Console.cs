@@ -7,7 +7,14 @@ namespace UnityEngine
     /// </summary>
     public abstract class Console : MonoBehaviour
     {
+        /// <summary>
+        /// The log messages of the console.
+        /// </summary>
         internal string fullLog = "";
+        
+        /// <summary>
+        /// The filename that will store the logs of the console.
+        /// </summary>
         private string filename = "";
         
         /// <summary>
@@ -40,8 +47,17 @@ namespace UnityEngine
         [Tooltip("Maximum amount of characters displayed by the console.")]
         [SerializeField] public int maxDisplayedChars = 700;
         
+        /// <summary>
+        /// Registers the console to handle any log messages received and updates the visuals calling UpdateVisuals.
+        /// </summary>
         protected void OnEnable() { Application.logMessageReceived += Log; UpdateVisuals(); }
+        /// <summary>
+        /// Unregisters the console from the handling of the any log messages.
+        /// </summary>
         protected void OnDisable() { Application.logMessageReceived -= Log; }
+        /// <summary>
+        /// Updates the console's visuals calling UpdateVisuals
+        /// </summary>
         protected void Awake() { UpdateVisuals(); }
         
         /// <summary>
@@ -62,6 +78,9 @@ namespace UnityEngine
             UpdateVisuals();
         }
 
+        /// <summary>
+        /// Handles the toggling ON and OFF of the console
+        /// </summary>
         private void Update()
         {
             if (enableKeyToggle && Input.GetKeyDown(toggleKey))
@@ -70,6 +89,9 @@ namespace UnityEngine
             }
         }
 
+        /// <summary>
+        /// Handles the logging of any log messages
+        /// </summary>
         private void Log(string logString, string stackTrace, LogType type)
         {
             // Keep track of the full log
@@ -103,6 +125,9 @@ namespace UnityEngine
             UpdateVisuals();
         }
 
+        /// <summary>
+        /// Updates the visuals of the console
+        /// </summary>
         protected abstract void UpdateVisuals();
 
         /// <summary>

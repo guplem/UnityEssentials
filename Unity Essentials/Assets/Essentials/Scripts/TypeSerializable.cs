@@ -1,26 +1,52 @@
-// Simple helper class that allows you to serialize System.Type objects.
 // Written by Bryan Keiren (http://www.bryankeiren.com)
 // Found in: https://forum.unity.com/threads/serializable-system-type-get-it-while-its-hot.187557/
 
 
 namespace UnityEngine
 {
+	/// <summary>
+	/// Simple helper class that allows you to serialize System.Type objects
+	/// </summary>
 	[System.Serializable]
     public class TypeSerializable
     {
+	    /// <summary>
+	    /// The name of the type.
+	    /// </summary>
     	[SerializeField]
     	private string m_Name;
+	    /// <summary>
+	    /// The name of the type.
+	    /// </summary>
     	public string Name => m_Name;
     
+		/// <summary>
+		/// The assembly-qualified name of the type, which includes the name of the assembly from which the Type object was loaded.
+		/// </summary>
     	[SerializeField]
     	private string m_AssemblyQualifiedName;
+		/// <summary>
+		/// The assembly-qualified name of the type, which includes the name of the assembly from which the Type object was loaded.
+		/// </summary>
     	public string AssemblyQualifiedName => m_AssemblyQualifiedName;
-    
+
+        /// <summary>
+        /// The display name of the assembly of the type.
+        /// </summary>
     	[SerializeField]
     	private string m_AssemblyName;
+        /// <summary>
+        /// The display name of the assembly of the type.
+        /// </summary>
     	public string AssemblyName => m_AssemblyName;
     
+        /// <summary>
+        /// The type.
+        /// </summary>
     	private System.Type m_SystemType;	
+        /// <summary>
+        /// The type.
+        /// </summary>
     	public System.Type SystemType
     	{
     		get 	
@@ -32,7 +58,7 @@ namespace UnityEngine
     			return m_SystemType;
     		}
     	}
-    	
+        
     	private void GetSystemType()
     	{
     		m_SystemType = System.Type.GetType(m_AssemblyQualifiedName);

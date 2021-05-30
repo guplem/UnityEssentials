@@ -2,8 +2,14 @@ using UnityEngine;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Component to display the console (debug logs) in-game using Unity's GUI class
+    /// </summary>
     public class ConsoleGUI : Console
     {
+        /// <summary>
+        /// Updates the visuals of the console
+        /// </summary>
         private void OnGUI()
         {
             if (!show)

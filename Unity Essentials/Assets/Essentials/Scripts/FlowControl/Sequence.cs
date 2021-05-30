@@ -4,13 +4,33 @@ using UnityEngine.Events;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Allows you to execute different events every time the Invoke method of this is class called.
+    /// </summary>
     [Serializable]
     public class Sequence
     {
+        /// <summary>
+        /// Should the order of execution of the events be random? If false, the order will be the same as in the events array.
+        /// </summary>
+        [Tooltip("Should the order of execution of the events be random? If false, the order will be the same as in the events array.")]
         [SerializeField] public bool randomizeOrder;
-        [NonSerialized] public RandomEssentials random = new RandomEssentials();
+        /// <summary>
+        /// The randomness generation object to choose the next event to execute. 
+        /// </summary>
+        [NonSerialized] private RandomEssentials random = new RandomEssentials();
+        /// <summary>
+        /// Each of the events to execute at every call of the Invoke method.
+        /// </summary>
+        [Tooltip("Each of the events to execute at every call of the Invoke method.")]
         [SerializeField] public UnityEvent[] events;
-        [NonSerialized] public UnityEvent nextEvent = null;
+        /// <summary>
+        /// The next UnityEvent to be executed. If null, firstEvent is going to be executed next .
+        /// </summary>
+        [NonSerialized] private UnityEvent nextEvent = null;
+        /// <summary>
+        /// The index of the next UnityEvent to be executed.
+        /// </summary>
         [NonSerialized] private int nextEventIndex = 0;
 
         public Sequence(UnityAction[] actions, bool randomizeOrder = false, int randomizationSeed = -1) 
@@ -54,7 +74,6 @@ namespace UnityEngine
                 if (!randomizeOrder)
                 {
                     nextEvent = events[0];
-                    nextEventIndex = nextEventIndex.GetLooped(events.Length);
                 }
                 else
                 {

@@ -31,6 +31,9 @@ using UnityEditor;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// A class to save almost any kind of data on almost all devices (not heavily tested).
+    /// </summary>
     public static class SaveDataManager
     {
         public static string saveDataPath = Application.persistentDataPath;

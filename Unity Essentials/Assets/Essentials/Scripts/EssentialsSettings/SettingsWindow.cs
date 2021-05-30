@@ -27,8 +27,7 @@ namespace Essentials.EssentialsSettings
             }
 
         }
-
-        // Add menu named "My Window" to the Window menu
+        
         [MenuItem("Window/Essentials/Settings")]
         static void OpenWindow()
         {
@@ -153,6 +152,12 @@ namespace Essentials.EssentialsSettings
                 EssentialsHelp.OpenLinkFeedback();
             if (GUILayout.Button(new GUIContent("About me  : )", "Open my personal webpage where you can know more about me!" )))
                 EssentialsHelp.OpenLinkAboutMe();
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button(new GUIContent("Quick Documentation", "Open the online document containing the quick documentation of the latest version of the asset." )))
+                EssentialsHelp.OpenLinkDocumentation();
+            if (GUILayout.Button(new GUIContent("Scripting Documentation", "Open the online scripting documentation of the latest version of the asset." )))
+                EssentialsHelp.OpenLinkScriptingDocumentation();
             EditorGUILayout.EndHorizontal();
             #endregion
         }

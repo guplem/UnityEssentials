@@ -1,7 +1,5 @@
 using System;
 using TMPro;
-using UnityEngine;
-using Console = UnityEngine.Console;
 
 namespace UnityEngine
 {

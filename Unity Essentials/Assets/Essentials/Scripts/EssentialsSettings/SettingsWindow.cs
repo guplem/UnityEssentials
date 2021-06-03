@@ -158,6 +158,8 @@ namespace Essentials.EssentialsSettings
                 EssentialsHelp.OpenLinkDocumentation();
             if (GUILayout.Button(new GUIContent("Scripting Documentation", "Open the online scripting documentation of the latest version of the asset." )))
                 EssentialsHelp.OpenLinkScriptingDocumentation();
+            if (GUILayout.Button(new GUIContent("GitHub", "Open the GitHub repository of the asset. You are welcome to collaborate!" )))
+                EssentialsHelp.OpenLinkGitHubRepository();
             EditorGUILayout.EndHorizontal();
             #endregion
         }

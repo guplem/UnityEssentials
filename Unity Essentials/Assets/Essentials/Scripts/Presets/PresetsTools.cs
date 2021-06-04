@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Presets;
 using UnityEngine;
 
-namespace Essentials.Scripts.Presets
+namespace Essentials.Presets
 {
     public static class PresetsTools
     {

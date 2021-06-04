@@ -1,12 +1,12 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using System;
 using System.Reflection;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
-namespace Essentials.Shortcuts
+namespace Essentials.EditorTweaks
 {
-    public class ConsoleWindowShortcuts : MonoBehaviour
+    public class ConsoleShortcuts : MonoBehaviour
     {
         /// <summary>
         /// Clears the Unity Editor's Console from all messages

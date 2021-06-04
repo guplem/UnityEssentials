@@ -41,9 +41,12 @@ namespace UnityEngine
 
         #endregion
 
+        #region Editor
+        #if UNITY_EDITOR
+        
         #region GetMainWindowCenteredPosition
         
-        #if UNITY_EDITOR
+        
         /// <summary>
         /// Returns a Rect containing the configuration to center a window.
         /// </summary>
@@ -107,9 +110,15 @@ namespace UnityEngine
             pos.y = parentWindowPosition.y + h;
             return pos;
         }
-        #endif
+        
         
         #endregion
+        
+        
+        
+        #endif
+        #endregion
+        
 
         #region Project
 
@@ -124,6 +133,13 @@ namespace UnityEngine
             return projectName;
         }
         
+        #endregion
+
+        #region System
+
+        
+
+        #endregion
         /// <summary>
         /// Checks if the IO is supported on current platform or not.
         /// </summary>
@@ -163,7 +179,7 @@ namespace UnityEngine
             return result;
         }
         
-        #endregion
+        
 
         
     }

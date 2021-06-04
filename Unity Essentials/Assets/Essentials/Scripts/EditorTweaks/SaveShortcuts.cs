@@ -1,13 +1,12 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
-namespace Essentials.Shortcuts
+namespace Essentials.EditorTweaks
 {
 
     public class SaveShortcuts : MonoBehaviour
     {
-
         /// <summary>
         /// Saves the scene and the project.
         /// </summary>

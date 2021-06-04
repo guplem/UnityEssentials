@@ -3,7 +3,7 @@
 namespace Essentials.EssentialsSettings
 {
     /// <summary>
-    /// Data related to the "Essentials Settings Window"
+    /// Stores data related to the "Essentials Settings Window"
     /// </summary>
     static class SavedData
     {

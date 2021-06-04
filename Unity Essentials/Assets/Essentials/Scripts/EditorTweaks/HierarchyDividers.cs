@@ -8,35 +8,96 @@ using UnityEngine;
 
 namespace Essentials.EditorTweaks
 {
+    /// <summary>
+    /// Functionality to create consistent dividers in the editor's hierarchy
+    /// </summary>
     public class HierarchyDividers : EditorWindow
     {
+
+        #region DividerConfiguration
+
+        /// <summary>
+        /// The name that is going to be used in the divider GameObject
+        /// </summary>
         private string sectionName = "";
+        /// <summary>
+        /// The selected character to build the "line" (-, * or _) that is going to be used alongside the section name to create the divider GameObject's name
+        /// </summary>
         private int selectedCharNumber;
-        private int selectedAlignmentStateNumber;
+        /// <summary>
+        /// The location of the name in relation with the "line" characters (left, center or right)
+        /// </summary>
+        private int selectedAlignmentNumber;
+        /// <summary>
+        /// The amount of characters used to create the "line" next to the section name
+        /// </summary>
         private int numberOfDividerChars;
+
+        #endregion
         
+        #region predifined options
+
+        /// <summary>
+        /// The available characters to create the "line"
+        /// </summary>
         private string[] availableChars = { "-", "*", "_" };
+        /// <summary>
+        /// The available locations of the name of the section relative to the line's characters
+        /// </summary>
         private string[] alignText = { "Left", "Center", "Right" };
 
-        // prefs keys
-        private string numberOfDividerCharsPlayerPrefs = "Essentials_" + nameof(numberOfDividerCharsPlayerPrefs);
-        private string preferedCharPlayerPrefs = "Essentials_" + nameof(preferedCharPlayerPrefs);
-        private string preferedAlignmentPlayerPrefs = "Essentials_" + nameof(preferedAlignmentPlayerPrefs);
-        
+        #endregion
+
+        #region EditorPrefs
+
+        /// <summary>
+        /// Name of the EditorPrefs storing numberOfDividerChars
+        /// </summary>
+        private string numberOfDividerCharsEditorPrefs = $"Essentials_{nameof(numberOfDividerChars)}";
+        /// <summary>
+        /// Name of the EditorPrefs storing numberOfDividerChars
+        /// </summary>
+        private string selectedCharNumberEditorPrefs = $"Essentials_{nameof(selectedCharNumber)}";
+        /// <summary>
+        /// Name of the EditorPrefs storing numberOfDividerChars
+        /// </summary>
+        private string selectedAlignmentNumberEditorPrefs = $"Essentials_{nameof(selectedAlignmentNumber)}";
+
+        #endregion
+
+        #region ButtonsStates
+
+        /// <summary>
+        /// Hs the button "ok" been pressed?
+        /// </summary>
         private bool buttonStateOk;
+        /// <summary>
+        /// Hs the button "cancel" been pressed?
+        /// </summary>
         private bool buttonStateCancel;
 
+        #endregion
+
+        /// <summary>
+        /// Load preferences when the window is loaded
+        /// </summary>
         private void OnEnable()
         {
             GetPreferences();
         }
 
+        /// <summary>
+        /// Draw the window and check the key presses
+        /// </summary>
         private void OnGUI()
         {
-            CreateTheUI();
+            DrawWindow();
             ManageKeyPress();
         }
         
+        /// <summary>
+        /// Open the "Divider creator tool" window 
+        /// </summary>
         [MenuItem("GameObject/Create Divider", false, -20)]
         private static void OpenWindow()
         {
@@ -51,7 +112,10 @@ namespace Essentials.EditorTweaks
             window.Focus();
         }
         
-        private void CreateTheUI()
+        /// <summary>
+        /// Draws the window
+        /// </summary>
+        private void DrawWindow()
         {
             EditorGUILayout.Space();
             
@@ -73,7 +137,7 @@ namespace Essentials.EditorTweaks
             // Alignment
             GUILayout.BeginHorizontal();
             GUILayout.Label("Name position: ", GUILayout.Width(130));
-            selectedAlignmentStateNumber = GUILayout.SelectionGrid(selectedAlignmentStateNumber, alignText, alignText.Length, EditorStyles.miniButton);
+            selectedAlignmentNumber = GUILayout.SelectionGrid(selectedAlignmentNumber, alignText, alignText.Length, EditorStyles.miniButton);
             GUILayout.EndHorizontal();
             
             // Char number
@@ -101,6 +165,10 @@ namespace Essentials.EditorTweaks
             if (buttonStateCancel)
                 Close();
         }
+        
+        /// <summary>
+        /// Execute process of creating the divider with the current configuration
+        /// </summary>
         private void AcceptCreation()
         {
             CreateDivider();
@@ -108,19 +176,28 @@ namespace Essentials.EditorTweaks
             Close();
         }
 
+        /// <summary>
+        /// Loads the previous divider's preferences
+        /// </summary>
         private void GetPreferences()
         {
-            selectedCharNumber = EditorPrefs.GetInt("Essentials_" + nameof(preferedCharPlayerPrefs), 0);
-            selectedAlignmentStateNumber = EditorPrefs.GetInt("Essentials_" + nameof(preferedAlignmentPlayerPrefs), 1);
-            numberOfDividerChars = EditorPrefs.GetInt("Essentials_" + nameof(numberOfDividerCharsPlayerPrefs), 26);
+            selectedCharNumber = EditorPrefs.GetInt("Essentials_" + nameof(selectedCharNumberEditorPrefs), 0);
+            selectedAlignmentNumber = EditorPrefs.GetInt("Essentials_" + nameof(selectedAlignmentNumberEditorPrefs), 1);
+            numberOfDividerChars = EditorPrefs.GetInt("Essentials_" + nameof(numberOfDividerCharsEditorPrefs), 26);
         }
 
+        /// <summary>
+        /// Saves the current divider's prefrences
+        /// </summary>
         private void SavePreferences()
         {
-            EditorPrefs.SetInt(preferedCharPlayerPrefs, selectedCharNumber);
-            EditorPrefs.SetInt(preferedAlignmentPlayerPrefs, selectedAlignmentStateNumber);
+            EditorPrefs.SetInt(selectedCharNumberEditorPrefs, selectedCharNumber);
+            EditorPrefs.SetInt(selectedAlignmentNumberEditorPrefs, selectedAlignmentNumber);
         }
 
+        /// <summary>
+        /// Checks if the keys with related actions are being pressed. If so, close or create the divider.
+        /// </summary>
         private void ManageKeyPress()
         {
             switch (Event.current.keyCode)
@@ -134,6 +211,9 @@ namespace Essentials.EditorTweaks
             }
         }
 
+        /// <summary>
+        /// Creates the divider by creating a GameObject in the scene with the name matching the desired configuration and the "EditorOnly" tag.
+        /// </summary>
         private void CreateDivider()
         {
             string selectedChar = availableChars[selectedCharNumber];
@@ -141,7 +221,7 @@ namespace Essentials.EditorTweaks
             int charsLeft = 0, charsRight = 0;
             string dividerGameObjectName = "";
             
-            switch (alignText[selectedAlignmentStateNumber])
+            switch (alignText[selectedAlignmentNumber])
             {
                 case "Left":
                     charsLeft = 0;

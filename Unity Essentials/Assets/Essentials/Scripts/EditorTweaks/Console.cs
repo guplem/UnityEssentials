@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Essentials.EditorTweaks
 {
+    /// <summary>
+    /// Tweaks to add features related to the console in the editor
+    /// </summary>
     public class Console
     {
         /// <summary>

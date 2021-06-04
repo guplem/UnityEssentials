@@ -5,6 +5,9 @@ using UnityEngine;
 namespace Essentials.EditorTweaks
 {
 
+    /// <summary>
+    /// Collection of tweaks to add features related save process of the project
+    /// </summary>
     public class Save
     {
         /// <summary>

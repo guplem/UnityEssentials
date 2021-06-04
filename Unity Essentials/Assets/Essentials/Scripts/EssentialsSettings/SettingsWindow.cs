@@ -6,9 +6,17 @@ using UnityEngine;
 
 namespace Essentials.EssentialsSettings
 {
+    
+    /// <summary>
+    /// Window containing adjustments to the project and editor.
+    /// <para>Additionally, it contains useful links related to the asset such as documentation.</para>>
+    /// </summary>
     public class SettingsWindow : EditorWindow
     {
         
+        /// <summary>
+        /// Opens the window the first time the asset is running in a new editor.
+        /// </summary>
         [InitializeOnLoadMethod]
         private static void OpenWindowAtFirstUse()
         {
@@ -27,6 +35,9 @@ namespace Essentials.EssentialsSettings
 
         }
         
+        /// <summary>
+        /// Opens the "Essentials Settings" window
+        /// </summary>
         [MenuItem("Window/Essentials/Settings")]
         private static void OpenWindow()
         {
@@ -41,16 +52,23 @@ namespace Essentials.EssentialsSettings
             window.Focus();
         }
         
-        private Type[] implementations;
+        /// <summary>
+        /// List of types of adjustments
+        /// </summary>
+        private Type[] adjustments;
+        
+        /// <summary>
+        /// Draws the window
+        /// </summary>
         private void OnGUI()
         {
-            if (implementations == null || implementations.Length == 0)
-                SearchConfigurationModifiers();
+            if (adjustments == null || adjustments.Length == 0)
+                SearchAdjustments();
 
             GUILayout.Label("Essentials Settings", EditorStyles.boldLabel);
             GUILayout.Label("");
 
-            if (implementations != null && implementations.Length != 0)
+            if (adjustments != null && adjustments.Length != 0)
             {
                 
                 GUILayout.Label("Available adjustments:");
@@ -58,7 +76,7 @@ namespace Essentials.EssentialsSettings
                 EditorGUILayout.BeginHorizontal();
                 
                 EditorGUILayout.BeginVertical();
-                foreach (Type adjustmentType in implementations)
+                foreach (Type adjustmentType in adjustments)
                 {
                     IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
                     if (!adjustment.showInSettingsWindow)
@@ -68,7 +86,7 @@ namespace Essentials.EssentialsSettings
                 EditorGUILayout.EndVertical();
                 
                 EditorGUILayout.BeginVertical();
-                foreach (Type adjustmentType in implementations)
+                foreach (Type adjustmentType in adjustments)
                 {
                     
                     IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
@@ -99,7 +117,7 @@ namespace Essentials.EssentialsSettings
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Apply all"))
                 {
-                    foreach (Type adjustmentType in implementations)
+                    foreach (Type adjustmentType in adjustments)
                     {
                         IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
                         adjustment.Apply();
@@ -108,7 +126,7 @@ namespace Essentials.EssentialsSettings
 
                 if (GUILayout.Button("Revert all"))
                 {
-                    foreach (Type adjustmentType in implementations)
+                    foreach (Type adjustmentType in adjustments)
                     {
                         IAdjustment adjustment = (IAdjustment) Activator.CreateInstance(adjustmentType);
                         adjustment.Revert();
@@ -166,9 +184,9 @@ namespace Essentials.EssentialsSettings
         /// <summary>
         /// Find all implementations of IConfigurationModifier using System.Reflection.Module
         /// </summary>
-        private void SearchConfigurationModifiers()
+        private void SearchAdjustments()
         {
-            implementations = Utils.GetTypeImplementationsNotUnityObject<IAdjustment>();
+            adjustments = Utils.GetTypeImplementationsNotUnityObject<IAdjustment>();
         }
     }
 }

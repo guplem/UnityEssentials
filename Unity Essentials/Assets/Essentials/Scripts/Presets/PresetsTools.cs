@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace Essentials.Presets
 {
+    /// <summary>
+    /// Collection of tweaks to add features related to the use of presets
+    /// </summary>
     public static class PresetsTools
     {
+        /// <summary>
+        /// Checks if all the GameObjects in the current scene are matching the selected (command) presets
+        /// </summary>
+        /// <param name="command">The context</param>
         [MenuItem("CONTEXT/Preset/Validate all Game Objects in scene")]
         public static void ValidateAllGameObjectsInScene(MenuCommand command)
         {
@@ -42,11 +49,13 @@ namespace Essentials.Presets
             if (!foundAnyMissmatch)
                 Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
         }
-    
-    
-
+        
+        
+        /// <summary>
+        /// Checks if all the GameObjects in the current scene are matching the configuration of the default presets
+        /// </summary>
         [MenuItem("GameObject/Presets/Search mismatches between scene GameObjects and default Presets", false, -20)]
-        public static void ValidateGameObjectsInSceneAgainstDefaultPresets()
+        public static bool AreAllGameObjectsInSceneMatchingWithDefaultPresets()
         {
             bool foundAnyMissmatch = false;
 
@@ -77,10 +86,12 @@ namespace Essentials.Presets
                     }
                 }
             }
-        
-            if (!foundAnyMissmatch)
-                Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
-        
+
+            if (foundAnyMissmatch)
+                return false;
+            
+            Debug.Log("All GameObjects' components in the scene are configured according to the selected preset.");
+            return true;
         }
     }
 }

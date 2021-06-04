@@ -5,6 +5,9 @@ using UnityEngine;
 namespace Essentials.EssentialsSettings.UnityConfigurationModifications
 {
 
+    /// <summary>
+    /// Adjustment that forces the application of the presets to all assets contained in the same folder of the preset.
+    /// </summary>
     public class EnforcePresetPerFolder : Adjustment
     {
         /// <summary>

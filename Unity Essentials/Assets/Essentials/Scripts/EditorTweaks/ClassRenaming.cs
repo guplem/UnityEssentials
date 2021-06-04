@@ -1,7 +1,3 @@
-// Original author of the code: Pellegrino Principe (https://github.com/thp1972)
-// Original code: https://github.com/thp1972/MyUnityScripts/blob/master/FixClassName/Editor/com.pellegrinoprincipe/FixClassName.cs
-// The code has been modified to increase consistency, usability and to reduce possible errors.
-
 #if UNITY_EDITOR
 using System;
 using System.IO;
@@ -13,11 +9,19 @@ namespace Essentials.EditorTweaks
 {
     public class ClassRenaming : MonoBehaviour
     {
-        private static MonoScript[] scripts;
+
+        #region ClassRenaming
+
+        // Original author of the code: Pellegrino Principe (https://github.com/thp1972)
+        // Original code: https://github.com/thp1972/MyUnityScripts/blob/master/FixClassName/Editor/com.pellegrinoprincipe/FixClassName.cs
+        // The code has been modified to increase consistency, usability and to reduce possible errors.
         
         [MenuItem("Assets/Update class name to match file name", false, 19)]
-        public static void Fix()
+        private static void UpdateClassNameToMatchFile()
         {
+            
+            MonoScript[] scripts = Selection.GetFiltered<MonoScript>(SelectionMode.Assets);
+            
             if (scripts.IsNullOrEmpty() || scripts.Length != 1)
             {
                 Debug.LogError("One script file must be selected to update the class contained in it.");
@@ -33,10 +37,10 @@ namespace Essentials.EditorTweaks
         }
 
         [MenuItem("Assets/Update class name to match file name", true, 19)]
-        public static bool CheckIfScriptFile()
+        private static bool IsSingleScriptSelected()
         {
             // enable the menu item only if a script file is selected
-            scripts = Selection.GetFiltered<MonoScript>(SelectionMode.Assets);
+            MonoScript[] scripts = Selection.GetFiltered<MonoScript>(SelectionMode.Assets);
 
             // Only one selected
             return !scripts.IsNullOrEmpty() && scripts.Length == 1;
@@ -75,6 +79,25 @@ namespace Essentials.EditorTweaks
                 Debug.Log($"Something went wrong: {exception.Message}");
             }
         }
+        
+        #endregion
+
+        #region DuplicateAsset
+
+        [MenuItem("Assets/Duplicate", false, 19)] // No shortcut is set because the functionality calls the Command "Edit/Duplicate" that already has cone signed
+        private static void DuplicateAsset()
+        {
+            EditorWindow.focusedWindow.SendEvent (EditorGUIUtility.CommandEvent ("Duplicate"));
+        }
+
+        [MenuItem("Assets/Duplicate", true, 19)] // No shortcut is set because the functionality calls the Command "Edit/Duplicate" that already has cone signed
+        private static bool AreAssetsSelected()
+        {
+            return Selection.assetGUIDs.Length > 0;
+        } 
+
+        #endregion
+        
     }
 }
 #endif

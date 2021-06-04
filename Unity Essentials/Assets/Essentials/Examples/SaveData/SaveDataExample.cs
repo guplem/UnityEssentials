@@ -20,7 +20,7 @@ public class SaveDataExample : MonoBehaviour
     
     #endregion
 
-    #region Functionallity
+    #region SaveAndLoadFunctionallity
     
     public void SaveAll()
     {

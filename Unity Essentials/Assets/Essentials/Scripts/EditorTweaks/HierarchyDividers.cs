@@ -1,5 +1,5 @@
 ﻿// Original author of the code: Pellegrino ~thp~ Principe (https://github.com/thp1972)
-// Original code: 
+// Original code: https://github.com/thp1972/MyUnityScripts/blob/master/GameObjectSeparator/Editor/com.pellegrinoprincipe/GOSeparators.cs
 // The code has been modified to increase consistency, usability and to reduce possible errors.
 
 #if UNITY_EDITOR

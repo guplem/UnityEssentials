@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Essentials.EditorTweaks
 {
 
-    public class Save : MonoBehaviour
+    public class Save
     {
         /// <summary>
         /// Saves the scene and the project.

@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace Essentials.EditorTweaks
 {
-    public class Assets : MonoBehaviour
+    public class Assets
     {
 
         #region ClassRenaming
 
-        // Original author of the code: Pellegrino Principe (https://github.com/thp1972)
+        // Original author of the code: Pellegrino ~thp~ Principe (https://github.com/thp1972)
         // Original code: https://github.com/thp1972/MyUnityScripts/blob/master/FixClassName/Editor/com.pellegrinoprincipe/FixClassName.cs
         // The code has been modified to increase consistency, usability and to reduce possible errors.
         

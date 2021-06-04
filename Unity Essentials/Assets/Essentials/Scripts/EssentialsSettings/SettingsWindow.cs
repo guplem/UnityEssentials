@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace Essentials.EssentialsSettings
 {
-    [ExecuteInEditMode]
     public class SettingsWindow : EditorWindow
     {
         
@@ -29,12 +28,12 @@ namespace Essentials.EssentialsSettings
         }
         
         [MenuItem("Window/Essentials/Settings")]
-        static void OpenWindow()
+        private static void OpenWindow()
         {
             // Get existing open window or if none, make a new one:
             SettingsWindow window = CreateWindow<SettingsWindow>();
             //SettingsWindow window = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow), false, "Essentials' Settings and Adjustments");
-            var windowSize = new Vector2(600f, 420f);
+            Vector2 windowSize = new Vector2(600f, 420f);
             window.minSize = window.maxSize = windowSize;
             window.position = Utils.GetEditorWindowCenteredPosition(windowSize);
             window.titleContent = new GUIContent("Essentials' Settings and Adjustments");
@@ -43,7 +42,7 @@ namespace Essentials.EssentialsSettings
         }
         
         private Type[] implementations;
-        void OnGUI()
+        private void OnGUI()
         {
             if (implementations == null || implementations.Length == 0)
                 SearchConfigurationModifiers();

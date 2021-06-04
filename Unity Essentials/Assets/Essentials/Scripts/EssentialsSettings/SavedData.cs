@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
 
 namespace Essentials.EssentialsSettings
 {
@@ -17,7 +17,7 @@ namespace Essentials.EssentialsSettings
             {
                 get
                 {
-                    _settingsShown = PlayerPrefs.GetInt(nameof(settingsShown))==1;
+                    _settingsShown = EditorPrefs.GetInt("Essentials_" + nameof(settingsShown))==1;
                     return _settingsShown;
                 }
                 set
@@ -25,7 +25,7 @@ namespace Essentials.EssentialsSettings
                     if (_settingsShown == value) 
                         return;
                     _settingsShown = value;
-                    PlayerPrefs.SetInt(nameof(settingsShown), value? 1 : 0);
+                    EditorPrefs.SetInt("Essentials_" + nameof(settingsShown), value? 1 : 0);
                 }
             }
             private static bool _settingsShown;

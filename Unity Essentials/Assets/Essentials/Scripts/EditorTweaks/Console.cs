@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Essentials.EditorTweaks
 {
-    public class ConsoleShortcuts : MonoBehaviour
+    public class Console : MonoBehaviour
     {
         /// <summary>
         /// Clears the Unity Editor's Console from all messages

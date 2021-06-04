@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Essentials.EditorTweaks
 {
-    public class ClassRenaming : MonoBehaviour
+    public class Assets : MonoBehaviour
     {
 
         #region ClassRenaming

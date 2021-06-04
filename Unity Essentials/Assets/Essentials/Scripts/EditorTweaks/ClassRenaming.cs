@@ -1,3 +1,7 @@
+// Original author of the code: Pellegrino Principe (https://github.com/thp1972)
+// Original code: https://github.com/thp1972/MyUnityScripts/blob/master/FixClassName/Editor/com.pellegrinoprincipe/FixClassName.cs
+// The code has been modified to increase consistency, usability and to reduce possible errors.
+
 #if UNITY_EDITOR
 using System;
 using System.IO;
@@ -14,7 +18,7 @@ namespace Essentials.EditorTweaks
         [MenuItem("Assets/Update class name to match file name", false, 19)]
         public static void Fix()
         {
-            if (scripts == null || scripts.Length != 1)
+            if (scripts.IsNullOrEmpty() || scripts.Length != 1)
             {
                 Debug.LogError("One script file must be selected to update the class contained in it.");
                 return;
@@ -35,7 +39,7 @@ namespace Essentials.EditorTweaks
             scripts = Selection.GetFiltered<MonoScript>(SelectionMode.Assets);
 
             // Only one selected
-            return scripts.Length == 1;
+            return !scripts.IsNullOrEmpty() && scripts.Length == 1;
         }
 
         private static void ReplaceClassName(string newClassName, string scriptPath)

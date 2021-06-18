@@ -181,9 +181,9 @@ namespace Essentials.EditorTweaks
         /// </summary>
         private void GetPreferences()
         {
-            selectedCharNumber = EditorPrefs.GetInt("Essentials_" + nameof(selectedCharNumberEditorPrefs), 0);
-            selectedAlignmentNumber = EditorPrefs.GetInt("Essentials_" + nameof(selectedAlignmentNumberEditorPrefs), 1);
-            numberOfDividerChars = EditorPrefs.GetInt("Essentials_" + nameof(numberOfDividerCharsEditorPrefs), 26);
+            selectedCharNumber = EditorPrefs.GetInt(selectedCharNumberEditorPrefs, 0);
+            selectedAlignmentNumber = EditorPrefs.GetInt(selectedAlignmentNumberEditorPrefs, 1);
+            numberOfDividerChars = EditorPrefs.GetInt(numberOfDividerCharsEditorPrefs, 26);
         }
 
         /// <summary>
@@ -191,6 +191,7 @@ namespace Essentials.EditorTweaks
         /// </summary>
         private void SavePreferences()
         {
+            EditorPrefs.SetInt(numberOfDividerCharsEditorPrefs, numberOfDividerChars);
             EditorPrefs.SetInt(selectedCharNumberEditorPrefs, selectedCharNumber);
             EditorPrefs.SetInt(selectedAlignmentNumberEditorPrefs, selectedAlignmentNumber);
         }

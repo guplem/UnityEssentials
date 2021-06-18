@@ -6,7 +6,7 @@ namespace UnityEngine
     /// Allows GameObjects pooling by reusing pre-instantiated GameObjects
     /// </summary>
     [System.Serializable]
-    public class Pool
+    public class PoolEssentials
     {
         /// <summary>
         /// A reference to the instantiated GameObjects linked to the pool.
@@ -49,7 +49,7 @@ namespace UnityEngine
         /// <summary>
         /// Creates a Pool instance.
         /// </summary>
-        public Pool() { 
+        public PoolEssentials() { 
             activeIndex = 0;
             nextBaseObjectIndex = 0;
             referencedObjects = new List<GameObject>();
@@ -64,7 +64,7 @@ namespace UnityEngine
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
         /// <param name="randomInstantiationSequence">If false, the objects will be instantiated in the appearing order in the 'baseObjects array. If true, the order of instantiation of the pooled objects is going to be random.</param>
         /// <param name="intantiationRandomizationSeed">The seed used to randomly pick the baseObjects in the first instantiation process</param>
-        public Pool(GameObject[] baseObjects, int size, bool instantiateAllAtCreation = false, bool randomInstantiationSequence = false, int intantiationRandomizationSeed = -1)
+        public PoolEssentials(GameObject[] baseObjects, int size, bool instantiateAllAtCreation = false, bool randomInstantiationSequence = false, int intantiationRandomizationSeed = -1)
         {
             this.baseObjects = baseObjects;
             this.size = size;
@@ -86,7 +86,7 @@ namespace UnityEngine
         /// <param name="baseObject">The object that will be instantiated by the pool.</param>
         /// <param name="size">The maximum number of objects that can be instantiated at the same time.</param>
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
-        public Pool(GameObject baseObject, int size, bool instantiateAllAtCreation = false)
+        public PoolEssentials(GameObject baseObject, int size, bool instantiateAllAtCreation = false)
         {
             this.baseObjects = new GameObject[] {baseObject};
             this.size = size;
@@ -108,7 +108,7 @@ namespace UnityEngine
         /// <param name="instantiateAllAtCreation">If the pool should instantiate all the objects in the scene right away (true) or if they should be instantiated when they are needed (false, default value).</param>
         /// <param name="randomInstantiationSequence">If false, the objects will be instantiated in the appearing order in the 'baseObjects array. If true, the order of instantiation of the pooled objects is going to be random.</param>
         /// <param name="intantiationRandomizationSeed">The seed used to randomly pick the baseObjects in the first instantiation process</param>
-        public Pool(GameObject[] baseObjects, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false, bool randomInstantiationSequence = false, int intantiationRandomizationSeed = -1) : this(baseObjects, size, instantiateAllAtCreation, randomInstantiationSequence, intantiationRandomizationSeed)
+        public PoolEssentials(GameObject[] baseObjects, int size, Vector3 instantiationPosition, Quaternion instantiationRotation, bool instantiateAllAtCreation = false, bool randomInstantiationSequence = false, int intantiationRandomizationSeed = -1) : this(baseObjects, size, instantiateAllAtCreation, randomInstantiationSequence, intantiationRandomizationSeed)
         {
             defaultPositionAndRotation = new DefaultPositionAndRotation(instantiationPosition, instantiationRotation);
         }

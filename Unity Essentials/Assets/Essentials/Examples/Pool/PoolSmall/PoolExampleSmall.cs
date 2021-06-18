@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Essentials.Examples.Pool.PoolSmall
 {
@@ -6,8 +7,9 @@ namespace Essentials.Examples.Pool.PoolSmall
     {
 
         [SerializeField] private KeyCode keyToSpawn;
+        [FormerlySerializedAs("pool")]
         [Space]
-        [SerializeField] private UnityEngine.Pool pool;
+        [SerializeField] private UnityEngine.PoolEssentials poolEssentials;
     
         private UnityEngine.RandomEssentials randomEssentials;
 
@@ -23,7 +25,7 @@ namespace Essentials.Examples.Pool.PoolSmall
             if (Input.GetKeyDown(keyToSpawn))
             {
                 // Activate/Respawn/Move one game object each time 'Spawn' is called
-                GameObject spawned = pool.Spawn(
+                GameObject spawned = poolEssentials.Spawn(
                     randomEssentials.GetRandomVector3(-5, 5),  // Position
                     Quaternion.identity,                                              // Rotation
                     randomEssentials.GetRandomVector3(0.5f,1.5f) // Scale

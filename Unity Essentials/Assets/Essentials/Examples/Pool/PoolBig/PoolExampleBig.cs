@@ -11,14 +11,14 @@ namespace Essentials.Examples.Pool.PoolBig
         [SerializeField] private Transform parentForPooled;
         [SerializeField] private float timeBetweenLoadingInstances = 1;
 
-        private UnityEngine.Pool pool;
+        private UnityEngine.PoolEssentials poolEssentials;
         private UnityEngine.RandomEssentials randomEssentials;
         private IEnumerator coroutineHolder; // Keeps track of the coroutine
 
         private void Start()
         {
             // The pool is created
-            pool = new UnityEngine.Pool(objectToSpawn, 100, false);
+            poolEssentials = new UnityEngine.PoolEssentials(objectToSpawn, 100, false);
         
             randomEssentials = new UnityEngine.RandomEssentials();
         
@@ -35,7 +35,7 @@ namespace Essentials.Examples.Pool.PoolBig
             if (Input.GetKeyDown(keyToSpawn))
             {
                 // Activate/Respawn/Move one game object each time 'Spawn' is called
-                GameObject spawned = pool.Spawn(
+                GameObject spawned = poolEssentials.Spawn(
                     randomEssentials.GetRandomVector3(-5, 5),   // Position
                     Quaternion.identity,                                               // Rotation
                     randomEssentials.GetRandomVector3(0.5f,1.5f), // Scale
@@ -55,7 +55,7 @@ namespace Essentials.Examples.Pool.PoolBig
             {
                 yield return new WaitForSeconds(timeBetweenLoadingInstances);
             
-                pool.Load(1, parentForPooled);
+                poolEssentials.Load(1, parentForPooled);
             }
         }
     }

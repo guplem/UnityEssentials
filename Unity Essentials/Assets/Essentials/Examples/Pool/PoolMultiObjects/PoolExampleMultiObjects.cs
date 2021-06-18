@@ -10,13 +10,13 @@ namespace Essentials.Examples.Pool.PoolMultiObjects
         [SerializeField] private Transform parentForPooled;
         [SerializeField] private bool randomInstantiationSequence;
 
-        private UnityEngine.Pool pool;
+        private UnityEngine.PoolEssentials poolEssentials;
         private UnityEngine.RandomEssentials randomEssentials;
 
         private void Start()
         {
             // The pool is created
-            pool = new UnityEngine.Pool(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstantiationSequence);
+            poolEssentials = new UnityEngine.PoolEssentials(objectsToSpawn, 10, Vector3.zero, Quaternion.identity, false, randomInstantiationSequence);
         
             randomEssentials = new UnityEngine.RandomEssentials();
         
@@ -28,7 +28,7 @@ namespace Essentials.Examples.Pool.PoolMultiObjects
             if (Input.GetKeyDown(keyToSpawn))
             {
                 // Activate/Respawn/Move one game object each time 'Spawn' is called
-                GameObject spawned = pool.Spawn(
+                GameObject spawned = poolEssentials.Spawn(
                     randomEssentials.GetRandomVector3(-5, 5),   // Position
                     Quaternion.identity,                                               // Rotation
                     randomEssentials.GetRandomVector3(0.5f,1.5f), // Scale

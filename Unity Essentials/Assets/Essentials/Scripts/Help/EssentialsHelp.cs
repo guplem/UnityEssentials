@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace Essentials
 {
     /// <summary>
@@ -58,3 +59,4 @@ namespace Essentials
     }
 }
 
+#endif

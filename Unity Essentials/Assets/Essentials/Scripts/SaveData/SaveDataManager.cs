@@ -38,14 +38,22 @@ namespace UnityEngine
     {
         public static string saveDataPath = Application.persistentDataPath;
 
+        #if UNITY_EDITOR
         /// <summary>
         /// Opens/reveals the folder containing the saved data.
         /// </summary>
+        ///
         [MenuItem("File/Open saves data folder", false, 300)]
+        #endif
         public static void OpenSavedDataFolder()
         {
+            #if UNITY_EDITOR
             EditorUtility.RevealInFinder(saveDataPath);
+            #else
+            Debug.LogError("The folder containing the saved data can not be opened using the method OpenSavedDataFolder from the class SaveDataManager outside the Unity Editor.");
+            #endif
         }
+        
 
         /// <summary>
         /// Saves data using the identifier.

@@ -1,9 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CanEditMultipleObjects]
 [CustomEditor(typeof(SaveDataExample))]
-public class SaveDataExampleInspector : UnityEditor.Editor
+public class SaveDataExampleInspector : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -44,3 +45,4 @@ public class SaveDataExampleInspector : UnityEditor.Editor
     }
 
 }
+#endif

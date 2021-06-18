@@ -10,6 +10,7 @@ namespace Essentials.EssentialsSettings
 
         #region WelcomeSettingsScreen
         
+            #if UNITY_EDITOR
             /// <summary>
             /// Whether the settings window has been shown or not for this user.
             /// </summary>
@@ -29,7 +30,8 @@ namespace Essentials.EssentialsSettings
                 }
             }
             private static bool _settingsShown;
-            
+            #endif
+        
         #endregion
 
     }

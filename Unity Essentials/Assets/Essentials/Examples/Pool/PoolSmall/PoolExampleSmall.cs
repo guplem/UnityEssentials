@@ -9,7 +9,7 @@ namespace Essentials.Examples.Pool.PoolSmall
         [SerializeField] private KeyCode keyToSpawn;
         [FormerlySerializedAs("pool")]
         [Space]
-        [SerializeField] private UnityEngine.PoolEssentials poolEssentials;
+        [SerializeField] private PoolEssentials poolEssentials;
     
         private UnityEngine.RandomEssentials randomEssentials;
 

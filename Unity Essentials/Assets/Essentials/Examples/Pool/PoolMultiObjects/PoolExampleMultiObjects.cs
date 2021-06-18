@@ -10,7 +10,7 @@ namespace Essentials.Examples.Pool.PoolMultiObjects
         [SerializeField] private Transform parentForPooled;
         [SerializeField] private bool randomInstantiationSequence;
 
-        private UnityEngine.PoolEssentials poolEssentials;
+        private PoolEssentials poolEssentials;
         private UnityEngine.RandomEssentials randomEssentials;
 
         private void Start()

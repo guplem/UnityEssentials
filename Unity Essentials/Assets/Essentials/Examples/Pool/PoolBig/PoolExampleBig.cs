@@ -11,7 +11,7 @@ namespace Essentials.Examples.Pool.PoolBig
         [SerializeField] private Transform parentForPooled;
         [SerializeField] private float timeBetweenLoadingInstances = 1;
 
-        private UnityEngine.PoolEssentials poolEssentials;
+        private PoolEssentials poolEssentials;
         private UnityEngine.RandomEssentials randomEssentials;
         private IEnumerator coroutineHolder; // Keeps track of the coroutine
 
